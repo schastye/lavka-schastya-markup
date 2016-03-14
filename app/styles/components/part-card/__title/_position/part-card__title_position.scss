@@ -1,0 +1,45 @@
+.part-card__title_position {
+  
+  &_bottom-right {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: $space-2;
+  }
+
+  &_top-right {
+    top: 0;
+    bottom: auto;
+    left: auto;
+    right: $space-2;
+  }
+
+  &_bottom-left {
+    top: auto;
+    bottom: 0;
+    left: $space-2;
+    right: auto;
+  }
+
+  &_bottom-center-left {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: 50%;
+  }
+
+  &_top-left {
+    top: 0;
+    bottom: auto;
+    left: $space-2;
+    right: auto;
+  }
+
+  &_bottom-center-right {
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+  }
+
+}

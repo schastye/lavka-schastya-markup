@@ -1,0 +1,19 @@
+.header-menu__item {
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    border-bottom: 1px solid #cde7d4;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  &:last-child:after {
+    content: none;
+  }
+}
