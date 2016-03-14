@@ -1,0 +1,11 @@
+.section_color {
+  background-color: $color-grey;
+
+  &_grey {
+    background-color: $color-grey;
+  }
+
+  &_green {
+    background-color: $color-green;
+  }
+}

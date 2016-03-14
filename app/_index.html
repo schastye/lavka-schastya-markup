@@ -1,0 +1,308 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lavka markup</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <header class="header">
+      <div class="header__navigation">
+        <div class="header-navigation">
+          <label class="header-navigation__icon" for="header-checker-menu">Меню</label>
+          <input type="checkbox" class="header-navigation__checker" id="header-checker-menu">
+          <nav class="header-navigation__menu">
+            <ul class="header-menu">
+              <li class="header-menu__item"><a href="333" class="header-menu__link">Макарони</a></li>
+              <li class="header-menu__item"><a href="333" class="header-menu__link">Торты и пирожные</a></li>
+              <li class="header-menu__item"><a href="333" class="header-menu__link">Печенье и выпечка</a></li>
+              <li class="header-menu__item"><a href="333" class="header-menu__link">Конфеты и шоколад</a></li>
+              <li class="header-menu__item"><a href="333" class="header-menu__link">Подарочные наборы</a></li>
+              <li class="header-menu__item"><a href="333" class="header-menu__link">Дополнительные продукты</a></li>
+              <li class="header-menu__item"><a href="333" class="header-menu__link">Лавка счастья</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="header__logo">
+        <div class="header-logo"></div>
+      </div>
+      <div class="header__phone">
+        <div class="menu-phone">
+          <span class="menu-phone__country-code">+7</span>
+          <span class="menu-phone__city-code">(812)</span>
+          <span class="menu-phone__number">983-11-18</span>
+        </div>
+      </div>
+      <div class="header__order">
+        <div class="header-order">
+          <label class="header-order__icon" for="header-checker-order">Корзина</label>
+          <input type="checkbox" class="header-order__checker" id="header-checker-order">
+          <div class="header-order__list">
+            <ul class="header-order-list">
+              <li class="header-order-list__item">
+                <form method="post" action="order" class="header-order-item">
+                  <a href="good" class="header-order-item__link-image">
+                    <img src="" alt="" class="header-order-item__image">
+                    <h4 class="header-order-item__title">Lorem ipsum dolor sit amet</h4>
+                    <span class="header-order-item__price">500 rub</span>
+                    <span class="header-order-item__count">3</span>
+                  </a>
+                  <input type="hidden" name="key" value="498f8886ce6dc728be9293ad5fd70312">
+                  <buttom type="submit" name="ms2_action" value="cart/remove" class="header-order-item__remove" title="Удалить">&times;</buttom>
+                </form>
+              </li>
+              <li class="header-order-list__item">
+                <form method="post" action="order" class="header-order-item">
+                  <a href="good" class="header-order-item__link-image">
+                    <img src="" alt="" class="header-order-item__image">
+                    <h4 class="header-order-item__title">Lorem ipsum dolor sit amet</h4>
+                    <span class="header-order-item__price">500 rub</span>
+                    <span class="header-order-item__count">3</span>
+                  </a>
+                  <input type="hidden" name="key" value="498f8886ce6dc728be9293ad5fd70312">
+                  <buttom type="submit" name="ms2_action" value="cart/remove" class="header-order-item__remove" title="Удалить">&times;</buttom>
+                </form>
+              </li>
+              <li class="header-order-list__item">
+                <form method="post" action="order" class="header-order-item">
+                  <a href="good" class="header-order-item__link-image">
+                    <img src="" alt="" class="header-order-item__image">
+                    <h4 class="header-order-item__title">Lorem ipsum dolor sit amet</h4>
+                    <span class="header-order-item__price">500 rub</span>
+                    <span class="header-order-item__count">3</span>
+                  </a>
+                  <input type="hidden" name="key" value="498f8886ce6dc728be9293ad5fd70312">
+                  <buttom type="submit" name="ms2_action" value="cart/remove" class="header-order-item__remove" title="Удалить">&times;</buttom>
+                </form>
+              </li>
+            </ul>
+            <div class="header-order-footer">
+              <div class="header-order-footer__sum">4500 руб.</div>
+              <a href="order" class="header-order-footer__link">Перейти в корзину</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container-fluid">
+      <ul class="main-part">
+        <li class="main-part__item">
+          <section class="part-card">
+            <a href="777" class="part-card__image" style="background-image: url(images/main/macarons.jpg)"></a>
+            <div class="part-card__title part-card__title_position_bottom-right">
+              <div class="part-card-title">
+                <h2 class="part-card-title__header">
+                  <a href="787" class="part-card-title__link">Макарони</a>
+                </h2>
+                <div class="part-card-title__description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa nam ea et ipsum, molestiae enim nulla accusantium laboriosam magnam mollitia tenetur ab sit pariatur veniam dolores, repellendus molestias quo voluptatem!
+                </div>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="main-part__item main-part__item_half">
+          <section class="part-card">
+            <a href="777" class="part-card__image" style="background-image: url(images/main/cakes.jpg)"></a>
+            <div class="part-card__title part-card__title_position_top-right">
+              <div class="part-card-title">
+                <h2 class="part-card-title__header">
+                  <a href="787" class="part-card-title__link">Торты и пирожные</a>
+                </h2>
+                <div class="part-card-title__description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae commodi, assumenda quam voluptates delectus recusandae. Voluptatibus perspiciatis corrupti fugit architecto maiores, veniam in recusandae quae nihil aperiam, possimus laborum placeat?
+                </div>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="main-part__item main-part__item_half">
+          <section class="part-card">
+            <a href="777" class="part-card__image" style="background-image: url(images/main/cookies.jpg)"></a>
+            <div class="part-card__title part-card__title_position_bottom-left">
+              <div class="part-card-title">
+                <h2 class="part-card-title__header">
+                  <a href="787" class="part-card-title__link">Печенье и выпечка</a>
+                </h2>
+                <div class="part-card-title__description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos laudantium eum est vitae cupiditate nulla, nobis aspernatur quae, placeat optio nisi dolorem. Consectetur asperiores soluta voluptatem tempora eos amet explicabo!
+                </div>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="main-part__item main-part__item_clear">
+          <div class="part-card part-card_simple">
+            <h2 class="part-card__header">
+              <a href="787" class="part-card__link">Ингредиенты наших сладостей</a>
+            </h2>
+          </div>
+        </li>
+        <li class="main-part__item">
+          <section class="part-card">
+            <a href="777" class="part-card__image" style="background-image: url(images/main/candys_chocolate.jpg)"></a>
+            <div class="part-card__title part-card__title_position_bottom-center-left">
+              <div class="part-card-title">
+                <h2 class="part-card-title__header">
+                  <a href="787" class="part-card-title__link">Конфеты и шоколад</a>
+                </h2>
+                <div class="part-card-title__description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda optio aspernatur in laudantium laboriosam, modi dicta omnis ducimus obcaecati hic vel suscipit, excepturi, minima aliquam. Nihil cupiditate adipisci molestias inventore.
+                </div>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="main-part__item main-part__item_half">
+          <section class="part-card">
+            <a href="777" class="part-card__image" style="background-image: url(images/main/additional_sets.jpg)"></a>
+            <div class="part-card__title part-card__title_position_bottom-right">
+              <div class="part-card-title">
+                <h2 class="part-card-title__header">
+                  <a href="787" class="part-card-title__link">Дополнительные наборы</a>
+                </h2>
+                <div class="part-card-title__description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim nisi natus quod numquam dolor veniam praesentium quae voluptate aliquam officia fuga dolores commodi fugiat a quasi magnam ipsum, ratione vero.
+                </div>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="main-part__item main-part__item_half">
+          <section class="part-card">
+            <a href="777" class="part-card__image" style="background-image: url(images/main/presents.jpg)"></a>
+            <div class="part-card__title part-card__title_position_top-left">
+              <div class="part-card-title">
+                <h2 class="part-card-title__header">
+                  <a href="787" class="part-card-title__link">Подарочные наборы</a>
+                </h2>
+                <div class="part-card-title__description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati enim odit neque nesciunt fugiat sequi tempora mollitia excepturi cupiditate, quia tempore voluptatum reprehenderit. Provident enim voluptates, vel sint dolor magnam.
+                </div>
+              </div>
+            </div>
+          </section>
+        </li>
+        <li class="main-part__item">
+          <section class="part-card">
+            <a href="777" class="part-card__image" style="background-image: url(images/main/lavka_schastye.jpg)"></a>
+            <div class="part-card__title part-card__title_position_bottom-center-right">
+              <div class="part-card-title">
+                <h2 class="part-card-title__header">
+                  <a href="787" class="part-card-title__link">Лавка Счастья</a>
+                </h2>
+                <div class="part-card-title__description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, autem doloremque ea reiciendis ipsa odio, nesciunt, cum corporis, eveniet iusto quia! Ad pariatur fugiat labore. Quisquam harum, necessitatibus deserunt nobis.
+                </div>
+              </div>
+            </div>
+          </section>
+        </li>
+      </ul>
+    </main>
+    
+    <footer class="footer">
+      <h3 class="footer__title">Поделитесь Счастьем с друзьями</h3>
+      <div class="footer__tags">
+        <div class="footer-tags">
+          <a href="777" class="footer-tags__item" target="_blank" rel="no-follow">УСчастьяЕстьВкус</a>
+          <a href="777" class="footer-tags__item" target="_blank" rel="no-follow">СчастьеЕсть</a>
+          <a href="777" class="footer-tags__item" target="_blank" rel="no-follow">ВкусСчастья</a>
+        </div>
+      </div>
+      <div class="footer__menu">
+        <ul class="footer-menu">
+          <li class="footer-menu__item"><a href="555" class="footer-menu__link">Способ оплаты</a></li>
+          <li class="footer-menu__item"><a href="555" class="footer-menu__link">Условия доставки</a></li>
+          <li class="footer-menu__item"><a href="555" class="footer-menu__link">Фабрика счастья</a></li>
+          <li class="footer-menu__item"><a href="555" class="footer-menu__link">Магазины «Лавка Счастья»</a></li>
+          <li class="footer-menu__item"><a href="555" class="footer-menu__link">Рестораны «Счастье»</a></li>
+          <li class="footer-menu__item"><a href="555" class="footer-menu__link">Ингредиенты</a></li>
+          <li class="footer-menu__item"><a href="555" class="footer-menu__link">Корпоративным клиентам</a></li>
+          <li class="footer-menu__item"><a href="555" class="footer-menu__link">Личный кабинет</a></li>
+          <li class="footer-menu__item"><a href="555" class="footer-menu__link">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer__social">
+        <ul class="footer-social">
+          <li class="footer-social__item">
+            <a href="222" class="footer-social__link" target="_blank" rel="no-follow">
+              <i class="fa fa-instagram"></i>
+              Instagram
+            </a>
+          </li>
+          <li class="footer-social__item">
+            <a href="222" class="footer-social__link" target="_blank" rel="no-follow">
+              <i class="fa fa-circle"></i>
+              Счастье
+            </a>
+          </li>
+          <li class="footer-social__item">
+            <a href="222" class="footer-social__link" target="_blank" rel="no-follow">
+              <i class="fa fa-pinterest"></i>
+              Pinterest
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/plugins.js -->
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
