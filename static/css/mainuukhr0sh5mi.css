@@ -9423,6 +9423,11 @@ html, body {
   box-sizing: border-box;
 }
 
+.footer-menu {
+  margin: 0;
+  padding: 0;
+}
+
 .footer {
   padding: .5rem !important;
 }
@@ -9431,11 +9436,6 @@ html, body {
   text-align: center;
   font-size: 0;
   padding: 1rem 0 .5rem;
-}
-
-.footer-menu {
-  margin: 0;
-  padding: 0;
 }
 
 .footer-social {
