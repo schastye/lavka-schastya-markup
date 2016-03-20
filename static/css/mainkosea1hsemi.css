@@ -9423,11 +9423,6 @@ html, body {
   box-sizing: border-box;
 }
 
-.footer-menu {
-  margin: 0;
-  padding: 0;
-}
-
 .footer {
   padding: .5rem !important;
 }
@@ -9436,6 +9431,11 @@ html, body {
   text-align: center;
   font-size: 0;
   padding: 1rem 0 .5rem;
+}
+
+.footer-menu {
+  margin: 0;
+  padding: 0;
 }
 
 .footer-social {
@@ -9976,17 +9976,17 @@ html, body {
   margin: 0 auto;
 }
 
+.header-shopping-list {
+  padding: 0 0 5rem;
+  text-align: left;
+}
+
 .main-part {
   list-style: none;
   margin-top: 0;
   margin-bottom: 0;
   padding: 0;
   background-color: #fff9ea;
-}
-
-.header-shopping-list {
-  padding: 0 0 5rem;
-  text-align: left;
 }
 
 .map {
@@ -10015,7 +10015,7 @@ html, body {
 }
 
 .part-card {
-  min-height: 45rem;
+  min-height: 420px;
   position: relative;
   background-color: #e9f0e0;
 }
@@ -10830,7 +10830,7 @@ html, body {
 }
 
 .part-card {
-  min-height: 45rem;
+  min-height: 420px;
   position: relative;
   background-color: #e9f0e0;
 }
