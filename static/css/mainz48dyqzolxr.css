@@ -9922,6 +9922,10 @@ html, body {
   opacity: 1;
 }
 
+.good-card:hover .good-card__title:after, .good-card:focus .good-card__title:after {
+  width: 100%;
+}
+
 .good-card__image {
   margin-bottom: 40px;
   display: block;
@@ -9949,8 +9953,12 @@ html, body {
   position: absolute;
   left: 0;
   right: 0;
+  width: 50px;
+  margin: 0 auto;
   bottom: 0;
   border-bottom: 1px solid #979797;
+  -webkit-transition: width .3s linear;
+  transition: width .3s linear;
 }
 
 .good-card__price {
@@ -10092,7 +10100,7 @@ html, body {
 }
 
 .good-relevant__item:nth-child(4n+1):hover, .good-relevant__item:nth-child(4n+1):focus {
-  background-color: #91d6ff;
+  background-color: #def2ff;
 }
 
 .good-relevant__item:nth-child(4n+2) {
@@ -10100,7 +10108,7 @@ html, body {
 }
 
 .good-relevant__item:nth-child(4n+2):hover, .good-relevant__item:nth-child(4n+2):focus {
-  background-color: #ffdc84;
+  background-color: #fff2d1;
 }
 
 .good-relevant__item:nth-child(4n+3) {
@@ -10108,7 +10116,7 @@ html, body {
 }
 
 .good-relevant__item:nth-child(4n+3):hover, .good-relevant__item:nth-child(4n+3):focus {
-  background-color: #a4e1b6;
+  background-color: #ddf4e4;
 }
 
 .good-relevant__item:nth-child(4n+4) {
@@ -10116,7 +10124,7 @@ html, body {
 }
 
 .good-relevant__item:nth-child(4n+4):hover, .good-relevant__item:nth-child(4n+4):focus {
-  background-color: #e491ff;
+  background-color: #f7deff;
 }
 .grid {
   *zoom: 1;
@@ -10934,7 +10942,7 @@ html, body {
 }
 
 .part-goods__item:nth-child(4n+1):hover, .part-goods__item:nth-child(4n+1):focus {
-  background-color: #91d6ff;
+  background-color: #def2ff;
 }
 
 .part-goods__item:nth-child(4n+2) {
@@ -10942,7 +10950,7 @@ html, body {
 }
 
 .part-goods__item:nth-child(4n+2):hover, .part-goods__item:nth-child(4n+2):focus {
-  background-color: #ffdc84;
+  background-color: #fff2d1;
 }
 
 .part-goods__item:nth-child(4n+3) {
@@ -10950,7 +10958,7 @@ html, body {
 }
 
 .part-goods__item:nth-child(4n+3):hover, .part-goods__item:nth-child(4n+3):focus {
-  background-color: #a4e1b6;
+  background-color: #ddf4e4;
 }
 
 .part-goods__item:nth-child(4n+4) {
@@ -10958,7 +10966,7 @@ html, body {
 }
 
 .part-goods__item:nth-child(4n+4):hover, .part-goods__item:nth-child(4n+4):focus {
-  background-color: #e491ff;
+  background-color: #f7deff;
 }
 
 .part-header {
