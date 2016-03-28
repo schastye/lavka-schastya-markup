@@ -12,7 +12,7 @@
         <meta name="HandheldFriendly" content="true">
 
         <!--[if (gt IE 9)|!(IE)]><!-->
-        <link href="static/css/mainxm2yet57b9.min.css" rel="stylesheet" type="text/css">
+        <link href="static/css/mainrolaqv6ajor.min.css" rel="stylesheet" type="text/css">
         <!--<![endif]-->
         <meta property="og:title" content="Лавка Счастья">
         <meta property="og:title" content="">
@@ -670,7 +670,7 @@
         </svg>
         <header class="header">
             <div class="header__navigation">
-                <a href="index__menu.html" role="button" class="button button_style_glass menu-button">
+                <a href="index__menu.html" role="button" class="button button_style_glass button_size_m menu-button">
                     <svg class="menu-icon" width="24px" height="28px">
                         <use xlink:href="#menu"></use>
                     </svg>
@@ -685,7 +685,7 @@
             <div class="header__phone"><a href="tel:+7812555-44-11" class="phone"><span class="phone__country-code">+7</span><span class="phone__city-code">(812)</span><span class="phone__number">555-44-11</span></a><a href="tel:+7987654-32-10" class="phone"><span class="phone__country-code">+7</span><span class="phone__city-code">(987)</span><span class="phone__number">654-32-10</span></a>
             </div>
             <div class="header__order">
-                <a href="index__order.html" role="button" class="button button_style_glass order-button">
+                <a href="index__order.html" role="button" class="button button_style_glass button_size_m order-button">
                     <svg class="basket-icon" width="24px" height="28px">
                         <use xlink:href="#basket"></use>
                     </svg>
@@ -725,7 +725,8 @@
                             <td class="header-shopping-item__remove">
                                 <form method="post" action="order">
                                     <input type="hidden" name="key" value="498f8886ce6dc728be9293ad5fd70312" class="header-shopping-item__key">
-                                    <button type="submit" name="ms2_action" value="cart/remove" title="Удалить" class="header-shopping-item__remove-button">&times;</button>
+                                    <button role="button" title="Удалить" class="button button_style_glass button_size_m header-shopping-item__remove-button">&times;
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -741,7 +742,8 @@
                             <td class="header-shopping-item__remove">
                                 <form method="post" action="order">
                                     <input type="hidden" name="key" value="498f8886ce6dc728be9293ad5fd70312" class="header-shopping-item__key">
-                                    <button type="submit" name="ms2_action" value="cart/remove" title="Удалить" class="header-shopping-item__remove-button">&times;</button>
+                                    <button role="button" title="Удалить" class="button button_style_glass button_size_m header-shopping-item__remove-button">&times;
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -757,7 +759,8 @@
                             <td class="header-shopping-item__remove">
                                 <form method="post" action="order">
                                     <input type="hidden" name="key" value="498f8886ce6dc728be9293ad5fd70312" class="header-shopping-item__key">
-                                    <button type="submit" name="ms2_action" value="cart/remove" title="Удалить" class="header-shopping-item__remove-button">&times;</button>
+                                    <button role="button" title="Удалить" class="button button_style_glass button_size_m header-shopping-item__remove-button">&times;
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -773,7 +776,8 @@
                             <td class="header-shopping-item__remove">
                                 <form method="post" action="order">
                                     <input type="hidden" name="key" value="498f8886ce6dc728be9293ad5fd70312" class="header-shopping-item__key">
-                                    <button type="submit" name="ms2_action" value="cart/remove" title="Удалить" class="header-shopping-item__remove-button">&times;</button>
+                                    <button role="button" title="Удалить" class="button button_style_glass button_size_m header-shopping-item__remove-button">&times;
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -789,7 +793,8 @@
                             <td class="header-shopping-item__remove">
                                 <form method="post" action="order">
                                     <input type="hidden" name="key" value="498f8886ce6dc728be9293ad5fd70312" class="header-shopping-item__key">
-                                    <button type="submit" name="ms2_action" value="cart/remove" title="Удалить" class="header-shopping-item__remove-button">&times;</button>
+                                    <button role="button" title="Удалить" class="button button_style_glass button_size_m header-shopping-item__remove-button">&times;
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -805,7 +810,8 @@
                             <td class="header-shopping-item__remove">
                                 <form method="post" action="order">
                                     <input type="hidden" name="key" value="498f8886ce6dc728be9293ad5fd70312" class="header-shopping-item__key">
-                                    <button type="submit" name="ms2_action" value="cart/remove" title="Удалить" class="header-shopping-item__remove-button">&times;</button>
+                                    <button role="button" title="Удалить" class="button button_style_glass button_size_m header-shopping-item__remove-button">&times;
+                                    </button>
                                 </form>
                             </td>
                         </tr>
@@ -831,8 +837,8 @@
                                 <label for="name" class="input-box__label"><span data-content="Имя" class="input-box__label-content">Имя</span>
                                 </label>
                             </div>
-                            <div class="input-box">
-                                <input type="email" name="email" id="email" required class="input-box__field">
+                            <div class="input-box input-box_error">
+                                <input type="email" name="email" id="email" required value="поле c ошибкой" class="input-box__field">
                                 <label for="email" class="input-box__label"><span data-content="Email" class="input-box__label-content">Email</span>
                                 </label>
                             </div>
@@ -958,183 +964,316 @@
                         </form>
                     </div>
                     <div class="order-form__aside">
-                        <div class="order-list">
-                            <div class="order-list__item">
+                        <ul class="order-list">
+                            <li class="order-list__item">
                                 <div class="order-card">
                                     <div class="order-card__good">
-                                        <div class="order-card__remove">x</div>
-                                        <div class="order-card__content">
-                                            <a class="order-card__picture-link">
-                                                <img class="order-card__picture">
-                                            </a>
-                                            <div class="order-card__title">Конфета с ягодами годжи</div>
+                                        <button role="button" class="button button_style_glass button_size_m order-card__remove">&times;
+                                        </button>
+                                        <img src="http://placehold.it/50x50/" class="order-card__picture">
+                                        <div class="order-card__content"><a class="order-card__title">Конфета с ягодами годжи</a>
                                             <div class="order-card__price">500 RUB</div>
                                         </div>
                                         <div class="order-card__value">
                                             <div class="value-range">
-                                                <div class="value-range__up">+</div>
+                                                <button role="button" class="button button_style_glass button_size_m value-range__up">
+                                                    <svg class="icon-chevron-up" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_up_small"></use>
+                                                    </svg>
+
+                                                </button>
                                                 <div class="value-range__value">04</div>
-                                                <div class="value-range__down">-</div>
+                                                <button role="button" class="button button_style_glass button_size_m value-range__down">
+                                                    <svg class="icon-chevron-down" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_down_small"></use>
+                                                    </svg>
+
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="order-card__additional">
                                         <div class="box-select">
-                                            <div class="box-select__icon"></div>
-                                            <div class="box-select__title">Подарочная</div>
-                                            <div class="box-select__dropdown"></div>
+                                            <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                <div class="box-select__title">Подарочная</div>
+                                                <div class="box-select__dropdown">
+                                                    <svg class="icon-chevron-down" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_down_small"></use>
+                                                    </svg>
+
+                                                </div>
+                                            </button>
                                             <div class="box-select__popup">
                                                 <div class="dropdown-list">
-                                                    <div class="dropdown-list__item"></div>
-                                                    <div class="dropdown-list__item"></div>
-                                                    <div class="dropdown-list__item"></div>
+                                                    <div class="dropdown-list__item">
+                                                        <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                            <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                            <div class="box-select__title">От Счастья</div>
+                                                        </button>
+                                                    </div>
+                                                    <div class="dropdown-list__item">
+                                                        <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                            <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                            <div class="box-select__title">Подарочная</div>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="add-postcard">
-                                            <div class="add-postcard__icon"></div>
-                                            <div class="add-postcard__title">Добавить открытку</div>
+                                            <button role="button" class="button button_style_glass button_size_m add-postcard__button">
+                                                <div class="add-postcard__icon">
+                                                    <svg class="icon-angel" width="22px" height="27px">
+                                                        <use xlink:href="#angel"></use>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="add-postcard__title">Добавить открытку</div>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="order-list__item">
+                            </li>
+                            <li class="order-list__item">
                                 <div class="order-card">
                                     <div class="order-card__good">
-                                        <div class="order-card__remove">x</div>
-                                        <div class="order-card__content">
-                                            <a class="order-card__picture-link">
-                                                <img class="order-card__picture">
-                                            </a>
-                                            <div class="order-card__title">Конфета с ягодами годжи</div>
+                                        <button role="button" class="button button_style_glass button_size_m order-card__remove">&times;
+                                        </button>
+                                        <img src="http://placehold.it/50x50/" class="order-card__picture">
+                                        <div class="order-card__content"><a class="order-card__title">Конфета с ягодами годжи</a>
                                             <div class="order-card__price">500 RUB</div>
                                         </div>
                                         <div class="order-card__value">
                                             <div class="value-range">
-                                                <div class="value-range__up">+</div>
+                                                <button role="button" class="button button_style_glass button_size_m value-range__up">
+                                                    <svg class="icon-chevron-up" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_up_small"></use>
+                                                    </svg>
+
+                                                </button>
                                                 <div class="value-range__value">04</div>
-                                                <div class="value-range__down">-</div>
+                                                <button role="button" class="button button_style_glass button_size_m value-range__down">
+                                                    <svg class="icon-chevron-down" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_down_small"></use>
+                                                    </svg>
+
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="order-card__additional">
                                         <div class="box-select">
-                                            <div class="box-select__icon"></div>
-                                            <div class="box-select__title">Подарочная</div>
-                                            <div class="box-select__dropdown"></div>
+                                            <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                <div class="box-select__title">Подарочная</div>
+                                                <div class="box-select__dropdown">
+                                                    <svg class="icon-chevron-down" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_down_small"></use>
+                                                    </svg>
+
+                                                </div>
+                                            </button>
                                             <div class="box-select__popup">
                                                 <div class="dropdown-list">
-                                                    <div class="dropdown-list__item"></div>
-                                                    <div class="dropdown-list__item"></div>
-                                                    <div class="dropdown-list__item"></div>
+                                                    <div class="dropdown-list__item">
+                                                        <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                            <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                            <div class="box-select__title">От Счастья</div>
+                                                        </button>
+                                                    </div>
+                                                    <div class="dropdown-list__item">
+                                                        <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                            <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                            <div class="box-select__title">Подарочная</div>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="add-postcard">
-                                            <div class="add-postcard__icon"></div>
-                                            <div class="add-postcard__title">Добавить открытку</div>
+                                            <button role="button" class="button button_style_glass button_size_m add-postcard__button">
+                                                <div class="add-postcard__icon">
+                                                    <svg class="icon-angel" width="22px" height="27px">
+                                                        <use xlink:href="#angel"></use>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="add-postcard__title">Добавить открытку</div>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="order-list__item">
+                            </li>
+                            <li class="order-list__item">
                                 <div class="order-card">
                                     <div class="order-card__good">
-                                        <div class="order-card__remove">x</div>
-                                        <div class="order-card__content">
-                                            <a class="order-card__picture-link">
-                                                <img class="order-card__picture">
-                                            </a>
-                                            <div class="order-card__title">Конфета с ягодами годжи</div>
+                                        <button role="button" class="button button_style_glass button_size_m order-card__remove">&times;
+                                        </button>
+                                        <img src="http://placehold.it/50x50/" class="order-card__picture">
+                                        <div class="order-card__content"><a class="order-card__title">Конфета с ягодами годжи</a>
                                             <div class="order-card__price">500 RUB</div>
                                         </div>
                                         <div class="order-card__value">
                                             <div class="value-range">
-                                                <div class="value-range__up">+</div>
+                                                <button role="button" class="button button_style_glass button_size_m value-range__up">
+                                                    <svg class="icon-chevron-up" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_up_small"></use>
+                                                    </svg>
+
+                                                </button>
                                                 <div class="value-range__value">04</div>
-                                                <div class="value-range__down">-</div>
+                                                <button role="button" class="button button_style_glass button_size_m value-range__down">
+                                                    <svg class="icon-chevron-down" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_down_small"></use>
+                                                    </svg>
+
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="order-card__additional">
                                         <div class="box-select">
-                                            <div class="box-select__icon"></div>
-                                            <div class="box-select__title">Подарочная</div>
-                                            <div class="box-select__dropdown"></div>
+                                            <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                <div class="box-select__title">Подарочная</div>
+                                                <div class="box-select__dropdown">
+                                                    <svg class="icon-chevron-down" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_down_small"></use>
+                                                    </svg>
+
+                                                </div>
+                                            </button>
                                             <div class="box-select__popup">
                                                 <div class="dropdown-list">
-                                                    <div class="dropdown-list__item"></div>
-                                                    <div class="dropdown-list__item"></div>
-                                                    <div class="dropdown-list__item"></div>
+                                                    <div class="dropdown-list__item">
+                                                        <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                            <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                            <div class="box-select__title">От Счастья</div>
+                                                        </button>
+                                                    </div>
+                                                    <div class="dropdown-list__item">
+                                                        <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                            <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                            <div class="box-select__title">Подарочная</div>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="add-postcard">
-                                            <div class="add-postcard__icon"></div>
-                                            <div class="add-postcard__title">Добавить открытку</div>
+                                            <button role="button" class="button button_style_glass button_size_m add-postcard__button">
+                                                <div class="add-postcard__icon">
+                                                    <svg class="icon-angel" width="22px" height="27px">
+                                                        <use xlink:href="#angel"></use>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="add-postcard__title">Добавить открытку</div>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="order-list__item">
+                            </li>
+                            <li class="order-list__item">
                                 <div class="order-card">
                                     <div class="order-card__good">
-                                        <div class="order-card__remove">x</div>
-                                        <div class="order-card__content">
-                                            <a class="order-card__picture-link">
-                                                <img class="order-card__picture">
-                                            </a>
-                                            <div class="order-card__title">Конфета с ягодами годжи</div>
+                                        <button role="button" class="button button_style_glass button_size_m order-card__remove">&times;
+                                        </button>
+                                        <img src="http://placehold.it/50x50/" class="order-card__picture">
+                                        <div class="order-card__content"><a class="order-card__title">Конфета с ягодами годжи</a>
                                             <div class="order-card__price">500 RUB</div>
                                         </div>
                                         <div class="order-card__value">
                                             <div class="value-range">
-                                                <div class="value-range__up">+</div>
+                                                <button role="button" class="button button_style_glass button_size_m value-range__up">
+                                                    <svg class="icon-chevron-up" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_up_small"></use>
+                                                    </svg>
+
+                                                </button>
                                                 <div class="value-range__value">04</div>
-                                                <div class="value-range__down">-</div>
+                                                <button role="button" class="button button_style_glass button_size_m value-range__down">
+                                                    <svg class="icon-chevron-down" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_down_small"></use>
+                                                    </svg>
+
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="order-card__additional">
                                         <div class="box-select">
-                                            <div class="box-select__icon"></div>
-                                            <div class="box-select__title">Подарочная</div>
-                                            <div class="box-select__dropdown"></div>
+                                            <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                <div class="box-select__title">Подарочная</div>
+                                                <div class="box-select__dropdown">
+                                                    <svg class="icon-chevron-down" width="20px" height="18px">
+                                                        <use xlink:href="#arrow_down_small"></use>
+                                                    </svg>
+
+                                                </div>
+                                            </button>
                                             <div class="box-select__popup">
                                                 <div class="dropdown-list">
-                                                    <div class="dropdown-list__item"></div>
-                                                    <div class="dropdown-list__item"></div>
-                                                    <div class="dropdown-list__item"></div>
+                                                    <div class="dropdown-list__item">
+                                                        <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                            <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                            <div class="box-select__title">От Счастья</div>
+                                                        </button>
+                                                    </div>
+                                                    <div class="dropdown-list__item">
+                                                        <button role="button" class="button button_style_glass button_size_m box-select__button">
+                                                            <img src="static/img/assets/box-variant/box.jpg" class="box-select__icon">
+                                                            <div class="box-select__title">Подарочная</div>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="add-postcard">
-                                            <div class="add-postcard__icon"></div>
-                                            <div class="add-postcard__title">Добавить открытку</div>
+                                            <button role="button" class="button button_style_glass button_size_m add-postcard__button">
+                                                <div class="add-postcard__icon">
+                                                    <svg class="icon-angel" width="22px" height="27px">
+                                                        <use xlink:href="#angel"></use>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="add-postcard__title">Добавить открытку</div>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </li>
+                        </ul>
                         <div class="order-sets">
                             <div class="order-sets__item">
                                 <div class="order-set">
-                                    <div class="order-set__remove">x</div>
-                                    <div class="order-set__content">Наименование</div>
+                                    <div class="order-set__remove">
+                                        <button role="button" class="button button_style_glass button_size_m">&times;
+                                        </button>
+                                    </div>
+                                    <div class="order-set__content">Наименование 1</div>
                                     <div class="order-set__price">1500 rub</div>
                                 </div>
                             </div>
                             <div class="order-sets__item">
                                 <div class="order-set">
-                                    <div class="order-set__remove">x</div>
-                                    <div class="order-set__content">Наименование</div>
+                                    <div class="order-set__remove">
+                                        <button role="button" class="button button_style_glass button_size_m">&times;
+                                        </button>
+                                    </div>
+                                    <div class="order-set__content">Наименование 2</div>
                                     <div class="order-set__price">1500 rub</div>
                                 </div>
                             </div>
                             <div class="order-sets__item">
                                 <div class="order-set">
-                                    <div class="order-set__remove">x</div>
-                                    <div class="order-set__content">Наименование</div>
+                                    <div class="order-set__remove">
+                                        <button role="button" class="button button_style_glass button_size_m">&times;
+                                        </button>
+                                    </div>
+                                    <div class="order-set__content">Наименование 3</div>
                                     <div class="order-set__price">1500 rub</div>
                                 </div>
                             </div>
@@ -1190,7 +1329,7 @@
         </footer>
 
 
-        <script src="static/js/mainxm2yet57b9.min.js"></script>
+        <script src="static/js/mainrolaqv6ajor.min.js"></script>
     </body>
 
 </html>

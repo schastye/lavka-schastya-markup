@@ -89,7 +89,6 @@ if ( typeof define === 'function' && define.amd ) {
 "use strict";
 "use strict";
 /* global classie */
-/* eslint-env es6 */
 
 'use strict';
 
