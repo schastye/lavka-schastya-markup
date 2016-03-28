@@ -826,63 +826,46 @@
                 </table>
             </div>
         </header>
-        <div class="page-delivery">
-            <div class="part-card part-card_nohover">
-                <div style="background-image: url(static/img/assets/main-part/macarons.jpg)" class="part-card__image"></div>
-            </div>
-            <div class="page-delivery__direction">
-                <div class="delivery delivery_horizontal">
-                    <div class="delivery__item">
-                        <input type="radio" id="type_1" name="delivery__type" class="delivery__checked">
-                        <label for="type_1" class="delivery__title">Бесплатная доставка</label>
-                        <div class="delivery__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur repudiandae saepe, placeat consectetur tenetur error maxime accusamus, ab quaerat. Autem minima nihil illum rem veritatis aut itaque natus velit.</div>
+        <div class="page-contacts">
+            <div class="contacts">
+                <div class="contacts__address">
+                    Санкт-Петербург,
+                    <br>ул. Рубинштейна 15-17
+                    <div class="contacts__time">
+                        пн-чт, вс: 09:00 - 00:00
+                        <br>пт, сб 09:00 - 02:00
+                        <br>+7 (812) 572-26-75
                     </div>
-                    <div class="delivery__item">
-                        <input type="radio" id="type_2" name="delivery__type" class="delivery__checked">
-                        <label for="type_2" class="delivery__title">Экспресс-доставка</label>
-                        <div class="delivery__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, tempora provident. Sit iste, commodi qui modi. Recusandae consequatur dolorem voluptatem! Vitae eius nesciunt sapiente laborum reiciendis, perferendis odio doloremque
-                            quo.</div>
-                    </div>
-                    <div class="delivery__item">
-                        <input type="radio" id="type_3" name="delivery__type" class="delivery__checked">
-                        <label for="type_3" class="delivery__title">Самовывоз из ресторана</label>
-                        <div class="delivery__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis impedit beatae voluptatum fugit nemo. Eius, libero necessitatibus mollitia, ab consectetur a vel perspiciatis excepturi impedit numquam minima, dignissimos cupiditate
-                            in!</div>
-                    </div>
-                </div>
-            </div>
-            <div class="map">
-                <div id="map" class="map__block"></div>
-                <div class="map__search">
-                    <div class="input-box input-box_light">
-                        <input type="text" name="search" class="input-box__field">
-                        <div class="input-box__addon input-box__addon_right">
-                            <button role="button" class="button button_style_glass button_size_m">
-                                <svg class="icon-search" width="22px" height="27px">
-                                    <use xlink:href="#angel"></use>
-                                </svg>
+                    <div class="contacts__logo">
+                        <svg class="watermark" width="183.74px" height="161.4px">
+                            <use xlink:href="#happy_logo"></use>
+                        </svg>
 
-                            </button>
-                        </div>
-                        <label class="input-box__label"><span data-content="Введите свой адрес, чтобы узнать стоимость доставки" class="input-box__label-content">Введите свой адрес, чтобы узнать стоимость доставки</span>
-                        </label>
                     </div>
                 </div>
+                <div class="contacts__feedback">
+                    <h2 class="contacts__title">Напишите нам</h2>
+                    <form class="form-feedback">
+                        <div class="input-box">
+                            <input type="text" name="name" id="name" required class="input-box__field">
+                            <label for="name" class="input-box__label"><span data-content="Имя" class="input-box__label-content">Имя</span>
+                            </label>
+                        </div>
+                        <div class="input-box">
+                            <input type="email" name="email" id="email" required class="input-box__field">
+                            <label for="email" class="input-box__label"><span data-content="Email" class="input-box__label-content">Email</span>
+                            </label>
+                        </div>
+                        <textarea name="" rows="5" placeholder="Сообщение" class="textarea"></textarea>
+                        <button type="submit" class="button button_add-to-card contacts__submit">Отправить
+                            <svg class="submit-button" width="22px" height="20px">
+                                <use xlink:href="#arrow_long_right"></use>
+                            </svg>
+
+                        </button>
+                    </form>
+                </div>
             </div>
-            <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-            <script>
-                let map;
-                function initMap() {
-                  map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: 50.397, lng: 30.644},
-                    zoom: 8,
-                    scrollwheel: false,
-                    navigationControl: false,
-                    mapTypeControl: false,
-                    scaleControl: false
-                  });
-                }
-            </script>
         </div>
         <footer class="footer">
             <h3 class="footer__title">Поделитесь Счастьем с друзьями</h3>

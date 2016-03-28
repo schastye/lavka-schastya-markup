@@ -826,55 +826,72 @@
                 </table>
             </div>
         </header>
-        <div class="page-delivery">
+        <div class="page-shops">
             <div class="part-card part-card_nohover">
                 <div style="background-image: url(static/img/assets/main-part/macarons.jpg)" class="part-card__image"></div>
             </div>
-            <div class="page-delivery__direction">
-                <div class="delivery delivery_horizontal">
+            <div class="page-shops__list">
+                <div class="delivery">
                     <div class="delivery__item">
-                        <input type="radio" id="type_1" name="delivery__type" class="delivery__checked">
-                        <label for="type_1" class="delivery__title">Бесплатная доставка</label>
-                        <div class="delivery__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aspernatur repudiandae saepe, placeat consectetur tenetur error maxime accusamus, ab quaerat. Autem minima nihil illum rem veritatis aut itaque natus velit.</div>
+                        <input type="radio" id="type_1" name="delivery__type" checked class="delivery__checked">
+                        <label for="type_1" class="delivery__title">Санкт-Петербург</label>
+                        <div class="delivery__content">
+                            <ul class="shop-list">
+                                <li class="shop-list__item">
+                                    <address class="address">
+                        <div class="address__street">Адрес: название улицы 1</div>
+                        <div class="address__worktime">пн-чт, вс: 09:00 - 00:00 / пт, сб 09:00 - 02:00</div>
+                        <div class="address__phone">+7 (812) 572-26-71</div>
+                      </address>
+                                </li>
+                                <li class="shop-list__item">
+                                    <address class="address">
+                        <div class="address__street">Адрес: название улицы 2</div>
+                        <div class="address__worktime">пн-чт, вс: 09:00 - 00:00 / пт, сб 09:00 - 02:00</div>
+                        <div class="address__phone">+7 (812) 572-26-72</div>
+                      </address>
+                                </li>
+                                <li class="shop-list__item">
+                                    <address class="address">
+                        <div class="address__street">Адрес: название улицы 3</div>
+                        <div class="address__worktime">пн-чт, вс: 09:00 - 00:00 / пт, сб 09:00 - 02:00</div>
+                        <div class="address__phone">+7 (812) 572-26-73</div>
+                      </address>
+                                </li>
+                                <li class="shop-list__item">
+                                    <address class="address">
+                        <div class="address__street">Адрес: название улицы 4</div>
+                        <div class="address__worktime">пн-чт, вс: 09:00 - 00:00 / пт, сб 09:00 - 02:00</div>
+                        <div class="address__phone">+7 (812) 572-26-74</div>
+                      </address>
+                                </li>
+                                <li class="shop-list__item">
+                                    <address class="address">
+                        <div class="address__street">Адрес: название улицы 5</div>
+                        <div class="address__worktime">пн-чт, вс: 09:00 - 00:00 / пт, сб 09:00 - 02:00</div>
+                        <div class="address__phone">+7 (812) 572-26-75</div>
+                      </address>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="delivery__item">
                         <input type="radio" id="type_2" name="delivery__type" class="delivery__checked">
-                        <label for="type_2" class="delivery__title">Экспресс-доставка</label>
+                        <label for="type_2" class="delivery__title">Москва</label>
                         <div class="delivery__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, tempora provident. Sit iste, commodi qui modi. Recusandae consequatur dolorem voluptatem! Vitae eius nesciunt sapiente laborum reiciendis, perferendis odio doloremque
                             quo.</div>
-                    </div>
-                    <div class="delivery__item">
-                        <input type="radio" id="type_3" name="delivery__type" class="delivery__checked">
-                        <label for="type_3" class="delivery__title">Самовывоз из ресторана</label>
-                        <div class="delivery__content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis impedit beatae voluptatum fugit nemo. Eius, libero necessitatibus mollitia, ab consectetur a vel perspiciatis excepturi impedit numquam minima, dignissimos cupiditate
-                            in!</div>
                     </div>
                 </div>
             </div>
             <div class="map">
                 <div id="map" class="map__block"></div>
-                <div class="map__search">
-                    <div class="input-box input-box_light">
-                        <input type="text" name="search" class="input-box__field">
-                        <div class="input-box__addon input-box__addon_right">
-                            <button role="button" class="button button_style_glass button_size_m">
-                                <svg class="icon-search" width="22px" height="27px">
-                                    <use xlink:href="#angel"></use>
-                                </svg>
-
-                            </button>
-                        </div>
-                        <label class="input-box__label"><span data-content="Введите свой адрес, чтобы узнать стоимость доставки" class="input-box__label-content">Введите свой адрес, чтобы узнать стоимость доставки</span>
-                        </label>
-                    </div>
-                </div>
             </div>
             <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
             <script>
                 let map;
                 function initMap() {
                   map = new google.maps.Map(document.getElementById('map'), {
-                    center: {lat: 50.397, lng: 30.644},
+                    center: {lat: 30, lng: 50},
                     zoom: 8,
                     scrollwheel: false,
                     navigationControl: false,
