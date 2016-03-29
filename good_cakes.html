@@ -910,45 +910,137 @@
                 </table>
             </div>
         </header>
-        <div class="page-contacts">
-            <div class="contacts">
-                <div class="contacts__address">
-                    Санкт-Петербург,
-                    <br>ул. Рубинштейна 15-17
-                    <div class="contacts__time">
-                        пн-чт, вс: 09:00 - 00:00
-                        <br>пт, сб 09:00 - 02:00
-                        <br>+7 (812) 572-26-75
+        <div class="good-part">
+            <div class="part-card">
+                <div style="background-image: url(static/img/assets/main-part/macarons.jpg)" class="part-card__image"></div>
+            </div>
+            <div class="good-information">
+                <div class="good-information__main">
+                    <h2 class="set-container__title"> Название набора</h2>
+                    <dl>
+                        <dt>Состав</dt>
+                        <dd>
+                            <ul class="list-tags">
+                                <li class="list-tags__item"><a href="999" class="list-tags__link">крем</a>
+                                </li>
+                                <li class="list-tags__item"><a href="999" class="list-tags__link">миндаль</a>
+                                </li>
+                                <li class="list-tags__item"><a href="999" class="list-tags__link">мука</a>
+                                </li>
+                                <li class="list-tags__item"><a href="999" class="list-tags__link">орехи</a>
+                                </li>
+                                <li class="list-tags__item"><a href="999" class="list-tags__link">миндальнаямука</a>
+                                </li>
+                                <li class="list-tags__item"><a href="999" class="list-tags__link">шоколад</a>
+                                </li>
+                                <li class="list-tags__item"><a href="999" class="list-tags__link">миндальнаямука</a>
+                                </li>
+                                <li class="list-tags__item"><a href="999" class="list-tags__link">шоколад</a>
+                                </li>
+                                <li class="list-tags__item"><a href="999" class="list-tags__link">тесто</a>
+                                </li>
+                            </ul>
+                        </dd>
+                        <dt>Сроки хранения</dt>
+                        <dd>Хранить <strong>ТОЛЬКО</strong> в холодильнике при температуре от 0 до 6 градусов в течении 2-3 дней.</dd>
+                    </dl>
+                </div>
+                <div class="good-information__box">
+                    <h2 class="set-container__title"> Варианты упаковки</h2>
+                    <div class="box-variant">
+                        <label class="box-variant__item">
+                            <input type="radio" name="box-variant" checked class="box-variant__select">
+                            <img src="static/img/assets/box-variant/box.jpg" alt="Упаковка 1" class="box-variant__image">
+                            <h3 class="box-variant__caption">От Счастья</h3>
+                            <div class="box-variant__price">500 rub</div>
+                        </label>
+                        <label class="box-variant__item">
+                            <input type="radio" name="box-variant" class="box-variant__select">
+                            <img src="static/img/assets/box-variant/box.jpg" alt="Упаковка 2" class="box-variant__image">
+                            <h3 class="box-variant__caption">Особая</h3>
+                            <div class="box-variant__price">500 rub</div>
+                        </label>
+                        <label class="box-variant__item">
+                            <input type="radio" name="box-variant" class="box-variant__select">
+                            <img src="static/img/assets/box-variant/box.jpg" alt="Упаковка 3" class="box-variant__image">
+                            <h3 class="box-variant__caption">Подарочная</h3>
+                            <div class="box-variant__price">500 rub</div>
+                        </label>
                     </div>
-                    <div class="contacts__logo">
-                        <svg class="watermark" width="194px" height="126px">
-                            <use xlink:href="#angels_contacts"></use>
+                </div>
+                <div class="good-information__price">
+                    <h2 class="set-container__title"> 
+                <div role="group" aria-label="..." class="button-range pull-right">
+                    <button role="button" class="button button_style_glass button_size_m button-range__button"><i class="fa fa-chevron-left"></i>
+                    </button>
+                  <div class="button-range__value">04</div>
+                    <button role="button" class="button button_style_glass button_size_m button-range__button"><i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>Количество коробок
+              </h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt officia voluptatum voluptatibus asperiores esse, debitis culpa consequuntur quam sequi ut error officiis corrupti.</p>
+                    <hr>
+                    <h2 class="set-container__title">
+                <div class="pull-right">2000 rub</div>Стоимость
+              </h2>
+                    <button class="button button_add-to-card">Добавить в корзину
+                        <svg class="add-to-card" width="22px" height="20px">
+                            <use xlink:href="#arrow_long_right"></use>
                         </svg>
 
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="part-card part-card_nohover">
+            <div style="background-image: url(static/img/assets/main-part/macarons.jpg)" class="part-card__image"></div>
+        </div>
+        <div class="good-relevant">
+            <h2 class="good-relevant__title">С этим товаром покупают</h2>
+            <div class="good-relevant__item">
+                <a href="good.html" class="good-card">
+                    <img src="static/img/content/macarons/macaroni_1.png" alt="Название товара" class="good-card__image">
+                    <div class="good-card__caption">
+                        <h3 class="good-card__title">Название товара</h3>
+                        <div class="good-card__price">500 rub</div>
                     </div>
-                </div>
-                <div class="contacts__feedback">
-                    <h2 class="contacts__title">Напишите нам</h2>
-                    <form class="form-feedback">
-                        <div class="input-box">
-                            <input type="text" name="name" id="name" required class="input-box__field">
-                            <label for="name" class="input-box__label"><span data-content="Имя" class="input-box__label-content">Имя</span>
-                            </label>
-                        </div>
-                        <div class="input-box">
-                            <input type="email" name="email" id="email" required class="input-box__field">
-                            <label for="email" class="input-box__label"><span data-content="Email" class="input-box__label-content">Email</span>
-                            </label>
-                        </div>
-                        <textarea name="" rows="5" placeholder="Сообщение" class="textarea"></textarea>
-                        <button type="submit" class="button button_add-to-card contacts__submit">Отправить
-                            <svg class="submit-button" width="22px" height="20px">
-                                <use xlink:href="#arrow_long_right"></use>
-                            </svg>
-
-                        </button>
-                    </form>
-                </div>
+                </a>
+            </div>
+            <div class="good-relevant__item">
+                <a href="good.html" class="good-card">
+                    <img src="static/img/content/macarons/macaroni_2.png" alt="Название товара" class="good-card__image">
+                    <div class="good-card__caption">
+                        <h3 class="good-card__title">Название товара</h3>
+                        <div class="good-card__price">500 rub</div>
+                    </div>
+                </a>
+            </div>
+            <div class="good-relevant__item">
+                <a href="good.html" class="good-card">
+                    <img src="http://placehold.it/200x200/" alt="Название товара" class="good-card__image">
+                    <div class="good-card__caption">
+                        <h3 class="good-card__title">Название товара</h3>
+                        <div class="good-card__price">500 rub</div>
+                    </div>
+                </a>
+            </div>
+            <div class="good-relevant__item">
+                <a href="good.html" class="good-card">
+                    <img src="http://placehold.it/200x200/" alt="Название товара" class="good-card__image">
+                    <div class="good-card__caption">
+                        <h3 class="good-card__title">Название товара</h3>
+                        <div class="good-card__price">500 rub</div>
+                    </div>
+                </a>
+            </div>
+            <div class="good-relevant__item">
+                <a href="good.html" class="good-card">
+                    <img src="http://placehold.it/200x200/" alt="Название товара" class="good-card__image">
+                    <div class="good-card__caption">
+                        <h3 class="good-card__title">Название товара</h3>
+                        <div class="good-card__price">500 rub</div>
+                    </div>
+                </a>
             </div>
         </div>
         <footer class="footer">
