@@ -4013,6 +4013,8 @@ fieldset[disabled] a.button {
   height: 380px;
   list-style: none;
   -webkit-perspective: 1000px;
+  -webkit-perspective-origin: 50% 150%;
+  -webkit-perspective: 1000px;
           perspective: 1000px;
   -webkit-perspective-origin: 50% 150%;
           perspective-origin: 50% 150%;
@@ -4030,19 +4032,22 @@ fieldset[disabled] a.button {
   opacity: 0;
   cursor: pointer;
   -webkit-transform: translate3d(0, 0, -180px);
-          transform: translate3d(0, 0, -180px);
+  transform: translate3d(0, 0, -180px);
   -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
+  transform-style: preserve-3d;
 }
 
-.elasticstack__item_animate {
+.elasticstack__item.animate {
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
 
-.elasticstack__item_move-back {
+.elasticstack__item.move-back {
+  /* http://matthewlein.com/ceaser/ */
+  -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.47, 1);
+  /* older webkit */
   -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.47, 1.515);
-          transition-timing-function: cubic-bezier(0.175, 0.885, 0.47, 1.515);
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.47, 1.515);
 }
 
 .elasticstack__image {
@@ -4072,7 +4077,7 @@ fieldset[disabled] a.button {
   margin: 10px;
   cursor: default;
   -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .footer {
@@ -4083,11 +4088,6 @@ fieldset[disabled] a.button {
   text-align: center;
   font-size: 0;
   padding: 1rem 0 .5rem;
-}
-
-.footer-menu {
-  margin: 0;
-  padding: 0;
 }
 
 .footer-social {
@@ -4114,6 +4114,11 @@ fieldset[disabled] a.button {
 
 .footer-social__link:hover, .footer-social__link:focus {
   color: #828282;
+}
+
+.footer-menu {
+  margin: 0;
+  padding: 0;
 }
 
 .footer-tags {
@@ -5131,38 +5136,6 @@ fieldset[disabled] a.button {
   text-decoration: none;
   color: #85b892;
 }
-
-.map {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-
-.map:before {
-  display: block;
-  content: " ";
-  width: 100%;
-  padding-top: 45%;
-}
-
-.map__block {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.map__search {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 21px;
-  width: 617px;
-  margin: 0 auto;
-  z-index: 1;
-}
 .main-part {
   /*   lost-utility: clearfix; */
   display: -webkit-box;
@@ -5262,6 +5235,38 @@ fieldset[disabled] a.button {
 
 .main-part__item_half:nth-child(2n):nth-child(0n){
   margin-right: 0;
+}
+
+.map {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.map:before {
+  display: block;
+  content: " ";
+  width: 100%;
+  padding-top: 45%;
+}
+
+.map__block {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.map__search {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 21px;
+  width: 617px;
+  margin: 0 auto;
+  z-index: 1;
 }
 .order-card {
   background-color: #fff9ea;
@@ -5862,6 +5867,21 @@ fieldset[disabled] a.button {
   padding: 16px;
 }
 
+.phone {
+  display: block;
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: 1.5px;
+  color: #4a4a4a;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.phone:hover, .phone:focus {
+  color: #000;
+  text-decoration: none;
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -5916,21 +5936,6 @@ fieldset[disabled] a.button {
 
 .popup__footer > button {
   display: inline-block;
-}
-
-.phone {
-  display: block;
-  font-size: 16px;
-  line-height: 1.1;
-  letter-spacing: 1.5px;
-  color: #4a4a4a;
-  text-align: center;
-  padding: 5px 0;
-}
-
-.phone:hover, .phone:focus {
-  color: #000;
-  text-decoration: none;
 }
 
 .radio {
@@ -6242,6 +6247,11 @@ fieldset[disabled] a.button {
   padding: 0;
 }
 
+.value-range {
+  text-align: center;
+  font-family: Helvetica;
+}
+
 .variant-item {
   padding: 0;
   border-width: 0;
@@ -6258,11 +6268,6 @@ fieldset[disabled] a.button {
   display: block;
   max-width: 100%;
   margin: 0 auto;
-}
-
-.value-range {
-  text-align: center;
-  font-family: Helvetica;
 }
 
 .button {
