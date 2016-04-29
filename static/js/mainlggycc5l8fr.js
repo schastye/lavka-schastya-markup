@@ -87,11 +87,549 @@ if ( typeof define === 'function' && define.amd ) {
  */
 
 !function(t,i){"function"==typeof define&&define.amd?define("jquery-bridget/jquery-bridget",["jquery"],function(e){i(t,e)}):"object"==typeof module&&module.exports?module.exports=i(t,require("jquery")):t.jQueryBridget=i(t,t.jQuery)}(window,function(t,i){function e(e,r,a){function h(t,i,n){var o,r="$()."+e+'("'+i+'")';return t.each(function(t,h){var d=a.data(h,e);if(!d)return void s(e+" not initialized. Cannot call methods, i.e. "+r);var u=d[i];if(!u||"_"==i.charAt(0))return void s(r+" is not a valid method");var p=u.apply(d,n);o=void 0===o?p:o}),void 0!==o?o:t}function d(t,i){t.each(function(t,n){var o=a.data(n,e);o?(o.option(i),o._init()):(o=new r(n,i),a.data(n,e,o))})}a=a||i||t.jQuery,a&&(r.prototype.option||(r.prototype.option=function(t){a.isPlainObject(t)&&(this.options=a.extend(!0,this.options,t))}),a.fn[e]=function(t){if("string"==typeof t){var i=o.call(arguments,1);return h(this,t,i)}return d(this,t),this},n(a))}function n(t){!t||t&&t.bridget||(t.bridget=e)}var o=Array.prototype.slice,r=t.console,s="undefined"==typeof r?function(){}:function(t){r.error(t)};return n(i||t.jQuery),e}),function(t,i){"function"==typeof define&&define.amd?define("get-size/get-size",[],function(){return i()}):"object"==typeof module&&module.exports?module.exports=i():t.getSize=i()}(window,function(){function t(t){var i=parseFloat(t),e=-1==t.indexOf("%")&&!isNaN(i);return e&&i}function i(){}function e(){for(var t={width:0,height:0,innerWidth:0,innerHeight:0,outerWidth:0,outerHeight:0},i=0;d>i;i++){var e=h[i];t[e]=0}return t}function n(t){var i=getComputedStyle(t);return i||a("Style returned "+i+". Are you running this code in a hidden iframe on Firefox? See http://bit.ly/getsizebug1"),i}function o(){if(!u){u=!0;var i=document.createElement("div");i.style.width="200px",i.style.padding="1px 2px 3px 4px",i.style.borderStyle="solid",i.style.borderWidth="1px 2px 3px 4px",i.style.boxSizing="border-box";var e=document.body||document.documentElement;e.appendChild(i);var o=n(i);r.isBoxSizeOuter=s=200==t(o.width),e.removeChild(i)}}function r(i){if(o(),"string"==typeof i&&(i=document.querySelector(i)),i&&"object"==typeof i&&i.nodeType){var r=n(i);if("none"==r.display)return e();var a={};a.width=i.offsetWidth,a.height=i.offsetHeight;for(var u=a.isBorderBox="border-box"==r.boxSizing,p=0;d>p;p++){var c=h[p],f=r[c],g=parseFloat(f);a[c]=isNaN(g)?0:g}var l=a.paddingLeft+a.paddingRight,v=a.paddingTop+a.paddingBottom,m=a.marginLeft+a.marginRight,y=a.marginTop+a.marginBottom,b=a.borderLeftWidth+a.borderRightWidth,P=a.borderTopWidth+a.borderBottomWidth,E=u&&s,_=t(r.width);_!==!1&&(a.width=_+(E?0:l+b));var x=t(r.height);return x!==!1&&(a.height=x+(E?0:v+P)),a.innerWidth=a.width-(l+b),a.innerHeight=a.height-(v+P),a.outerWidth=a.width+m,a.outerHeight=a.height+y,a}}var s,a="undefined"==typeof console?i:function(t){console.error(t)},h=["paddingLeft","paddingRight","paddingTop","paddingBottom","marginLeft","marginRight","marginTop","marginBottom","borderLeftWidth","borderRightWidth","borderTopWidth","borderBottomWidth"],d=h.length,u=!1;return r}),function(t,i){"function"==typeof define&&define.amd?define("ev-emitter/ev-emitter",i):"object"==typeof module&&module.exports?module.exports=i():t.EvEmitter=i()}(this,function(){function t(){}var i=t.prototype;return i.on=function(t,i){if(t&&i){var e=this._events=this._events||{},n=e[t]=e[t]||[];return-1==n.indexOf(i)&&n.push(i),this}},i.once=function(t,i){if(t&&i){this.on(t,i);var e=this._onceEvents=this._onceEvents||{},n=e[t]=e[t]||[];return n[i]=!0,this}},i.off=function(t,i){var e=this._events&&this._events[t];if(e&&e.length){var n=e.indexOf(i);return-1!=n&&e.splice(n,1),this}},i.emitEvent=function(t,i){var e=this._events&&this._events[t];if(e&&e.length){var n=0,o=e[n];i=i||[];for(var r=this._onceEvents&&this._onceEvents[t];o;){var s=r&&r[o];s&&(this.off(t,o),delete r[o]),o.apply(this,i),n+=s?0:1,o=e[n]}return this}},t}),function(t,i){"function"==typeof define&&define.amd?define("unipointer/unipointer",["ev-emitter/ev-emitter"],function(e){return i(t,e)}):"object"==typeof module&&module.exports?module.exports=i(t,require("ev-emitter")):t.Unipointer=i(t,t.EvEmitter)}(window,function(t,i){function e(){}function n(){}var o=n.prototype=Object.create(i.prototype);o.bindStartEvent=function(t){this._bindStartEvent(t,!0)},o.unbindStartEvent=function(t){this._bindStartEvent(t,!1)},o._bindStartEvent=function(i,e){e=void 0===e?!0:!!e;var n=e?"addEventListener":"removeEventListener";t.navigator.pointerEnabled?i[n]("pointerdown",this):t.navigator.msPointerEnabled?i[n]("MSPointerDown",this):(i[n]("mousedown",this),i[n]("touchstart",this))},o.handleEvent=function(t){var i="on"+t.type;this[i]&&this[i](t)},o.getTouch=function(t){for(var i=0;i<t.length;i++){var e=t[i];if(e.identifier==this.pointerIdentifier)return e}},o.onmousedown=function(t){var i=t.button;i&&0!==i&&1!==i||this._pointerDown(t,t)},o.ontouchstart=function(t){this._pointerDown(t,t.changedTouches[0])},o.onMSPointerDown=o.onpointerdown=function(t){this._pointerDown(t,t)},o._pointerDown=function(t,i){this.isPointerDown||(this.isPointerDown=!0,this.pointerIdentifier=void 0!==i.pointerId?i.pointerId:i.identifier,this.pointerDown(t,i))},o.pointerDown=function(t,i){this._bindPostStartEvents(t),this.emitEvent("pointerDown",[t,i])};var r={mousedown:["mousemove","mouseup"],touchstart:["touchmove","touchend","touchcancel"],pointerdown:["pointermove","pointerup","pointercancel"],MSPointerDown:["MSPointerMove","MSPointerUp","MSPointerCancel"]};return o._bindPostStartEvents=function(i){if(i){var e=r[i.type];e.forEach(function(i){t.addEventListener(i,this)},this),this._boundPointerEvents=e}},o._unbindPostStartEvents=function(){this._boundPointerEvents&&(this._boundPointerEvents.forEach(function(i){t.removeEventListener(i,this)},this),delete this._boundPointerEvents)},o.onmousemove=function(t){this._pointerMove(t,t)},o.onMSPointerMove=o.onpointermove=function(t){t.pointerId==this.pointerIdentifier&&this._pointerMove(t,t)},o.ontouchmove=function(t){var i=this.getTouch(t.changedTouches);i&&this._pointerMove(t,i)},o._pointerMove=function(t,i){this.pointerMove(t,i)},o.pointerMove=function(t,i){this.emitEvent("pointerMove",[t,i])},o.onmouseup=function(t){this._pointerUp(t,t)},o.onMSPointerUp=o.onpointerup=function(t){t.pointerId==this.pointerIdentifier&&this._pointerUp(t,t)},o.ontouchend=function(t){var i=this.getTouch(t.changedTouches);i&&this._pointerUp(t,i)},o._pointerUp=function(t,i){this._pointerDone(),this.pointerUp(t,i)},o.pointerUp=function(t,i){this.emitEvent("pointerUp",[t,i])},o._pointerDone=function(){this.isPointerDown=!1,delete this.pointerIdentifier,this._unbindPostStartEvents(),this.pointerDone()},o.pointerDone=e,o.onMSPointerCancel=o.onpointercancel=function(t){t.pointerId==this.pointerIdentifier&&this._pointerCancel(t,t)},o.ontouchcancel=function(t){var i=this.getTouch(t.changedTouches);i&&this._pointerCancel(t,i)},o._pointerCancel=function(t,i){this._pointerDone(),this.pointerCancel(t,i)},o.pointerCancel=function(t,i){this.emitEvent("pointerCancel",[t,i])},n.getPointerPoint=function(t){return{x:t.pageX,y:t.pageY}},n}),function(t,i){"function"==typeof define&&define.amd?define("unidragger/unidragger",["unipointer/unipointer"],function(e){return i(t,e)}):"object"==typeof module&&module.exports?module.exports=i(t,require("unipointer")):t.Unidragger=i(t,t.Unipointer)}(window,function(t,i){function e(){}function n(){}var o=n.prototype=Object.create(i.prototype);o.bindHandles=function(){this._bindHandles(!0)},o.unbindHandles=function(){this._bindHandles(!1)};var r=t.navigator;return o._bindHandles=function(t){t=void 0===t?!0:!!t;var i;i=r.pointerEnabled?function(i){i.style.touchAction=t?"none":""}:r.msPointerEnabled?function(i){i.style.msTouchAction=t?"none":""}:e;for(var n=t?"addEventListener":"removeEventListener",o=0;o<this.handles.length;o++){var s=this.handles[o];this._bindStartEvent(s,t),i(s),s[n]("click",this)}},o.pointerDown=function(t,i){if("INPUT"==t.target.nodeName&&"range"==t.target.type)return this.isPointerDown=!1,void delete this.pointerIdentifier;this._dragPointerDown(t,i);var e=document.activeElement;e&&e.blur&&e.blur(),this._bindPostStartEvents(t),this.emitEvent("pointerDown",[t,i])},o._dragPointerDown=function(t,e){this.pointerDownPoint=i.getPointerPoint(e);var n=this.canPreventDefaultOnPointerDown(t,e);n&&t.preventDefault()},o.canPreventDefaultOnPointerDown=function(t){return"SELECT"!=t.target.nodeName},o.pointerMove=function(t,i){var e=this._dragPointerMove(t,i);this.emitEvent("pointerMove",[t,i,e]),this._dragMove(t,i,e)},o._dragPointerMove=function(t,e){var n=i.getPointerPoint(e),o={x:n.x-this.pointerDownPoint.x,y:n.y-this.pointerDownPoint.y};return!this.isDragging&&this.hasDragStarted(o)&&this._dragStart(t,e),o},o.hasDragStarted=function(t){return Math.abs(t.x)>3||Math.abs(t.y)>3},o.pointerUp=function(t,i){this.emitEvent("pointerUp",[t,i]),this._dragPointerUp(t,i)},o._dragPointerUp=function(t,i){this.isDragging?this._dragEnd(t,i):this._staticClick(t,i)},o._dragStart=function(t,e){this.isDragging=!0,this.dragStartPoint=i.getPointerPoint(e),this.isPreventingClicks=!0,this.dragStart(t,e)},o.dragStart=function(t,i){this.emitEvent("dragStart",[t,i])},o._dragMove=function(t,i,e){this.isDragging&&this.dragMove(t,i,e)},o.dragMove=function(t,i,e){t.preventDefault(),this.emitEvent("dragMove",[t,i,e])},o._dragEnd=function(t,i){this.isDragging=!1,setTimeout(function(){delete this.isPreventingClicks}.bind(this)),this.dragEnd(t,i)},o.dragEnd=function(t,i){this.emitEvent("dragEnd",[t,i])},o.onclick=function(t){this.isPreventingClicks&&t.preventDefault()},o._staticClick=function(t,i){if(!this.isIgnoringMouseUp||"mouseup"!=t.type){var e=t.target.nodeName;("INPUT"==e||"TEXTAREA"==e)&&t.target.focus(),this.staticClick(t,i),"mouseup"!=t.type&&(this.isIgnoringMouseUp=!0,setTimeout(function(){delete this.isIgnoringMouseUp}.bind(this),400))}},o.staticClick=function(t,i){this.emitEvent("staticClick",[t,i])},n.getPointerPoint=i.getPointerPoint,n}),function(t,i){"function"==typeof define&&define.amd?define(["get-size/get-size","unidragger/unidragger"],function(e,n){return i(t,e,n)}):"object"==typeof module&&module.exports?module.exports=i(t,require("get-size"),require("unidragger")):t.Draggabilly=i(t,t.getSize,t.Unidragger)}(window,function(t,i,e){function n(){}function o(t,i){for(var e in i)t[e]=i[e];return t}function r(t){return t instanceof HTMLElement}function s(t,i){this.element="string"==typeof t?h.querySelector(t):t,f&&(this.$element=f(this.element)),this.options=o({},this.constructor.defaults),this.option(i),this._create()}function a(t,i,e){return e=e||"round",i?Math[e](t/i)*i:t}var h=t.document,d=t.requestAnimationFrame||t.webkitRequestAnimationFrame||t.mozRequestAnimationFrame,u=0;d||(d=function(t){var i=(new Date).getTime(),e=Math.max(0,16-(i-u)),n=setTimeout(t,e);return u=i+e,n});var p=h.documentElement,c="string"==typeof p.style.transform?"transform":"WebkitTransform",f=t.jQuery,g=s.prototype=Object.create(e.prototype);return s.defaults={},g.option=function(t){o(this.options,t)},g._create=function(){this.position={},this._getPosition(),this.startPoint={x:0,y:0},this.dragPoint={x:0,y:0},this.startPosition=o({},this.position);var t=getComputedStyle(this.element);"relative"!=t.position&&"absolute"!=t.position&&(this.element.style.position="relative"),this.enable(),this.setHandles()},g.setHandles=function(){this.handles=this.options.handle?this.element.querySelectorAll(this.options.handle):[this.element],this.bindHandles()},g.dispatchEvent=function(i,e,n){var o=[e].concat(n);this.emitEvent(i,o);var r=t.jQuery;if(r&&this.$element)if(e){var s=r.Event(e);s.type=i,this.$element.trigger(s,n)}else this.$element.trigger(i,n)},s.prototype._getPosition=function(){var t=getComputedStyle(this.element),i=this._getPositionCoord(t.left,"width"),e=this._getPositionCoord(t.top,"height");this.position.x=isNaN(i)?0:i,this.position.y=isNaN(e)?0:e,this._addTransformPosition(t)},s.prototype._getPositionCoord=function(t,e){if(-1!=t.indexOf("%")){var n=i(this.element.parentNode);return parseFloat(t)/100*n[e]}return parseInt(t,10)},g._addTransformPosition=function(t){var i=t[c];if(0===i.indexOf("matrix")){var e=i.split(","),n=0===i.indexOf("matrix3d")?12:4,o=parseInt(e[n],10),r=parseInt(e[n+1],10);this.position.x+=o,this.position.y+=r}},g.pointerDown=function(t,i){this._dragPointerDown(t,i);var e=h.activeElement;e&&e.blur&&e!=h.body&&e.blur(),this._bindPostStartEvents(t),this.element.classList.add("is-pointer-down"),this.dispatchEvent("pointerDown",t,[i])},g.pointerMove=function(t,i){var e=this._dragPointerMove(t,i);this.dispatchEvent("pointerMove",t,[i,e]),this._dragMove(t,i,e)},g.dragStart=function(t,i){this.isEnabled&&(this._getPosition(),this.measureContainment(),this.startPosition.x=this.position.x,this.startPosition.y=this.position.y,this.setLeftTop(),this.dragPoint.x=0,this.dragPoint.y=0,this.element.classList.add("is-dragging"),this.dispatchEvent("dragStart",t,[i]),this.animate())},g.measureContainment=function(){var t=this.options.containment;if(t){var e=r(t)?t:"string"==typeof t?h.querySelector(t):this.element.parentNode,n=i(this.element),o=i(e),s=this.element.getBoundingClientRect(),a=e.getBoundingClientRect(),d=o.borderLeftWidth+o.borderRightWidth,u=o.borderTopWidth+o.borderBottomWidth,p=this.relativeStartPosition={x:s.left-(a.left+o.borderLeftWidth),y:s.top-(a.top+o.borderTopWidth)};this.containSize={width:o.width-d-p.x-n.width,height:o.height-u-p.y-n.height}}},g.dragMove=function(t,i,e){if(this.isEnabled){var n=e.x,o=e.y,r=this.options.grid,s=r&&r[0],h=r&&r[1];n=a(n,s),o=a(o,h),n=this.containDrag("x",n,s),o=this.containDrag("y",o,h),n="y"==this.options.axis?0:n,o="x"==this.options.axis?0:o,this.position.x=this.startPosition.x+n,this.position.y=this.startPosition.y+o,this.dragPoint.x=n,this.dragPoint.y=o,this.dispatchEvent("dragMove",t,[i,e])}},g.containDrag=function(t,i,e){if(!this.options.containment)return i;var n="x"==t?"width":"height",o=this.relativeStartPosition[t],r=a(-o,e,"ceil"),s=this.containSize[n];return s=a(s,e,"floor"),Math.min(s,Math.max(r,i))},g.pointerUp=function(t,i){this.element.classList.remove("is-pointer-down"),this.dispatchEvent("pointerUp",t,[i]),this._dragPointerUp(t,i)},g.dragEnd=function(t,i){this.isEnabled&&(c&&(this.element.style[c]="",this.setLeftTop()),this.element.classList.remove("is-dragging"),this.dispatchEvent("dragEnd",t,[i]))},g.animate=function(){if(this.isDragging){this.positionDrag();var t=this;d(function(){t.animate()})}},g.setLeftTop=function(){this.element.style.left=this.position.x+"px",this.element.style.top=this.position.y+"px"},g.positionDrag=function(){this.element.style[c]="translate3d( "+this.dragPoint.x+"px, "+this.dragPoint.y+"px, 0)"},g.staticClick=function(t,i){this.dispatchEvent("staticClick",t,[i])},g.enable=function(){this.isEnabled=!0},g.disable=function(){this.isEnabled=!1,this.isDragging&&this.dragEnd()},g.destroy=function(){this.disable(),this.element.style[c]="",this.element.style.left="",this.element.style.top="",this.element.style.position="",this.unbindHandles(),this.$element&&this.$element.removeData("draggabilly")},g._init=n,f&&f.bridget&&f.bridget("draggabilly",s),s});
+/*!
+ * getStyleProperty v1.0.4
+ * original by kangax
+ * http://perfectionkills.com/feature-testing-css-properties/
+ * MIT license
+ */
+
+/*jshint browser: true, strict: true, undef: true */
+/*global define: false, exports: false, module: false */
+
+( function( window ) {
+
+'use strict';
+
+var prefixes = 'Webkit Moz ms Ms O'.split(' ');
+var docElemStyle = document.documentElement.style;
+
+function getStyleProperty( propName ) {
+  if ( !propName ) {
+    return;
+  }
+
+  // test standard property first
+  if ( typeof docElemStyle[ propName ] === 'string' ) {
+    return propName;
+  }
+
+  // capitalize
+  propName = propName.charAt(0).toUpperCase() + propName.slice(1);
+
+  // test vendor specific properties
+  var prefixed;
+  for ( var i=0, len = prefixes.length; i < len; i++ ) {
+    prefixed = prefixes[i] + propName;
+    if ( typeof docElemStyle[ prefixed ] === 'string' ) {
+      return prefixed;
+    }
+  }
+}
+
+// transport
+if ( typeof define === 'function' && define.amd ) {
+  // AMD
+  define( function() {
+    return getStyleProperty;
+  });
+} else if ( typeof exports === 'object' ) {
+  // CommonJS for Component
+  module.exports = getStyleProperty;
+} else {
+  // browser global
+  window.getStyleProperty = getStyleProperty;
+}
+
+})( window );
+
 /*! modernizr 3.3.1 (Custom Build) | MIT *
  * http://modernizr.com/download/?-csstransitions-domprefixes-prefixed-setclasses-shiv-testallprops-testprop !*/
 !function(e,t,n){function r(e){var t=S.className,n=Modernizr._config.classPrefix||"";if(x&&(t=t.baseVal),Modernizr._config.enableJSClass){var r=new RegExp("(^|\\s)"+n+"no-js(\\s|$)");t=t.replace(r,"$1"+n+"js$2")}Modernizr._config.enableClasses&&(t+=" "+n+e.join(" "+n),x?S.className.baseVal=t:S.className=t)}function o(e,t){return typeof e===t}function i(){var e,t,n,r,i,a,s;for(var l in C)if(C.hasOwnProperty(l)){if(e=[],t=C[l],t.name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(n=0;n<t.options.aliases.length;n++)e.push(t.options.aliases[n].toLowerCase());for(r=o(t.fn,"function")?t.fn():t.fn,i=0;i<e.length;i++)a=e[i],s=a.split("."),1===s.length?Modernizr[s[0]]=r:(!Modernizr[s[0]]||Modernizr[s[0]]instanceof Boolean||(Modernizr[s[0]]=new Boolean(Modernizr[s[0]])),Modernizr[s[0]][s[1]]=r),y.push((r?"":"no-")+s.join("-"))}}function a(e){return e.replace(/([a-z])-([a-z])/g,function(e,t,n){return t+n.toUpperCase()}).replace(/^-/,"")}function s(e,t){return!!~(""+e).indexOf(t)}function l(){return"function"!=typeof t.createElement?t.createElement(arguments[0]):x?t.createElementNS.call(t,"http://www.w3.org/2000/svg",arguments[0]):t.createElement.apply(t,arguments)}function u(e,t){return function(){return e.apply(t,arguments)}}function f(e,t,n){var r;for(var i in e)if(e[i]in t)return n===!1?e[i]:(r=t[e[i]],o(r,"function")?u(r,n||t):r);return!1}function c(e){return e.replace(/([A-Z])/g,function(e,t){return"-"+t.toLowerCase()}).replace(/^ms-/,"-ms-")}function d(){var e=t.body;return e||(e=l(x?"svg":"body"),e.fake=!0),e}function p(e,n,r,o){var i,a,s,u,f="modernizr",c=l("div"),p=d();if(parseInt(r,10))for(;r--;)s=l("div"),s.id=o?o[r]:f+(r+1),c.appendChild(s);return i=l("style"),i.type="text/css",i.id="s"+f,(p.fake?p:c).appendChild(i),p.appendChild(c),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(t.createTextNode(e)),c.id=f,p.fake&&(p.style.background="",p.style.overflow="hidden",u=S.style.overflow,S.style.overflow="hidden",S.appendChild(p)),a=n(c,e),p.fake?(p.parentNode.removeChild(p),S.style.overflow=u,S.offsetHeight):c.parentNode.removeChild(c),!!a}function m(t,r){var o=t.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(c(t[o]),r))return!0;return!1}if("CSSSupportsRule"in e){for(var i=[];o--;)i.push("("+c(t[o])+":"+r+")");return i=i.join(" or "),p("@supports ("+i+") { #modernizr { position: absolute; } }",function(e){return"absolute"==getComputedStyle(e,null).position})}return n}function h(e,t,r,i){function u(){c&&(delete k.style,delete k.modElem)}if(i=o(i,"undefined")?!1:i,!o(r,"undefined")){var f=m(e,r);if(!o(f,"undefined"))return f}for(var c,d,p,h,v,g=["modernizr","tspan"];!k.style;)c=!0,k.modElem=l(g.shift()),k.style=k.modElem.style;for(p=e.length,d=0;p>d;d++)if(h=e[d],v=k.style[h],s(h,"-")&&(h=a(h)),k.style[h]!==n){if(i||o(r,"undefined"))return u(),"pfx"==t?h:!0;try{k.style[h]=r}catch(y){}if(k.style[h]!=v)return u(),"pfx"==t?h:!0}return u(),!1}function v(e,t,n,r,i){var a=e.charAt(0).toUpperCase()+e.slice(1),s=(e+" "+_.join(a+" ")+a).split(" ");return o(t,"string")||o(t,"undefined")?h(s,t,r,i):(s=(e+" "+w.join(a+" ")+a).split(" "),f(s,t,n))}function g(e,t,r){return v(e,n,n,t,r)}var y=[],C=[],E={_version:"3.3.1",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var n=this;setTimeout(function(){t(n[e])},0)},addTest:function(e,t,n){C.push({name:e,fn:t,options:n})},addAsyncTest:function(e){C.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=E,Modernizr=new Modernizr;var S=t.documentElement,x="svg"===S.nodeName.toLowerCase();x||!function(e,t){function n(e,t){var n=e.createElement("p"),r=e.getElementsByTagName("head")[0]||e.documentElement;return n.innerHTML="x<style>"+t+"</style>",r.insertBefore(n.lastChild,r.firstChild)}function r(){var e=C.elements;return"string"==typeof e?e.split(" "):e}function o(e,t){var n=C.elements;"string"!=typeof n&&(n=n.join(" ")),"string"!=typeof e&&(e=e.join(" ")),C.elements=n+" "+e,u(t)}function i(e){var t=y[e[v]];return t||(t={},g++,e[v]=g,y[g]=t),t}function a(e,n,r){if(n||(n=t),c)return n.createElement(e);r||(r=i(n));var o;return o=r.cache[e]?r.cache[e].cloneNode():h.test(e)?(r.cache[e]=r.createElem(e)).cloneNode():r.createElem(e),!o.canHaveChildren||m.test(e)||o.tagUrn?o:r.frag.appendChild(o)}function s(e,n){if(e||(e=t),c)return e.createDocumentFragment();n=n||i(e);for(var o=n.frag.cloneNode(),a=0,s=r(),l=s.length;l>a;a++)o.createElement(s[a]);return o}function l(e,t){t.cache||(t.cache={},t.createElem=e.createElement,t.createFrag=e.createDocumentFragment,t.frag=t.createFrag()),e.createElement=function(n){return C.shivMethods?a(n,e,t):t.createElem(n)},e.createDocumentFragment=Function("h,f","return function(){var n=f.cloneNode(),c=n.createElement;h.shivMethods&&("+r().join().replace(/[\w\-:]+/g,function(e){return t.createElem(e),t.frag.createElement(e),'c("'+e+'")'})+");return n}")(C,t.frag)}function u(e){e||(e=t);var r=i(e);return!C.shivCSS||f||r.hasCSS||(r.hasCSS=!!n(e,"article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}mark{background:#FF0;color:#000}template{display:none}")),c||l(e,r),e}var f,c,d="3.7.3",p=e.html5||{},m=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,h=/^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i,v="_html5shiv",g=0,y={};!function(){try{var e=t.createElement("a");e.innerHTML="<xyz></xyz>",f="hidden"in e,c=1==e.childNodes.length||function(){t.createElement("a");var e=t.createDocumentFragment();return"undefined"==typeof e.cloneNode||"undefined"==typeof e.createDocumentFragment||"undefined"==typeof e.createElement}()}catch(n){f=!0,c=!0}}();var C={elements:p.elements||"abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output picture progress section summary template time video",version:d,shivCSS:p.shivCSS!==!1,supportsUnknownElements:c,shivMethods:p.shivMethods!==!1,type:"default",shivDocument:u,createElement:a,createDocumentFragment:s,addElements:o};e.html5=C,u(t),"object"==typeof module&&module.exports&&(module.exports=C)}("undefined"!=typeof e?e:this,t);var b="Moz O ms Webkit",w=E._config.usePrefixes?b.toLowerCase().split(" "):[];E._domPrefixes=w;var _=E._config.usePrefixes?b.split(" "):[];E._cssomPrefixes=_;var N=function(t){var r,o=prefixes.length,i=e.CSSRule;if("undefined"==typeof i)return n;if(!t)return!1;if(t=t.replace(/^@/,""),r=t.replace(/-/g,"_").toUpperCase()+"_RULE",r in i)return"@"+t;for(var a=0;o>a;a++){var s=prefixes[a],l=s.toUpperCase()+"_"+r;if(l in i)return"@-"+s.toLowerCase()+"-"+t}return!1};E.atRule=N;var j={elem:l("modernizr")};Modernizr._q.push(function(){delete j.elem});var k={style:j.elem.style};Modernizr._q.unshift(function(){delete k.style});E.testProp=function(e,t,r){return h([e],n,t,r)};E.testAllProps=v;E.prefixed=function(e,t,n){return 0===e.indexOf("@")?N(e):(-1!=e.indexOf("-")&&(e=a(e)),t?v(e,t,n):v(e,"pfx"))};E.testAllProps=g,Modernizr.addTest("csstransitions",g("transition","all",!0)),i(),r(y),delete E.addTest,delete E.addAsyncTest;for(var z=0;z<Modernizr._q.length;z++)Modernizr._q[z]();e.Modernizr=Modernizr}(window,document);
 "use strict";
 "use strict";
+'use strict';
+
+/* global Draggabilly, Modernizr, getStyleProperty, classie */
+
+(function () {
+
+  'use strict';
+
+  var body = document.body,
+      docElem = window.document.documentElement,
+      transEndEventNames = {
+    'WebkitTransition': 'webkitTransitionEnd',
+    'MozTransition': 'transitionend',
+    'OTransition': 'oTransitionEnd',
+    'msTransition': 'MSTransitionEnd',
+    'transition': 'transitionend'
+  },
+      transEndEventName = transEndEventNames[Modernizr.prefixed('transition')],
+      support = {
+    transitions: Modernizr.csstransitions
+  };
+
+  // https://remysharp.com/2010/07/21/throttling-function-calls
+  function throttle(fn) {
+    var threshhold = arguments.length <= 1 || arguments[1] === undefined ? 250 : arguments[1];
+    var scope = arguments[2];
+
+    var last = void 0,
+        deferTimer = void 0;
+
+    return function () {
+      var context = scope || this;
+      var now = +new Date(),
+          args = arguments;
+      if (last && now < last + threshhold) {
+        // hold on to it
+        clearTimeout(deferTimer);
+        deferTimer = setTimeout(function () {
+          last = now;
+          fn.apply(context, args);
+        }, threshhold);
+      } else {
+        last = now;
+        fn.apply(context, args);
+      }
+    };
+  }
+
+  function getViewportH() {
+    var client = docElem.clientHeight,
+        inner = window.innerHeight;
+    return client < inner ? inner : client;
+  }
+
+  function scrollX() {
+    return window.pageXOffset || docElem.scrollLeft;
+  }
+
+  function scrollY() {
+    return window.pageYOffset || docElem.scrollTop;
+  }
+
+  // gets the offset of an element relative to the document
+  function getOffset(el) {
+    var offset = el.getBoundingClientRect();
+    return {
+      top: offset.top + scrollY(),
+      left: offset.left + scrollX()
+    };
+  }
+
+  function setTransformStyle(el, tval) {
+    el.style.transform = tval;
+  }
+
+  function onEndTransition(el, callback) {
+
+    var onEndCallbackFn = function onEndCallbackFn() {
+      if (support.transitions) {
+        el.removeEventListener(transEndEventName, onEndCallbackFn);
+      }
+      if (callback && typeof callback === 'function') {
+        callback.call();
+      }
+    };
+
+    if (support.transitions) {
+      el.addEventListener(transEndEventName, onEndCallbackFn);
+    } else {
+      onEndCallbackFn();
+    }
+  }
+
+  function extend(a, b) {
+    for (var key in b) {
+      if (b.hasOwnProperty(key)) {
+        a[key] = b[key];
+      }
+    }
+    return a;
+  }
+
+  var is3d = !!getStyleProperty('perspective');
+
+  function Droppable(droppableEl, options) {
+    this.el = droppableEl;
+    this.options = extend({}, this.options);
+    extend(this.options, options);
+  }
+
+  Droppable.prototype.options = {
+    highlightClass: 'highlight',
+
+    onDrop: function onDrop() {
+      return false;
+    }
+  };
+
+  // based on http://stackoverflow.com/a/2752387 : checks if the droppable
+  // element is ready to collect the draggable: the draggable element must
+  // intersect the droppable in half of its width or height.
+  Droppable.prototype.isDroppable = function (draggableEl) {
+    var offset1 = getOffset(draggableEl),
+        width1 = draggableEl.offsetWidth,
+        height1 = draggableEl.offsetHeight,
+        offset2 = getOffset(this.el),
+        width2 = this.el.offsetWidth,
+        height2 = this.el.offsetHeight;
+
+    return !(offset2.left > offset1.left + width1 - width1 / 2 || offset2.left + width2 < offset1.left + width1 / 2 || offset2.top > offset1.top + height1 - height1 / 2 || offset2.top + height2 < offset1.top + height1 / 2);
+  };
+
+  // highlight the droppable if it's ready to collect the draggable
+  Droppable.prototype.highlight = function (draggableEl) {
+    if (this.isDroppable(draggableEl)) {
+      classie.add(this.el, this.options.highlightClass);
+    } else {
+      classie.remove(this.el, this.options.highlightClass);
+    }
+  };
+
+  // accepts a draggable element...
+  Droppable.prototype.collect = function (draggableEl) {
+    // remove highlight class from droppable element
+    classie.remove(this.el, this.options.highlightClass);
+    this.options.onDrop(this, draggableEl);
+  };
+
+  function Draggable(draggableEl, droppables, options) {
+    this.el = draggableEl;
+    this.options = extend({}, this.options);
+    extend(this.options, options);
+    this.droppables = droppables;
+    this.scrollableEl = this.options.scrollable === window ? window : document.querySelector(this.options.scrollable);
+    this.scrollIncrement = 0;
+    if (this.options.helper) {
+      this.offset = {
+        left: getOffset(this.el).left,
+        top: getOffset(this.el).top
+      };
+    }
+    this.draggie = new Draggabilly(this.el, this.options.draggabilly);
+    this.initEvents();
+  }
+
+  Draggable.prototype.options = {
+    // auto scroll when dragging
+    scroll: false,
+    // element to scroll
+    scrollable: window,
+    // scroll speed (px)
+    scrollSpeed: 20,
+    // minimum distance to the scrollable element edges to trigger the scroll
+    scrollSensitivity: 10,
+    // draggabilly options
+    draggabilly: {},
+    // if the item should animate back to its original position
+    animBack: true,
+    // clone the draggable and insert it on the same position while dragging
+    // the original one
+    helper: false,
+    // callbacks
+    onStart: function onStart() {
+      return false;
+    },
+    onDrag: function onDrag() {
+      return false;
+    },
+    onEnd: function onEnd() {
+      return false;
+    }
+  };
+
+  Draggable.prototype.initEvents = function () {
+    this.draggie.on('dragStart', this.onDragStart.bind(this));
+    this.draggie.on('dragMove', throttle(this.onDragMove.bind(this), 5));
+    this.draggie.on('dragEnd', this.onDragEnd.bind(this));
+  };
+
+  Draggable.prototype.onDragStart = function () {
+    // callback
+    this.options.onStart();
+
+    // save left & top
+    var instance = this.draggie;
+    this.position = {
+      left: instance.position.x,
+      top: instance.position.y
+    };
+    // create helper
+    if (this.options.helper) {
+      this.createHelper(instance.element);
+    }
+    // add class is-active to the draggable element
+    // (control the draggable z-index)
+    classie.add(instance.element, 'is-active');
+    // highlight droppable elements if draggables intersect
+    this.highlightDroppables();
+  };
+
+  Draggable.prototype.onDragMove = function (instance) {
+    // callback
+    this.options.onDrag();
+
+    // scroll page if at viewport's edge
+    if (this.options.scroll) {
+      this.scrollPage(instance.element);
+    }
+    // highlight droppable elements if draggables intersect
+    this.highlightDroppables();
+  };
+
+  Draggable.prototype.onDragEnd = function () {
+    var instance = this.draggie;
+    if (this.options.helper) {
+      instance.element.style.left = instance.position.x + this.position.left + 'px';
+      instance.element.style.top = instance.position.y + this.position.top + 'px';
+    }
+
+    if (this.options.scroll) {
+      // reset this.scrollIncrement
+      this.scrollIncrement = 0;
+    }
+
+    // if the draggable && droppable elements intersect
+    // then "drop" and move back the draggable
+    var dropped = false;
+    for (var i = 0, len = this.droppables.length; i < len; ++i) {
+      var droppableEl = this.droppables[i];
+      if (droppableEl.isDroppable(instance.element)) {
+        dropped = true;
+        droppableEl.collect(instance.element);
+      }
+    }
+
+    // callback
+    this.options.onEnd(dropped);
+
+    var withAnimation = true;
+
+    if (dropped) {
+      // add class is-dropped to draggable ( controls how the draggable
+      // appears again at its original position)
+      classie.add(instance.element, 'is-dropped');
+      // after a timeout remove that class to trigger the transition
+      setTimeout(function () {
+        classie.add(instance.element, 'is-complete');
+
+        onEndTransition(instance.element, function () {
+          classie.remove(instance.element, 'is-complete');
+          classie.remove(instance.element, 'is-dropped');
+        });
+      }, 25);
+    }
+
+    // move back with animation - track if the element moved away
+    // from its initial position or if it was dropped in a droppable element
+    if (this.position.left === instance.position.x && this.position.top === instance.position.y || dropped) {
+      // in this case we will not set a transition for the item to move back
+      withAnimation = false;
+    }
+
+    // move back the draggable element (with or without a transition)
+    this.moveBack(withAnimation);
+  };
+
+  Draggable.prototype.highlightDroppables = function () {
+    for (var i = 0, len = this.droppables.length; i < len; ++i) {
+      this.droppables[i].highlight(this.el);
+    }
+  };
+
+  Draggable.prototype.createHelper = function () {
+    // clone the original item (same position)
+    var clone = this.el.cloneNode(true);
+    // because the original element started the dragging, we need to remove
+    // the is-dragging class
+    classie.remove(clone, 'is-dragging');
+    this.el.parentNode.replaceChild(clone, this.el);
+    // initialize Draggabilly on the clone…
+    var draggable = new Draggable(clone, this.droppables, this.options);
+    // the original item will be absolute on the page - need to set correct
+    // position values..
+    classie.add(this.el, 'helper');
+    this.el.style.left = draggable.offset.left + 'px';
+    this.el.style.top = draggable.offset.top + 'px';
+
+    // save new left/top
+    this.position.left = draggable.offset.left;
+    this.position.top = draggable.offset.top;
+
+    body.appendChild(this.el);
+  };
+
+  // move back the draggable to its original position
+  Draggable.prototype.moveBack = function (withAnimation) {
+    var anim = this.options.animBack && withAnimation;
+
+    // add animate class (where the transition is defined)
+    if (anim) {
+      classie.add(this.el, 'animate');
+    }
+    // reset translation value
+    setTransformStyle(this.el, is3d ? 'translate3d(0,0,0)' : 'translate(0,0)');
+    // apply original left/top
+    this.el.style.left = this.position.left + 'px';
+    this.el.style.top = this.position.top + 'px';
+    // remove class animate (transition) and is-active to the draggable
+    // element (z-index)
+    var callbackFn = function () {
+      if (anim) {
+        classie.remove(this.el, 'animate');
+      }
+      classie.remove(this.el, 'is-active');
+      if (this.options.helper) {
+        body.removeChild(this.el);
+      }
+    }.bind(this);
+
+    if (anim) {
+      onEndTransition(this.el, callbackFn);
+    } else {
+      callbackFn();
+    }
+  };
+
+  // check if element is outside of the viewport.
+  // TODO: check also for right and left sides
+  Draggable.prototype.outViewport = function () {
+    var scrollSensitivity = Math.abs(this.options.scrollSensitivity) || 0,
+        scrolled = scrollY(),
+        viewed = scrolled + getViewportH(),
+        elT = getOffset(this.el).top,
+
+    // elHalfPos = elT + this.el.offsetHeight / 2,
+    belowViewport = elT + this.el.offsetHeight + scrollSensitivity > viewed,
+        aboveViewport = elT - scrollSensitivity < scrolled;
+
+    if (belowViewport) {
+      this.scrolldir = 'down';
+    } else if (aboveViewport) {
+      this.scrolldir = 'up';
+    }
+
+    return belowViewport || aboveViewport;
+  };
+
+  // force the scroll on the page when dragging..
+  Draggable.prototype.scrollPage = function () {
+    // check if draggable is "outside" of the viewport
+    if (this.outViewport(this.el)) {
+      this.doScroll();
+    } else {
+      // reset this.scrollIncrement
+      this.scrollIncrement = 0;
+    }
+  };
+
+  // just considering scroll up and down
+  // this.scrollIncrement is used to accelerate the scrolling.
+  // But mainly it's used to avoid the draggable flickering due
+  // to the throttle when dragging
+  // todo: scroll right and left
+  // todo: draggabilly multi touch scroll:
+  // see https://github.com/desandro/draggabilly/issues/1
+  Draggable.prototype.doScroll = function () {
+    var speed = this.options.scrollSpeed || 20;
+    this.scrollIncrement++;
+    var val = this.scrollIncrement < speed ? this.scrollIncrement : speed;
+
+    if (this.scrollableEl === window) {
+      this.scrollableEl.scrollBy(0, this.scrolldir === 'up' ? val * -1 : val);
+    } else {
+      this.scrollableEl.scrollTop += this.scrolldir === 'up' ? val * -1 : val;
+    }
+  };
+
+  window.Droppable = Droppable;
+  window.Draggable = Draggable;
+})();
+/* global Droppable, Draggable, classie */
+
+'use strict';
+
+(function () {
+
+  var initElem = document.querySelectorAll('dragdrop');
+
+  if (initElem) {
+    (function () {
+      var body = document.body,
+          dropArea = document.getElementById('drop-area'),
+          droppableArr = [],
+          dropAreaTimeout = void 0;
+
+      // initialize droppables
+      [].slice.call(document.querySelectorAll('.drop-area__item')).forEach(function (el) {
+        droppableArr.push(new Droppable(el, {
+          feedbackClass: 'drop-feedback',
+
+          onDrop: function onDrop(instance, dragEl) {
+            var _this = this;
+
+            // debugger; // eslint-disable-line
+            instance.el.dataset.order = dragEl.dataset.good;
+            // show checkmark inside the droppabe element
+            classie.add(instance.el, this.feedbackClass);
+            clearTimeout(instance.checkmarkTimeout);
+            instance.checkmarkTimeout = setTimeout(function () {
+              classie.remove(instance.el, _this.feedbackClass);
+            }, 800);
+            // ...
+          }
+        }));
+      });
+
+      // initialize draggable(s)
+      [].slice.call(document.querySelectorAll('.grid__item')).forEach(function (el) {
+        new Draggable(el, droppableArr, {
+          scroll: true,
+          scrollable: '#drop-area',
+          scrollSpeed: 40,
+          scrollSensitivity: 50,
+          draggabilly: {
+            containment: '.dragdrop'
+          },
+          helper: false,
+
+          activeClass: 'drag-active',
+          showClass: 'show',
+
+          onStart: function onStart() {
+            // add class activeClass to body
+            classie.add(body, this.activeClass);
+            // clear timeout: dropAreaTimeout (toggle drop area)
+            clearTimeout(dropAreaTimeout);
+            // show dropArea
+            classie.add(dropArea, this.showClass);
+          },
+          onEnd: function onEnd(wasDropped) {
+            var showClass = this.showClass,
+                activeClass = this.activeClass,
+                afterDropFn = function afterDropFn() {
+              // hide dropArea
+              classie.remove(dropArea, showClass);
+              // remove class activeClass from body
+              classie.remove(body, activeClass);
+            };
+
+            if (!wasDropped) {
+              afterDropFn();
+            } else {
+              // after some time hide drop area and remove class activeClass from body
+              clearTimeout(dropAreaTimeout);
+              dropAreaTimeout = setTimeout(afterDropFn, 400);
+            }
+          }
+        });
+      });
+    })();
+  }
+})();
 /**
  * elastiStack.js v1.0.0
  * http://www.codrops.com
@@ -420,6 +958,79 @@ if (elasticstackContainer) {
   });
 }
 "use strict";
+/* global Draggable, Droppable, classie */
+
+'use strict';
+
+var dragdropArea = document.querySelectorAll('.set-container');
+if (dragdropArea) {
+  (function () {
+
+    var dropableElems = document.querySelectorAll('.set-cell__item');
+    var draggableElems = document.querySelectorAll('.variant-item');
+
+    var droppableArr = [],
+        dropAreaTimeout = void 0;
+
+    [].slice.call(dropableElems).forEach(function (el) {
+      droppableArr.push(new Droppable(el, {
+        onDrop: function onDrop(instance) {
+          var _this = this;
+
+          // show checkmark inside the droppabe element
+          classie.add(this.el, 'set-cell__item_drop-feedback');
+          clearTimeout(instance.checkmarkTimeout);
+          instance.checkmarkTimeout = setTimeout(function () {
+            classie.remove(_this.el, 'set-cell__item_drop-feedback');
+          }, 8000);
+          // ...
+        }
+      }));
+    });
+
+    // init Draggabillies
+    [].slice.call(draggableElems).forEach(function (el) {
+      new Draggable(el, droppableArr, {
+        // scroll: true,
+        // scrollable: '#set-cell',
+        // scrollSpeed: 40,
+        // scrollSensitivity: 50,
+        helper: true,
+        draggabilly: {
+          containment: '.set-container'
+        },
+        activeClass: 'is-active',
+        droppedClass: 'is-dropped',
+        completeClass: 'is-complete',
+        draggingClass: 'is-dragging',
+        animateClass: 'animate',
+        helperClass: 'dragdrop_helper',
+        dragActiveClass: 'drag-active',
+        showClass: 'show',
+
+        onStart: function onStart() {
+          classie.add(dragdropArea[0], this.dragActiveClass);
+          clearTimeout(dropAreaTimeout);
+          classie.add(dragdropArea[0], this.showClass);
+        },
+
+        onEnd: function onEnd(wasDropped) {
+          var afterDropFn = function afterDropFn() {
+            classie.remove(dragdropArea[0], this.showClass);
+            classie.remove(dragdropArea[0], this.dragActiveClass);
+          };
+
+          if (!wasDropped) {
+            afterDropFn();
+          } else {
+            clearTimeout(dropAreaTimeout);
+            dropAreaTimeout = setTimeout(afterDropFn, 400);
+          }
+        }
+      });
+    });
+  })();
+}
 "use strict";
 "use strict";
 "use strict";
