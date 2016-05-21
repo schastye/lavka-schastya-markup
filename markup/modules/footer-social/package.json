@@ -1,0 +1,10 @@
+{
+  "name": "footer-social",
+  "version": "0.0.1",
+  "private": true,
+  "main": "footer-social.js",
+  "description": "Module footer-social",
+  "dependencies": {},
+  "devDependencies": {},
+  "author": ""
+}

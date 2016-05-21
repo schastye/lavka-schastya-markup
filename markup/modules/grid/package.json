@@ -1,0 +1,10 @@
+{
+  "name": "grid",
+  "version": "0.0.1",
+  "private": true,
+  "main": "grid.js",
+  "description": "Module grid",
+  "dependencies": {},
+  "devDependencies": {},
+  "author": ""
+}

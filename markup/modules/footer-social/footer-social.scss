@@ -1,0 +1,26 @@
+.footer-social {
+  margin: 0;
+  padding: 0;
+  @include list-unstyled;
+
+  &__item {
+    display: inline-block;
+    font-size: 26px;
+    line-height: 28px;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  &__link {
+    color: #9b9b9b;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: darken(#9b9b9b, 10%);
+    }
+
+  }
+}

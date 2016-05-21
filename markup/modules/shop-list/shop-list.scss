@@ -1,0 +1,17 @@
+.shop-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    display: block;
+    border-top: 1px dotted #dfdfdf;
+    padding: 10px 20px;
+
+    &:after {
+      display: block;
+      content: svg-load('./arrow_long_right.svg');
+      width: 22px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.footer-menu__item {
+  display: inline;
+  font-size: 14px;
+  line-height: 16px;
+
+  &:before {
+    content: '·';
+    display: inline-block;
+    margin: 0 .5rem;
+  }
+
+  &:first-child:before {
+    display: none;
+  }
+}

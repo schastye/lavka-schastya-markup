@@ -1,0 +1,58 @@
+@lost flexbox flex;
+
+.grid {
+  lost-utility: clearfix;
+  lost-flex-container: row;
+
+  &__col {
+    background-color: #123;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__col_1-12 {
+    lost-column: 1/12 12;
+  }
+
+  &__col_2-12 {
+    lost-column: 2/12 6;
+  }
+
+  &__col_3-12 {
+    lost-column: 3/12 4;
+  }
+
+  &__col_4-12 {
+    lost-column: 4/12 3;
+  }
+
+  &__col_5-12 {
+    lost-column: 5/12 2;
+  }
+
+  &__col_6-12 {
+    lost-column: 6/12 2;
+  }
+
+  &__col_7-12 {
+    lost-column: 7/12 1;
+  }
+
+  &__col_8-12 {
+    lost-column: 8/12 1;
+  }
+
+  &__col_9-12 {
+    lost-column: 9/12 1;
+  }
+
+  &__col_10-12 {
+    lost-column: 10/12 1;
+  }
+
+  &__col_11-12 {
+    lost-column: 11/12 1;
+  }
+
+}

@@ -1,0 +1,11 @@
+.footer {
+  @extend .section;
+  @extend .section_color_green;
+  padding: 1rem !important;
+
+  &__social {
+    text-align: center;
+    font-size: 0;
+    padding: 1rem 0 .5rem;
+  }
+}

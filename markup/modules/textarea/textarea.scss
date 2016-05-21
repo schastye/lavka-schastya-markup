@@ -1,0 +1,17 @@
+.textarea {
+  margin-top: 2em;
+  width: 100%;
+  background-color: #e9f0e0;
+  border: 2px solid transparent;
+  padding: 1em;
+
+  &:focus {
+    outline: none;
+    background-color: transparent;
+    border-color: #a3d39c;
+  }
+
+  &_expanded {
+    transition: height .8s;
+  }
+}

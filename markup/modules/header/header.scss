@@ -1,0 +1,46 @@
+@import "./__logo/header__logo";
+@import "./__menu/header__menu";
+@import "./__navigation/header__navigation";
+@import "./__order/header__order";
+@import "./__phone/header__phone";
+@import "./__shopping-list/header__shopping-list";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 5rem;
+  z-index: 100;
+  padding: $space-2 $space-4;
+  width: 295px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: center;
+  border: 1px solid #ECE7DB;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    background-color: $color-beige;
+    z-index: -1;
+  }
+
+  &:hover,
+  &:focus {
+    .header-logo {
+      margin: 0;
+      color: #000;
+    }
+  }
+
+  &__city {
+    text-align: center;
+    font-size: 1.3em;
+  }
+}

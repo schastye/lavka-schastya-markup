@@ -1,0 +1,30 @@
+mixin header(data)
+  include ../phone/phone
+  include ../button/button
+  include ../header-logo/header-logo
+  include ../header-menu/header-menu
+  include ../header-order/header-order
+
+  header.header
+    .header__navigation#header__navigation
+      +button( { mods: { style: 'glass', type: 'link' }, url: data.menu.url } )(class="menu-button")
+        if data.menu.active
+          != jadeHelpers.Icon.call(locals, {iconName: 'arrow_up_green', className: 'menu-icon'})
+        else
+          != jadeHelpers.Icon.call(locals, {iconName: 'menu', className: 'menu-icon'})
+    .header__logo
+      +header-logo( { collapse: !data.index } )
+    .header__phone
+      +phone( { country: '+7', city: 812, number: '983-11-18' } )
+      .header__city Санкт-Петербург
+      //- +phone( phone.default )
+    .header__order#header__order
+      +button( { mods: { style: 'glass', type: 'link' }, url: data.order.url } )(class="order-button")
+        if data.order.active
+          != jadeHelpers.Icon.call(locals, { iconName: 'arrow_up_green', className: 'basket-icon' } )
+        else
+          != jadeHelpers.Icon.call(locals, { iconName: 'basket', className: 'basket-icon' } )
+    .header__menu#header-menu(class= data.menu.active ? 'header__menu_show' : 'header__menu_hidden')
+      +header-menu(header.menu)
+    .header__menu#header-order(class= data.order.active ? 'header__menu_show' : 'header__menu_hidden')
+      +header-order()

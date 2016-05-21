@@ -1,0 +1,46 @@
+.part-card {
+  min-height: 420px;
+  position: relative;
+  background-color: $color-green;
+
+  &:hover &__image,
+  &:focus &__image,
+  &_nohover &__image {
+    opacity: 1;
+  }
+
+  &__link {
+    font-size: 30px;
+    letter-spacing: 1.5px;
+    color: #4a4a4a;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: #85B892;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 57px;
+      height: 15px;
+      margin: 0 15px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    &:before {
+      background-image: svg-load('./venzel_left.svg');
+    }
+
+    &:after {
+      background-image: svg-load('./venzel_right.svg');
+    }
+  }
+}

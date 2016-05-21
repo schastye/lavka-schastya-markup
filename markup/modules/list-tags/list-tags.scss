@@ -1,0 +1,27 @@
+.list-tags {
+  @include list-unstyled;
+
+  &__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+  }
+
+  &__item > *,
+  &__link {
+    color: #9b9b9b;
+    text-decoration: none;
+
+    &:before {
+      content: '#';
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: #85b892;
+    }
+  }
+}

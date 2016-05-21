@@ -1,0 +1,64 @@
+.button {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: $input-btn-border-width solid transparent;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $line-height, $btn-border-radius);
+  @include transition(all .2s ease-in-out);
+
+  &,
+  &:active,
+  &_active {
+    &:focus,
+    &.focus {
+      @include tab-focus();
+    }
+  }
+
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  &_focus {
+    text-decoration: none;
+  }
+
+  &:active,
+  &_active {
+    background-image: none;
+    outline: 0;
+    @include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  }
+
+  &_disabled,
+  &:disabled {
+    cursor: $cursor-disabled;
+    opacity: .65;
+    @include box-shadow(none);
+  }
+
+  &_add-to-card {
+    color: #4a4a4a;
+    border-color: #4a4a4a;
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 0;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 200;
+    font-size: 14px;
+  }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.button_disabled,
+fieldset[disabled] a.button {
+  pointer-events: none;
+}

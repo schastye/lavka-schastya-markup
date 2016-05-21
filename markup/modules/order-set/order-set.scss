@@ -1,0 +1,22 @@
+.order-set {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  text-transform: uppercase;
+  padding: 0;
+
+  &__remove {
+    
+  }
+
+  &__content {
+    flex-grow: 2;
+    text-align: left;
+    padding: 0;
+  }
+
+  &__price {
+    font-family: Helvetica;
+  }
+}

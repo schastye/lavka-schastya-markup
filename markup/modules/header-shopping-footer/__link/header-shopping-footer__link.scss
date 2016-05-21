@@ -1,0 +1,13 @@
+.header-shopping-footer__link {
+  font-size: 13px;
+  letter-spacing: 0.9px;
+  color: #4a4a4a;
+  display: block;
+  padding: $space-1 0;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: #85b892;
+  }
+}

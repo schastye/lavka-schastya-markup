@@ -1,0 +1,12 @@
+.dropdown-list {
+  position: relative;
+  z-index: 10;
+  
+  &__item {
+    background-color: #f8f2e4;
+
+    & + & {
+      border-top: solid 1px #ece7db;
+    }
+  }
+}

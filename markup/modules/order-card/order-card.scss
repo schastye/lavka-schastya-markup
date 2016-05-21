@@ -1,0 +1,56 @@
+@lost flexbox flex;
+
+.order-card {
+  background-color: $off-white;
+
+  &__good  {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__remove {
+    
+  }
+
+  &__content {
+    flex-grow: 2;
+    padding: 16px 13px;
+  }
+
+  &__picture {
+    align-self: center;
+    width: 50px;
+  }
+
+  &__title {
+    font-weight: 500;
+    padding: 0;
+    margin: 0 0 3px;
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: 2px;
+    color: $greyish-brown;
+    text-transform: uppercase;
+  }
+
+  &__price {
+    font-family: Helvetica;
+    font-weight: 200;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #666666;
+  }
+
+  &__value {
+
+  }
+
+  &__additional {
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      width: 50%;
+    }
+  }
+}

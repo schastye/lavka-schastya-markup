@@ -1,0 +1,18 @@
+.part-card-title__description {
+  transition: opacity .3s linear .6s,
+              width .3s linear,
+              height .3s linear,
+              visibility 0s linear;
+  // display: none;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+  padding-top: 1rem;
+  text-align: justify;
+  font-size: 13px;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  color: #4a4a4a;
+  font-weight: 200;
+}

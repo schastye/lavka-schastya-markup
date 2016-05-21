@@ -1,0 +1,15 @@
+@lost flexbox flex;
+@lost gutter 30px;
+
+.set-variant {
+  lost-flex-container: row;
+  // lost-utility: edit;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+
+  &__item {
+    lost-column: 1/5 5 16px flex;
+  }
+}

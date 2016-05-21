@@ -1,0 +1,11 @@
+@lost flexbox flex;
+@lost gutter 16px;
+
+.input-group,
+.radio-group {
+  lost-center: 100%;
+
+  &__item_1-2 {
+    lost-column: 1/2 2 16px flex;
+  }
+}

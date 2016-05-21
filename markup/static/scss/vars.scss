@@ -1,0 +1,45 @@
+// File for scss-vars.
+// For example: main colors, paddings and so on.
+
+$btn-border-radius: 0;
+
+@import "../../../node_modules/bootstrap/scss/variables";
+
+$font-family-sans-serif:  "Raleway", Helvetica, Arial, sans-serif;
+$font-size-root: 14px;
+
+$icon-font-path: '../fonts/';
+
+$grid-gutter-width:    16px;
+
+$color-grey:           #eee;
+$color-grey-dark:      #4a4a4a;
+$color-grey-light:     #9b9b9b;
+$color-green:          #e9f0e0;
+$color-green-dark:     #85b892;
+$color-green-light:    #f0faf3;
+$color-beige:          #fff9ea;
+$color-beige-light:    #fffef6;
+$color-blue:           #dff1fb;
+$color-pink:           #fdf7ff;
+
+$pale-teal:      #a6cdb0;
+$light-sage:     #f0faf3;
+$ice-blue:       #f7fcff;
+$pale-lavender:  #fdf7ff;
+$off-white:      #fff9ea;
+$faded-green:    #85b892;
+$warm-grey:      #9b9b9b;
+$greyish-brown:  #4a4a4a;
+
+$set-cell__item_color: #979797;
+
+// основные блоки текста - #666666
+
+$space-1:              1rem;
+$space-2:              2rem;
+$space-3:              3rem;
+$space-4:              4rem;
+$space-5:              5rem;
+
+$fa-font-path:        "../fonts/fontawesome";

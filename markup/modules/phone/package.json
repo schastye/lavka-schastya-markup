@@ -1,0 +1,10 @@
+{
+  "name": "phone",
+  "version": "0.0.1",
+  "private": true,
+  "main": "phone.js",
+  "description": "Module phone",
+  "dependencies": {},
+  "devDependencies": {},
+  "author": ""
+}

@@ -1,0 +1,19 @@
+.button-range {
+  @extend .btn-group;
+
+  &__button {
+    color: #85b892;
+    padding: 0.2rem 1rem;
+    line-height: 1;
+  }
+
+  &__value {
+    display: inline-block;
+    font-family: Helvetica;
+    cursor: default;
+    padding: 0;
+    line-height: 1;
+    font-size: 20px;
+    font-weight: 200;
+  }
+}

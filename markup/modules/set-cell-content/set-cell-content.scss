@@ -1,0 +1,33 @@
+.set-cell-content {
+  position: absolute;
+  top:    $space-1 / 2;
+  left:   $space-1 / 2;
+  right:  $space-1 / 2;
+  bottom: $space-1 / 2;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
+
+  &:hover:before,
+  &:focus:before {
+    content: 'удалить';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    z-index: 1;
+    position: absolute;
+    top:    0;
+    left:   0;
+    right:  0;
+    bottom: 0;
+    border-radius: 50%;
+    background-color: rgba(200,200,200, .6);
+    // background-image: svg-load('./angel.svg');
+    background-position: center;
+    background-size: cover;
+  }
+}

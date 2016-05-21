@@ -1,0 +1,10 @@
+{
+  "name": "header-shopping-item",
+  "version": "0.0.1",
+  "private": true,
+  "main": "header-shopping-item.js",
+  "description": "Module header-shopping-item",
+  "dependencies": {},
+  "devDependencies": {},
+  "author": ""
+}

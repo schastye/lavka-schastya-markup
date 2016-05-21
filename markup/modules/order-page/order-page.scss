@@ -1,0 +1,13 @@
+@lost gutter 16px;
+@lost flexbox flex;
+
+.order-page {
+  background-size: cover;
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-image: url(%=static=%assets/order-page/background.jpg);
+
+  &__form {
+    lost-center: 1440px;
+  }
+}

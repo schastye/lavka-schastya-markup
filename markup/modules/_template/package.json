@@ -1,0 +1,10 @@
+{
+  "name": "_template",
+  "version": "0.0.1",
+  "private": true,
+  "main": "_template.js",
+  "description": "Module _template",
+  "dependencies": {},
+  "devDependencies": {},
+  "author": ""
+}

@@ -1,0 +1,16 @@
+.header__shopping-list {
+  @extend .header__menu;
+  min-height: 350px;
+  overflow-y: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    border: 1px solid $set-cell__item_color;
+    border-top-width: 0;
+  }
+}

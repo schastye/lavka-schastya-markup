@@ -1,0 +1,36 @@
+$cell-item-width: 85px;
+
+.set-cell {
+  @extend .set-cell_column_4; 
+  margin: 0;
+  float: right;
+  border-radius: $border-radius * 2;
+
+  &_column_4 {
+    width: (4 * $cell-item-width) - 4px;
+  }
+
+  &_column_6 {
+    width: (6 * $cell-item-width) - 6px;
+  }
+
+  &_column_8 {
+    width: (8 * $cell-item-width) - 8px;
+  }
+
+  &__item {
+    width: $cell-item-width;
+    float: left;
+    margin: 0 -1px -1px 0;
+    position: relative;
+    border-radius: $border-radius * 2;
+    border: 1px solid $set-cell__item_color;
+
+    &:before{
+        display: block;
+        content: '';
+        width: 100%;
+        padding-top: 100%;
+    }
+  }
+}
