@@ -2,7 +2,7 @@
 @lost flexbox flex;
 
 .main-part {
-/*   lost-utility: clearfix; */
+  lost-utility: clearfix;
   lost-center: 100% 16px flex;
   list-style: none;
   margin: 0;
@@ -30,9 +30,6 @@
       &:nth-child(2n) {
         lost-column: 1/2 0 16px flex;
       }
-    }
-
-    &_clear {
     }
   }
 }
