@@ -14,10 +14,28 @@ mixin header(data)
           != jadeHelpers.Icon.call(locals, {iconName: 'menu', className: 'menu-icon'})
     .header__logo
       +header-logo( { collapse: !data.index } )
-    .header__phone
-      +phone( { country: '+7', city: 812, number: '983-11-18' } )
-      .header__city Санкт-Петербург
-      //- +phone( phone.default )
+    .header__city.peppermint.peppermint-inactive
+      figure
+        .header__phone
+          +phone( { country: '+7', city: 812, number: '983-11-18' } )
+        .city-select
+          +button( { mods: { style: 'glass' } } )(class="city-select__prev") &lt;
+          .city-select__caption Санкт-Петербург
+          +button( { mods: { style: 'glass' } } )(class="city-select__next") &gt;
+      figure
+        .header__phone
+          +phone( { country: '+7', city: 495, number: '123-45-67' } )
+        .city-select
+          +button( { mods: { style: 'glass' } } )(class="city-select__prev") &lt;
+          .city-select__caption Москва
+          +button( { mods: { style: 'glass' } } )(class="city-select__next") &gt;
+      figure
+        .header__phone
+          +phone( { country: '+7', city: 999, number: '000-00-00' } )
+        .city-select
+          +button( { mods: { style: 'glass' } } )(class="city-select__prev") &lt;
+          .city-select__caption Нью-Йорк
+          +button( { mods: { style: 'glass' } } )(class="city-select__next") &gt;
     .header__order#header__order
       +button( { mods: { style: 'glass', type: 'link' }, url: data.order.url } )(class="order-button")
         if data.order.active

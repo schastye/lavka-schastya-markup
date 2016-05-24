@@ -1,4 +1,10 @@
 .value-range {
   text-align: center;
   font-family: Helvetica;
+
+  &__value {
+    @extend .button-range__value;
+    display: block;
+    width: 100%;
+  }
 }

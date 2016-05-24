@@ -46,28 +46,29 @@ mixin good-part(data)
       .good-information__box
         h2.set-container__title.set-container__title_center  Варианты упаковки
         .box-variant
-          label.box-variant__item(data-slide="http://babeholder.pixoil.com/img/1920/420/")
+          label.box-variant__item(data-slide="http://babeholder.pixoil.com/img/1920/420/?0123456789121")
             input.box-variant__select(type="radio" name="box-variant" checked)
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 1')
             h3.box-variant__caption От Счастья
             .box-variant__price 500 rub
-          label.box-variant__item(data-slide="http://babeholder.pixoil.com/img/1920/420/")
+          label.box-variant__item(data-slide="http://babeholder.pixoil.com/img/1920/420/?0123456789122")
             input.box-variant__select(type="radio" name="box-variant")
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 2')
             h3.box-variant__caption Особая
             .box-variant__price 500 rub
-          label.box-variant__item(data-slide="http://babeholder.pixoil.com/img/1920/420/")
+          label.box-variant__item(data-slide="http://babeholder.pixoil.com/img/1920/420/?0123456789123")
             input.box-variant__select(type="radio" name="box-variant")
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 3')
             h3.box-variant__caption Подарочная
             .box-variant__price 500 rub
       .good-information__price
         h2.set-container__title 
-          .button-range.pull-right(role='group', aria-label='...')
-            +button({ mods: {} })(class='button-range__button')
+          form.button-range.pull-right(role='group' action="order.html" method="get" id="order")
+            input(type="hidden" name="id" value="100500")
+            +button({ mods: {} })(class='button-range__button' value='cart/remove')
               i.fa.fa-chevron-left
-            .button-range__value 04
-            +button({ mods: {} })(class='button-range__button')
+            input.button-range__value(type='number' name='count' value='1' size='2' min='1' max='99' readonly)
+            +button({ mods: {} })(class='button-range__button' value='cart/add')
               i.fa.fa-chevron-right
           | Количество коробок
         p 
@@ -81,12 +82,17 @@ mixin good-part(data)
         h2.set-container__title
           .pull-right 2000 rub
           | Стоимость
-        button.button.button_add-to-card
-          | Добавить в корзину
+        button.button.button_add-to-card(type='submit' form='order')
+          .button__caption Добавить в корзину
           != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'add-to-card'})
 
-  .part-card.part-card_nohover
-    .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/main-part/macarons.jpg)")
+  .peppermint.peppermint-inactive#peppermint
+    figure.part-card.part-card_nohover
+      .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/main-part/macarons.jpg)")
+    figure.part-card.part-card_nohover
+      .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/box-variant/box-variant-2.jpg)")
+    figure.part-card.part-card_nohover
+      .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/box-variant/box-variant-3.jpg)")
 
   .good-relevant
     h2.good-relevant__title С этим товаром покупают

@@ -6,7 +6,6 @@
 
   if (initElem) {
     [].slice.call( initElem ).forEach( el => {
-      console.log( el );
       el.style.height = '50px';
       el.addEventListener( 'focus', event => {
         event.preventDefault();

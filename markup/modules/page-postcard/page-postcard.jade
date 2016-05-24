@@ -9,16 +9,16 @@ mixin page-postcard(data)
     .popup__content
       ul.elasticstack#elasticstack
         li.elasticstack__item
-          img.elasticstack__image(src='http://babeholder.pixoil.com/img/300/260/1/?1234567890abc', alt='')
+          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-1.jpg', alt='')
           h5.elasticstack__header Saudade
         li.elasticstack__item
-          img.elasticstack__image(src='http://babeholder.pixoil.com/img/300/260/1/?1234567890abd', alt='')
+          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-2.jpg', alt='')
           h5.elasticstack__header Tuqburni
         li.elasticstack__item
-          img.elasticstack__image(src='http://babeholder.pixoil.com/img/300/260/1/?1234567890abe', alt='')
+          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-3.jpg', alt='')
           h5.elasticstack__header Retrouvailles
         li.elasticstack__item
-          img.elasticstack__image(src='http://babeholder.pixoil.com/img/300/260/1/?1234567890abc', alt='')
+          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-4.jpg', alt='')
           h5.elasticstack__header Retrouvailles
     .popup__footer
       +button( { mods: { type: 'link' }, url: 'order.html' } )

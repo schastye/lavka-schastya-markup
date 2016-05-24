@@ -55,6 +55,10 @@
     font-weight: 200;
     font-size: 14px;
   }
+
+  &__caption {
+    display: inline-block;
+  }
 }
 
 // Future-proof disabling of clicks on `<a>` elements

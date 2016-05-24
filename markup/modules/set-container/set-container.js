@@ -2,6 +2,13 @@
 
 'use strict';
 
+/* eslint-disable */
+function getElIndex(el) {
+  for (var i = 0; el = el.previousElementSibling; i++);
+  return i;
+}
+/* eslint-enable */
+
 (function () {
 
   let initElem = document.querySelectorAll( '.dragdrop' )[0];
@@ -21,8 +28,9 @@
         feedbackClass: dropAreaItem + '_feedback',
 
         onDrop: function ( instance, dragEl ) {
-          instance.el.dataset.order = dragEl.dataset.good;
-          instance.el.innerHTML = '<div style="background-image: url(' + dragEl.dataset.drag + ');" class="set-cell-content"></div>';
+          instance.el.innerHTML = `<div style="background-image: url(${ dragEl.dataset.drag });" class="set-cell-content">
+                                     <input type="hidden" name="cell[${ getElIndex( instance.el ) }]" class="set-cell-content__id" value="${dragEl.dataset.good}">
+                                   </div>`;
           instance.el.firstChild.addEventListener( 'click', event => {
             event.preventDefault();
             event.srcElement.remove();
@@ -59,16 +67,13 @@
         animateClass: gridItem + '_animate',
         showClass: 'drop-area_show',
 
-        onStart: function ( instance ) {
+        onStart: function () {
           // add class activeClass to body
           classie.add( body, this.activeClass );
           // clear timeout: dropAreaTimeout (toggle drop area)
           clearTimeout( dropAreaTimeout );
           // show dropArea
           classie.add( dropArea, this.showClass );
-          // debugger; // eslint-disable-line
-          // let image = instance.element.querySelectorAll( '.variant-item__image' )[ 0 ];
-          // image.setAttribute( 'src', image.dataset.drag );
         },
         onEnd: function ( wasDropped ) {
           let showClass = this.showClass,

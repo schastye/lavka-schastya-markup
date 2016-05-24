@@ -1,9 +1,9 @@
-/* global classie, ScrollMagic */
+/* global classie, Peppermint */
 
 'use strict';
 
 let headerNavigation = document.getElementById( 'header__navigation' );
-if (headerNavigation) {
+if (headerNavigation.length) {
   headerNavigation.addEventListener( 'click', event => {
     event.preventDefault();
     classie.remove( document.getElementById( 'header-order' ), 'header__menu_show' );
@@ -12,7 +12,7 @@ if (headerNavigation) {
 }
 
 let headerOrder = document.getElementById( 'header__order' );
-if (headerOrder) {
+if (headerOrder.length) {
   headerOrder.addEventListener( 'click', event => {
     event.preventDefault();
     classie.remove( document.getElementById( 'header-menu' ), 'header__menu_show' );
@@ -22,10 +22,9 @@ if (headerOrder) {
 
 (function () {
 
-  let initElem = document.querySelectorAll( '.header-logo' );
-
-  if (initElem) {
-    [].slice.call( initElem ).forEach( el => {
+  let headerLogo = document.querySelectorAll( '.header-logo' );
+  if (headerLogo.length) {
+    [].slice.call( headerLogo ).forEach( el => {
 
       setTimeout( () => {
         if ( !el.classList.contains( 'header-logo_collapse' ) ) {
@@ -34,5 +33,34 @@ if (headerOrder) {
       }, 3000 );
     } );
   }
+
+  let headerCity = document.querySelectorAll( '.header__city' );
+  if (headerCity.length) {
+    [].slice.call( headerCity ).forEach( headerCityItem => {
+      let slider = new Peppermint( headerCityItem, {
+        speed: 500,
+        touchSpeed: 500,
+        mouseDrag: true
+      } );
+
+      let headerCityPrev = headerCityItem.querySelectorAll( '.city-select__prev' );
+      [].slice.call( headerCityPrev ).forEach( headerCityPrevItem => {
+        headerCityPrevItem.addEventListener( 'click', event => {
+          event.preventDefault();
+          slider.prev();
+        } );
+      } );
+
+      let headerCityNext = headerCityItem.querySelectorAll( '.city-select__next' );
+      [].slice.call( headerCityNext ).forEach( headerCityNextItem => {
+        headerCityNextItem.addEventListener( 'click', event => {
+          event.preventDefault();
+          slider.next();
+        } );
+      } );
+    } );
+  }
+
+
 
 } )();

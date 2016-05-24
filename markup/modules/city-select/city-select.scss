@@ -1,0 +1,17 @@
+.city-select {
+  text-align: center;
+  font-size: .8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__prev,
+  &__caption,
+  &__next {
+    display: inline-block;
+  }
+
+  &__caption {
+    margin: 0;
+  }
+}
