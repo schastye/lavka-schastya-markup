@@ -7,7 +7,7 @@ mixin header(data)
 
   header.header
     .header__navigation#header__navigation
-      +button( { mods: { style: 'glass', type: 'link' }, url: data.menu.url } )(class="menu-button")
+      +button( { mods: { style: 'glass' } } )(class="menu-button")
         if data.menu.active
           != jadeHelpers.Icon.call(locals, {iconName: 'arrow_up_green', className: 'menu-icon'})
         else
@@ -37,7 +37,7 @@ mixin header(data)
           .city-select__caption Нью-Йорк
           +button( { mods: { style: 'glass' } } )(class="city-select__next") &gt;
     .header__order#header__order
-      +button( { mods: { style: 'glass', type: 'link' }, url: data.order.url } )(class="order-button")
+      +button( { mods: { style: 'glass' } } )(class="order-button")
         if data.order.active
           != jadeHelpers.Icon.call(locals, { iconName: 'arrow_up_green', className: 'basket-icon' } )
         else
