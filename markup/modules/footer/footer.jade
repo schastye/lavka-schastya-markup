@@ -33,10 +33,10 @@ mixin footer(data)
       ul.footer-social
         li.footer-social__item
           a.footer-social__link(href='222', target='_blank', rel='no-follow')
-            i.fa.fa-fw.fa-instagram
+            != jadeHelpers.Icon.call(locals, {iconName: 'instagram', className: 'icon icon_instagram'})
         li.footer-social__item
           a.footer-social__link(href='222', target='_blank', rel='no-follow')
-            i.fa.fa-fw.fa-circle
+            != jadeHelpers.Icon.call(locals, {iconName: 'angel', className: 'icon icon_angel'})
         li.footer-social__item
           a.footer-social__link(href='222', target='_blank', rel='no-follow')
-            i.fa.fa-fw.fa-pinterest
+            != jadeHelpers.Icon.call(locals, {iconName: 'pinterest', className: 'icon icon_pinterest'})
