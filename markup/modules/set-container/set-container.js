@@ -29,7 +29,7 @@ function getElIndex(el) {
 
         onDrop: function ( instance, dragEl ) {
           instance.el.innerHTML = `<div style="background-image: url(${ dragEl.dataset.drag });" class="set-cell-content">
-                                     <input type="hidden" name="cell[${ getElIndex( instance.el ) }]" class="set-cell-content__id" value="${dragEl.dataset.good}">
+                                     <input type="hidden" name="cell-${ getElIndex( instance.el ) }" class="set-cell-content__id" value="${dragEl.dataset.good}">
                                    </div>`;
           instance.el.firstChild.addEventListener( 'click', event => {
             event.preventDefault();

@@ -18,8 +18,10 @@
       el.addEventListener( 'click', event => {
         event.preventDefault();
         let jumpTo = document.querySelectorAll( '.good-information' )[ 0 ];
-        event.currentTarget.querySelectorAll( '.box-variant__select' )[ 0 ]
-          .checked = true;
+        let select = event.currentTarget.querySelectorAll( '.box-variant__select' )[ 0 ];
+        select.checked = true;
+        let inputQuantity = document.querySelectorAll( '.button-range__value' )[ 0 ].value;
+        document.getElementById('price__value').innerText = select.value * inputQuantity;
         slider.slideTo( item );
       }, false);
     } );

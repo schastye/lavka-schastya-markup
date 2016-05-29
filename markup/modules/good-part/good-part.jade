@@ -47,20 +47,20 @@ mixin good-part(data)
         h2.set-container__title.set-container__title_center  Варианты упаковки
         .box-variant
           label.box-variant__item(data-slide="http://babeholder.pixoil.com/img/1920/420/?0123456789121")
-            input.box-variant__select(type="radio" name="box-variant" checked)
+            input.box-variant__select(type="radio" name="box-variant" value="500" form="order" checked)
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 1')
             h3.box-variant__caption От Счастья
             .box-variant__price 500 rub
           label.box-variant__item(data-slide="http://babeholder.pixoil.com/img/1920/420/?0123456789122")
-            input.box-variant__select(type="radio" name="box-variant")
+            input.box-variant__select(type="radio" name="box-variant" value="750" form="order")
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 2')
             h3.box-variant__caption Особая
-            .box-variant__price 500 rub
+            .box-variant__price 750 rub
           label.box-variant__item(data-slide="http://babeholder.pixoil.com/img/1920/420/?0123456789123")
-            input.box-variant__select(type="radio" name="box-variant")
+            input.box-variant__select(type="radio" name="box-variant" value="1000" form="order")
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 3')
             h3.box-variant__caption Подарочная
-            .box-variant__price 500 rub
+            .box-variant__price 1000 rub
       .good-information__price
         h2.set-container__title 
           form.button-range.pull_right(role='group' action="order.html" method="get" id="order")
@@ -80,7 +80,9 @@ mixin good-part(data)
           | Lorem ipsum dolor sit amet, consectetur adipisicing elit.
         hr
         h2.set-container__title
-          .pull_right 2000 rub
+          .price.pull_right
+            span.price__value#price__value 2000
+            span.price__currency &nbsp;rub
           | Стоимость
         button.button.button_add-to-card(type='submit' form='order')
           .button__caption Добавить в корзину

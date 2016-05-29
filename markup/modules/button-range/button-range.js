@@ -29,6 +29,8 @@
               default:
                 break;
             }
+            let currentPrice = document.querySelectorAll( '.box-variant__select:checked' )[0].value;
+            document.getElementById('price__value').innerText = currentPrice * input.value;
           } );
         } );
     } );
