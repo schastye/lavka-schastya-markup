@@ -1,18 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="22px" height="11px" viewBox="0 0 22 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 3.6 (26304) - http://www.bohemiancoding.com/sketch -->
-    <title>arrow_up</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <g id="arrow_up" transform="translate(1.000000, 0.000000)" stroke="#A6CDB0">
-            <g id="Page-1">
-                <g id="arrow_up">
-                    <g id="Page-1">
-                        <path d="M0,10.2725195 L10.2725195,0 L20.3643217,10.0918022" id="Path-5"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg viewBox="0 0 22 11" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1 10.273L11.273 0l10.09 10.092" stroke="#A6CDB0" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
