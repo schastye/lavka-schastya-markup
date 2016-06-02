@@ -70,6 +70,7 @@ body {
   // Make the `body` use the `font-size-root`
   font-family: $font-family-base;
   font-size: $font-size-base;
+  font-weight: 200;
   line-height: $line-height;
   // Go easy on the eyes and use something other than `#000` for text
   color: $body-color;
@@ -98,6 +99,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: .5rem;
+  font-weight: 100;
+}
+
+h4, h5, h6 {
+  font-weight: 200;
 }
 
 // Reset margins on paragraphs

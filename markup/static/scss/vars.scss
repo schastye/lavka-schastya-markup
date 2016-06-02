@@ -3,10 +3,18 @@
 
 $btn-border-radius: 0;
 
-@import "../../../node_modules/bootstrap/scss/variables";
-
-$font-family-sans-serif:  "Raleway", Helvetica, Arial, sans-serif;
 $font-size-root: 14px;
+
+$headings-font-weight:        200;
+$lead-font-weight:            200;
+$dt-font-weight:              200;
+$nested-kbd-font-weight:      200;
+$btn-font-weight:             200;
+$label-font-weight:           200;
+$alert-link-font-weight:      200;
+$close-font-weight:           200;
+
+@import "../../../node_modules/bootstrap/scss/variables";
 
 $icon-font-path: '../fonts/';
 
