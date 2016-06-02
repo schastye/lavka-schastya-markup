@@ -1,8 +1,15 @@
 .variant-item {
   @extend .btn-block;
-  padding: 0;
+  padding: 0.375rem .5rem !important;
   border-width: 0;
   max-width: 112px;
+
+  &:hover,
+  &:focus {
+    .variant-item__image {
+      opacity: 1;
+    }
+  }
 
   &__caption {
     padding: 0 .5rem;
@@ -13,9 +20,11 @@
 
   &__image {
     @extend .img-circle;
+    opacity: .6;
     display: block;
     max-width: 100%;
     margin: 0 auto;
+    transition: opacity 500ms linear;
   }
 
   &.is-dragging &__caption {

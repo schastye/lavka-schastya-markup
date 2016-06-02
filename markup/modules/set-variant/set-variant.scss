@@ -1,5 +1,5 @@
 @lost flexbox flex;
-@lost gutter 30px;
+@lost gutter 0;
 
 .set-variant {
   lost-flex-container: row;
@@ -10,6 +10,6 @@
   align-content: flex-start;
 
   &__item {
-    lost-column: 1/5 5 16px flex;
+    lost-column: 1/5 5 0 flex;
   }
 }

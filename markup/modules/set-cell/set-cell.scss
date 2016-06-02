@@ -6,12 +6,32 @@ $cell-item-width: 85px;
   float: right;
   border-radius: $border-radius * 2;
 
+  &_column_1 {
+    width: $cell-item-width - 1px;
+  }
+
+  &_column_2 {
+    width: (2 * $cell-item-width) - 2px;
+  }
+
+  &_column_3 {
+    width: (3 * $cell-item-width) - 3px;
+  }
+
   &_column_4 {
     width: (4 * $cell-item-width) - 4px;
   }
 
+  &_column_5 {
+    width: (5 * $cell-item-width) - 5px;
+  }
+
   &_column_6 {
     width: (6 * $cell-item-width) - 6px;
+  }
+
+  &_column_7 {
+    width: (7 * $cell-item-width) - 7px;
   }
 
   &_column_8 {
