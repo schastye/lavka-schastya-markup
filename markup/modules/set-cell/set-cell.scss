@@ -1,50 +1,87 @@
-$cell-item-width: 85px;
+@lost flexbox flex;
+@lost gutter 0;
 
 .set-cell {
-  @extend .set-cell_column_4; 
+  @extend .set-cell_column_4;
   margin: 0;
   float: right;
   border-radius: $border-radius * 2;
 
   &_column_1 {
-    width: $cell-item-width - 1px;
+    lost-column: 1/8 8 0 flex;
+
+    .set-cell__item {
+      lost-column: 1/1;
+    }
   }
 
   &_column_2 {
-    width: (2 * $cell-item-width) - 2px;
+    lost-column: 2/8 8 0 flex;
+
+    .set-cell__item {
+      lost-column: 1/2;
+    }
   }
 
   &_column_3 {
-    width: (3 * $cell-item-width) - 3px;
+    lost-column: 3/8 8 0 flex;
+
+    .set-cell__item {
+      lost-column: 1/3;
+    }
   }
 
   &_column_4 {
-    width: (4 * $cell-item-width) - 4px;
+    lost-column: 4/8 8 0 flex;
+
+    .set-cell__item {
+      lost-column: 1/4;
+    }
   }
 
   &_column_5 {
-    width: (5 * $cell-item-width) - 5px;
+    lost-column: 5/8 8 0 flex;
+
+    .set-cell__item {
+      lost-column: 1/5;
+    }
   }
 
   &_column_6 {
-    width: (6 * $cell-item-width) - 6px;
+    lost-column: 6/8 8 0 flex;
+
+    .set-cell__item {
+      lost-column: 1/6;
+    }
   }
 
   &_column_7 {
-    width: (7 * $cell-item-width) - 7px;
+    lost-column: 7/8 8 0 flex;
+
+    .set-cell__item {
+      lost-column: 1/7;
+    }
   }
 
   &_column_8 {
-    width: (8 * $cell-item-width) - 8px;
+    lost-column: 8/8 8 0 flex;
+
+    .set-cell__item {
+      lost-column: 1/8;
+    }
   }
 
   &__item {
-    width: $cell-item-width;
-    float: left;
-    margin: 0 -1px -1px 0;
+    float: right;
+    lost-column: 1/4;
     position: relative;
     border-radius: $border-radius * 2;
-    border: 1px solid $set-cell__item_color;
+    box-shadow: 
+      0 0 0 0 #888, 
+      0 0 0 0 #888, 
+      1px 1px 0 0 #888,   /* Just to fix the corner */
+      1px 0 0 0 #888 inset, 
+      0 1px 0 0 #888 inset;
 
     &:before{
         display: block;
