@@ -4,6 +4,7 @@ mixin header(data)
   include ../header-logo/header-logo
   include ../header-menu/header-menu
   include ../header-order/header-order
+  include ../header-breadcrumbs/header-breadcrumbs
 
   header.header
     .header__navigation#header__navigation
@@ -46,3 +47,6 @@ mixin header(data)
       +header-menu(header.menu)
     .header__menu#header-order(class= data.order.active ? 'header__menu_show' : 'header__menu_hidden')
       +header-order()
+    if data.breadcrumbs
+      .header__menu.header__menu_breadcrumbs
+        +header-breadcrumbs( { title: 'Макарони', url: 'part.html' } )

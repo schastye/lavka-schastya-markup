@@ -11,7 +11,9 @@ html(class="no-js", lang="ru")
     +head(head.defaults)
   +page()
     |%=symbols=%
-    +header( { menu: { active: false, url: 'index__menu.html' }, order: { active: false, url: 'index__order.html' } } )
+    +header( { menu: { active: false, url: 'index__menu.html' }
+             , order: { active: false, url: 'index__order.html' }
+             , breadcrumbs: { title: 'Макарони', url: 'part.html' } } )
 
     +good-part( { columns: 4, rows: 2 ,sets: 3 } )
 

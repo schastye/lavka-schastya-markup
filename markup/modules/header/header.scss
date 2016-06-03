@@ -91,6 +91,10 @@
       z-index: -5 !important;
     }
 
+    &_breadcrumbs {
+      transform: translateY(calc(2.5rem - 10%));
+    }
+
     & > * {
       position: relative;
       z-index: 10;
