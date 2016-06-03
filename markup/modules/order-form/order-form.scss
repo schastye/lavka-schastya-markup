@@ -3,8 +3,7 @@
 
 .order-form {
   lost-column: 8/12 0 16px flex;
-  lost-offset: -3/12;
-  lost-center: 100%;
+  lost-center: 100% 30px flex;
   // lost-utility: edit;
   background-color: #fff;
   margin-top: 126px;
@@ -13,8 +12,7 @@
   padding-bottom: 30px;
 
   &__title {
-    lost-column: 16/18 1 16px flex;
-    lost-offset: -1/18;
+    lost-column: 1/1 1 30px flex;
     text-transform: uppercase;
     font-size: 20px;
     font-weight: 200;
@@ -23,14 +21,10 @@
   }
 
   &__data {
-    lost-column: 8/18 0 16px flex;
-    lost-offset: -1/18;
-
+    lost-column: 1/2 0 30px flex;
   }
 
   &__aside {
-    lost-column: 7/18 1 16px flex;
-    lost-offset: -1/18;
-
+    lost-column: 1/2 1 30px flex;
   }
 }
