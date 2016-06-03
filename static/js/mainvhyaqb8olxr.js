@@ -158,26 +158,6 @@ if ( typeof define === 'function' && define.amd ) {
 })( window );
 
 "use strict";
-/* global */
-
-'use strict';
-
-(function () {
-  var initElem = document.querySelectorAll('.button_add-to-card');
-  if (initElem) {
-    [].slice.call(initElem).forEach(function (el) {
-      el.addEventListener('click', function (event) {
-        if (!event.currentTarget.classList.contains('button_add-to-card_added')) {
-          event.preventDefault();
-          event.currentTarget.classList.add('button_add-to-card_added');
-          event.currentTarget.querySelectorAll('.button__caption')[0].innerText = 'Перейти к заказу';
-        } else {
-          console.log('Go to order!');
-        }
-      }, false);
-    });
-  }
-})();
 /* global Peppermint, zenscroll */
 
 'use strict';
@@ -208,6 +188,26 @@ if ( typeof define === 'function' && define.amd ) {
         }, false);
       });
     })();
+  }
+})();
+/* global */
+
+'use strict';
+
+(function () {
+  var initElem = document.querySelectorAll('.button_add-to-card');
+  if (initElem) {
+    [].slice.call(initElem).forEach(function (el) {
+      el.addEventListener('click', function (event) {
+        if (!event.currentTarget.classList.contains('button_add-to-card_added')) {
+          event.preventDefault();
+          event.currentTarget.classList.add('button_add-to-card_added');
+          event.currentTarget.querySelectorAll('.button__caption')[0].innerText = 'Перейти к заказу';
+        } else {
+          console.log('Go to order!');
+        }
+      }, false);
+    });
   }
 })();
 /* global */
