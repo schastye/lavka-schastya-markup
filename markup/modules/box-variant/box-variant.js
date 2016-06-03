@@ -1,4 +1,4 @@
-/* global Peppermint */
+/* global Peppermint, zenscroll */
 
 'use strict';
 
@@ -17,7 +17,9 @@
     [].slice.call(initElem).forEach( ( el, item ) => {
       el.addEventListener( 'click', event => {
         event.preventDefault();
-        let jumpTo = document.querySelectorAll( '.good-information' )[ 0 ];
+        if ( window.zenscroll ) {
+          zenscroll.to( document.getElementById('good-information') );
+        }
         let select = event.currentTarget.querySelectorAll( '.box-variant__select' )[ 0 ];
         select.checked = true;
         let inputQuantity = document.querySelectorAll( '.button-range__value' )[ 0 ].value;
