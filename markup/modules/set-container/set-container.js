@@ -34,6 +34,8 @@ function getElIndex(el) {
           instance.el.firstChild.addEventListener( 'click', event => {
             event.preventDefault();
             event.srcElement.remove();
+            document.querySelectorAll( '.button_add-to-card' )[0].disabled = true;
+            dropArea.classList.remove( 'drop-area_completed' );
           });
           // debugger; // eslint-disable-line
           // show checkmark inside the droppabe element
@@ -42,7 +44,12 @@ function getElIndex(el) {
           instance.checkmarkTimeout = setTimeout( () => {
             classie.remove( instance.el, this.feedbackClass );
           }, 800 );
-          // ...
+
+          if ( document.querySelectorAll( '.set-cell__item' ).length ===
+               document.querySelectorAll( '.set-cell-content' ).length ) {
+            document.querySelectorAll( '.button_add-to-card' )[0].disabled = false;
+            dropArea.classList.add( 'drop-area_completed' );
+          }
         }
       } ) );
     } );

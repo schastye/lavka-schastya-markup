@@ -47,6 +47,10 @@
       opacity: 1;
     }
   }
+
+  &_completed {
+    background-color: $color-green;
+  }
 }
 
 .dragdrop__overlay {
