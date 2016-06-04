@@ -2,7 +2,6 @@
 @lost gutter 0;
 
 .set-cell {
-  @extend .set-cell_column_4;
   margin: 0;
   float: right;
   border-radius: $border-radius * 2;

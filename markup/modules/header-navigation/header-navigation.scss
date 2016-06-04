@@ -1,3 +1,10 @@
 .header-navigation {
-  
+
+  &__menu {
+    display: none;
+  }
+
+  &__button {
+    width: 100%;
+  }
 }

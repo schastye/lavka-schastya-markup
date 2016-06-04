@@ -9,6 +9,86 @@
     opacity: 1;
   }
 
+  &_simple {
+    min-height: 40px;
+  }
+
+  &__header {
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
+  }
+
+  &__image {
+    opacity: .8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    margin: 0;
+    background-position: center;
+    background-size: cover;
+    transition: opacity .3s linear;
+  }
+
+  &__title {
+    display: inline-block;
+    position: absolute;
+    z-index: 10;
+    font-weight: 200;
+    background-color: $color-beige;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+
+    &_position {
+      &_bottom-right {
+        top: auto;
+        bottom: 0;
+        left: auto;
+        right: $space-2;
+      }
+
+      &_top-right {
+        top: 0;
+        bottom: auto;
+        left: auto;
+        right: $space-2;
+      }
+
+      &_bottom-left {
+        top: auto;
+        bottom: 0;
+        left: $space-2;
+        right: auto;
+      }
+
+      &_bottom-center-left {
+        top: auto;
+        bottom: 0;
+        left: auto;
+        right: 50%;
+      }
+
+      &_top-left {
+        top: 0;
+        bottom: auto;
+        left: $space-2;
+        right: auto;
+      }
+
+      &_bottom-center-right {
+        top: auto;
+        bottom: 0;
+        left: 50%;
+        right: auto;
+      }
+    }
+  }
+
   &__link {
     font-size: 30px;
     font-weight: 100;

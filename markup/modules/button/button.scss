@@ -41,6 +41,17 @@
     @include box-shadow(none);
   }
 
+  &_style {
+    &_glass {
+      @include button-variant(#000, transparent, transparent);
+    }
+
+    &_grey-outline {
+      @include button-variant(#4a4a4a, transparent, #4a4a4a);
+    }
+
+  }
+
   &_add-to-card {
     color: #4a4a4a;
     border-color: #4a4a4a;
