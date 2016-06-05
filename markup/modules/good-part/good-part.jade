@@ -43,7 +43,7 @@ mixin good-part(data)
                 a.list-tags__link(href='999') шоколад
               li.list-tags__item
                 a.list-tags__link(href='999') тесто
-      .good-information__box
+      //- .good-information__box
         h2.set-container__title.set-container__title_center  Варианты упаковки
         .box-variant
           label.box-variant__item
@@ -81,14 +81,14 @@ mixin good-part(data)
         hr
         h2.set-container__title
           .price.pull_right
-            span.price__value#price__value 2000
+            span.price__value#price__value(data-price='2000') 2000
             span.price__currency &nbsp;rub
           | Стоимость
         button.button.button_add-to-card(type='submit' form='order')
           .button__caption Добавить в корзину
           != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'add-to-card'})
 
-  .peppermint.peppermint-inactive#peppermint
+  //- .peppermint.peppermint-inactive#peppermint
     figure.part-card.part-card_nohover
       .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/main-part/macarons.jpg)")
     figure.part-card.part-card_nohover

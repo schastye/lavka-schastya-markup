@@ -29,7 +29,9 @@
               default:
                 break;
             }
-            let currentPrice = document.querySelectorAll( '.box-variant__select:checked' )[0].value;
+            let currentPrice = document.querySelectorAll( '.box-variant__select:checked' ).length
+                             ? document.querySelectorAll( '.box-variant__select:checked' )[0].value
+                             : document.getElementById( 'price__value' ).dataset.price;
             document.getElementById('price__value').innerText = currentPrice * input.value;
           } );
         } );
