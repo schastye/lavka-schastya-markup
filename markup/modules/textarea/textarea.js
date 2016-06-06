@@ -4,7 +4,7 @@
 
   let initElem = document.querySelectorAll( '.textarea_expanded' );
 
-  if (initElem) {
+  if ( initElem.length ) {
     [].slice.call( initElem ).forEach( el => {
       el.style.height = '50px';
       el.addEventListener( 'focus', event => {

@@ -4,7 +4,7 @@
 
 (function () {
   let initElem = document.querySelectorAll( '.value-range' );
-  if ( initElem ) {
+  if ( initElem.length ) {
     [].slice.call( initElem ).forEach( valueRange => {
       let input = valueRange.querySelectorAll( '.value-range__value' )[ 0 ];
       [].slice.call( valueRange.querySelectorAll( '.value-range__button' ) )

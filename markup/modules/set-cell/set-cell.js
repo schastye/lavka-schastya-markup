@@ -4,10 +4,12 @@
 
 (function () {
 
-  let initElem = document.querySelectorAll( '.set-cell' )[0];
+  let initElem = document.querySelectorAll( '.set-cell' );
 
-  if (initElem) {
-    document.querySelectorAll( '.button_add-to-card' )[0].disabled = true;
+  if ( initElem.length ) {
+    [].slice.call( document.querySelectorAll( '.button_add-to-card' ) ).forEach( el => {
+      el.disabled = true;
+    } );
   }
 
 } )();

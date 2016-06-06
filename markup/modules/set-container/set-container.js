@@ -11,9 +11,9 @@ function getElIndex(el) {
 
 (function () {
 
-  let initElem = document.querySelectorAll( '.dragdrop' )[0];
+  let initElem = document.querySelectorAll( '.dragdrop' );
 
-  if (initElem) {
+  if ( initElem.length ) {
     let body = document.body,
       dropArea = document.getElementById( 'drop-area' ),
       dropAreaItem = 'drop-area__item',

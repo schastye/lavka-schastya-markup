@@ -4,7 +4,7 @@
 
   let initElem = document.querySelectorAll( '.set-cell-content' );
 
-  if (initElem) {
+  if ( initElem.length ) {
     [].slice.call( initElem ).forEach( el => {
       el.addEventListener( 'click', event => {
         event.preventDefault();

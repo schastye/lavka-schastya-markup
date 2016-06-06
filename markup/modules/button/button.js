@@ -4,7 +4,7 @@
 
 (function () {
   let initElem = document.querySelectorAll( '.button_add-to-card' );
-  if ( initElem ) {
+  if ( initElem.length ) {
     [].slice.call(initElem).forEach( ( el ) => {
       el.addEventListener( 'click', event => {
         if ( !event.currentTarget.classList.contains( 'button_add-to-card_added' ) ) {
