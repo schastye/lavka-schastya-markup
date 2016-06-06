@@ -21,7 +21,7 @@
 }
 
 .is-dragging {
-  background: #525b62;
+  z-index: 1000;
 }
 
 .is-dropped {
