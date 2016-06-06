@@ -17,6 +17,8 @@
     background-color: transparent;
     border-width: 0;
     text-align: center;
+    -moz-appearance: textfield; /* Fix Firefox spins */
+    width: 40px; /* Fix Firefox width (ugly) */
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
