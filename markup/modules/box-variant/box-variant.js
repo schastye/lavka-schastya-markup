@@ -17,7 +17,7 @@
         let select = event.currentTarget.querySelectorAll( '.box-variant__select' )[ 0 ];
         select.checked = true;
         let inputQuantity = document.querySelectorAll( '.button-range__value' )[ 0 ].value;
-        document.getElementById('price__value').innerText = select.value * inputQuantity;
+        document.getElementById('price__value').innerText = select.dataset.price * inputQuantity;
         slider.slideTo( item );
       }, false);
     } );

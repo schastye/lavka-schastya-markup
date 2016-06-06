@@ -47,17 +47,17 @@ mixin good-part(data)
         h2.set-container__title.set-container__title_center  Варианты упаковки
         .box-variant
           label.box-variant__item
-            input.box-variant__select(type="radio" name="box-variant" value="500" data-box="11")
+            input.box-variant__select(type="radio" name="box-variant" data-price="500" value="11")
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 1')
             h3.box-variant__caption От Счастья
             .box-variant__price 500 rub
           label.box-variant__item
-            input.box-variant__select(type="radio" name="box-variant" value="750" data-box="22" checked)
+            input.box-variant__select(type="radio" name="box-variant" data-price="750" value="22" checked)
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 2')
             h3.box-variant__caption Особая
             .box-variant__price 750 rub
           label.box-variant__item
-            input.box-variant__select(type="radio" name="box-variant" value="1000" data-box="33")
+            input.box-variant__select(type="radio" name="box-variant" data-price="1000" value="33")
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 3')
             h3.box-variant__caption Подарочная
             .box-variant__price 1000 rub
@@ -66,7 +66,6 @@ mixin good-part(data)
           form.button-range.pull_right(role='group' action="order.html" method="get" id="order")
             input(type="hidden" name="id" value="100500")
             input(type="hidden" name="options[composition]" value="")
-            input(type="hidden" name="options[box]" value="")
             +button({ mods: {} })(class='button-range__button' value='cart/remove')
               != jadeHelpers.Icon.call(locals, { iconName: 'arrow_left', className: 'icon icon_arrow_left' } )
             input.button-range__value(type='number' name='count' value='1' size='2' min='1' max='99' readonly)

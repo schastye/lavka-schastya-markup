@@ -30,7 +30,7 @@
                 break;
             }
             let currentPrice = document.querySelectorAll( '.box-variant__select:checked' ).length
-                             ? document.querySelectorAll( '.box-variant__select:checked' )[0].value
+                             ? document.querySelectorAll( '.box-variant__select:checked' )[0].dataset.price
                              : document.getElementById( 'price__value' ).dataset.price;
             document.getElementById('price__value').innerText = currentPrice * input.value;
           } );
