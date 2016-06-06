@@ -43,21 +43,21 @@ mixin good-part(data)
                 a.list-tags__link(href='999') шоколад
               li.list-tags__item
                 a.list-tags__link(href='999') тесто
-      //- .good-information__box
+      .good-information__box
         h2.set-container__title.set-container__title_center  Варианты упаковки
         .box-variant
           label.box-variant__item
-            input.box-variant__select(type="radio" name="box-variant" value="500" form="order" checked)
+            input.box-variant__select(type="radio" name="box-variant" value="500" data-box="11")
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 1')
             h3.box-variant__caption От Счастья
             .box-variant__price 500 rub
           label.box-variant__item
-            input.box-variant__select(type="radio" name="box-variant" value="750" form="order")
+            input.box-variant__select(type="radio" name="box-variant" value="750" data-box="22" checked)
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 2')
             h3.box-variant__caption Особая
             .box-variant__price 750 rub
           label.box-variant__item
-            input.box-variant__select(type="radio" name="box-variant" value="1000" form="order")
+            input.box-variant__select(type="radio" name="box-variant" value="1000" data-box="33")
             img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 3')
             h3.box-variant__caption Подарочная
             .box-variant__price 1000 rub
@@ -65,6 +65,8 @@ mixin good-part(data)
         h2.set-container__title 
           form.button-range.pull_right(role='group' action="order.html" method="get" id="order")
             input(type="hidden" name="id" value="100500")
+            input(type="hidden" name="options[composition]" value="")
+            input(type="hidden" name="options[box]" value="")
             +button({ mods: {} })(class='button-range__button' value='cart/remove')
               != jadeHelpers.Icon.call(locals, { iconName: 'arrow_left', className: 'icon icon_arrow_left' } )
             input.button-range__value(type='number' name='count' value='1' size='2' min='1' max='99' readonly)
@@ -88,12 +90,12 @@ mixin good-part(data)
           .button__caption Добавить в корзину
           != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'add-to-card'})
 
-  //- .peppermint.peppermint-inactive#peppermint
-    figure.part-card.part-card_nohover
+  .peppermint.peppermint-inactive#peppermint
+    figure.part-card.part-card_nohover(data-box="11")
       .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/main-part/macarons.jpg)")
-    figure.part-card.part-card_nohover
+    figure.part-card.part-card_nohover(data-box="22")
       .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/box-variant/box-variant-2.jpg)")
-    figure.part-card.part-card_nohover
+    figure.part-card.part-card_nohover(data-box="33")
       .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/box-variant/box-variant-3.jpg)")
 
   .good-relevant
