@@ -19,9 +19,7 @@ $label-font-weight:           200;
 $alert-link-font-weight:      200;
 $close-font-weight:           200;
 
-@import "../../../node_modules/bootstrap/scss/variables";
-
-$icon-font-path: '../fonts/';
+@import "../../../node_modules/bootstrap/scss/_variables.scss";
 
 $grid-gutter-width:    16px;
 
