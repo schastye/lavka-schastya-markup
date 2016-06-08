@@ -29,6 +29,8 @@
     .header-logo {
       margin: 0;
       color: #000;
+      transition: margin 0.4s ease-in-out,
+                  color 0.4s linear 0.2s;
     }
   }
 
@@ -85,8 +87,6 @@
     }
 
     &_show {
-      // top: 100%;
-      // bottom: auto;
       transform: translateY( calc(100% - 2rem) );
       z-index: -5 !important;
     }
