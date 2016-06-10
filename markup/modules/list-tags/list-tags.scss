@@ -11,7 +11,7 @@
 
   &__item > *,
   &__link {
-    color: #9b9b9b;
+    color: $color-grey-light;
     text-decoration: none;
 
     &:before {
@@ -21,7 +21,7 @@
     &:hover,
     &:focus {
       text-decoration: none;
-      color: #85b892;
+      color: $color-green-dark;
     }
   }
 }

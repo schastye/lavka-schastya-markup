@@ -1,6 +1,6 @@
 .box-select {
   position: relative;
-  background-color: $off-white !important;
+  background-color: $color-beige !important;
 
   &__button {
     padding: 10px !important;
@@ -8,7 +8,7 @@
     font-weight: 500 !important;
     font-size: 10px !important;
     letter-spacing: 1px !important;
-    color: $greyish-brown !important;
+    color: $color-grey-dark !important;
     display: flex !important;
     width: 100%;
     justify-content: space-between;

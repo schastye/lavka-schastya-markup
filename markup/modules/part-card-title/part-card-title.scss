@@ -6,19 +6,25 @@
   min-width: 120px;
   max-width: 430px;
   overflow: hidden;
-  transition: all .3s ease-in-out .1s;
+  transition: all .5s ease-in-out .8s;
 
   &:hover,
   &:focus {
     padding: 40px 60px;
     min-width: 430px;
     text-decoration: none;
+    transition: all .5s ease-in-out .3s;
 
     .part-card-title__description {
       max-width: 430px;
       max-height: 300px;
       opacity: 1;
+      font-size: 13px;
       text-decoration: none;
+      transition: max-width .5s linear .3s,
+                  max-height .5s linear .3s,
+                  opacity .5s linear 1.3s,
+                  font-size .5s linear .8s;
     }
   }
 
@@ -37,12 +43,15 @@
     text-align: center;
     line-height: 1;
     letter-spacing: 1px;
-    color: #4a4a4a;
+    color: $color-grey-dark;
     font-weight: 100;
   }
 
   &__description {
-    transition: all .6s ease-in-out .1s;
+    transition: max-width .5s linear .8s,
+                max-height .5s linear .8s,
+                opacity .5s linear .3s,
+                font-size .5s linear .8s;
     margin: 0 auto;
     opacity: 0;
     text-overflow: clip;
@@ -52,10 +61,10 @@
     padding-top: 1rem;
     text-align: left;
     hyphens: auto;
-    font-size: 13px;
+    font-size: 0px;
     line-height: 1.2;
     letter-spacing: 1px;
-    color: #4a4a4a;
+    color: $color-grey-dark;
     font-weight: 200;
   }
 }

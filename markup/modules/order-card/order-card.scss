@@ -1,7 +1,7 @@
 @lost flexbox flex;
 
 .order-card {
-  background-color: $off-white;
+  background-color: $color-beige;
 
   &__good  {
     display: flex;
@@ -29,7 +29,7 @@
     font-size: 12px;
     line-height: 1.4;
     letter-spacing: 2px;
-    color: $greyish-brown;
+    color: $color-grey-dark;
     text-transform: uppercase;
   }
 
@@ -37,7 +37,7 @@
     font-weight: 200;
     font-size: 12px;
     letter-spacing: 2px;
-    color: #666666;
+    color: $color-grey-dark;
   }
 
   &__value {

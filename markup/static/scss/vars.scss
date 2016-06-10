@@ -24,28 +24,18 @@ $close-font-weight:           200;
 $grid-gutter-width:    16px;
 
 $color-grey:           #eee;
-$color-grey-dark:      #4a4a4a;
+$color-grey-dark:      #666;
 $color-grey-light:     #9b9b9b;
 $color-green:          #e9f0e0;
 $color-green-dark:     #85b892;
 $color-green-light:    #f0faf3;
 $color-beige:          #fff9ea;
 $color-beige-light:    #fffef6;
-$color-blue:           #dff1fb;
 $color-pink:           #fdf7ff;
+$color-blue:           #f7fcff;
 
-$pale-teal:      #a6cdb0;
-$light-sage:     #f0faf3;
-$ice-blue:       #f7fcff;
-$pale-lavender:  #fdf7ff;
-$off-white:      #fff9ea;
-$faded-green:    #85b892;
-$warm-grey:      #9b9b9b;
-$greyish-brown:  #4a4a4a;
 
-$set-cell__item_color: #979797;
-
-// основные блоки текста - #666666
+$set-cell__item_color: $color-grey-dark;
 
 $space-1:              1rem;
 $space-2:              2rem;

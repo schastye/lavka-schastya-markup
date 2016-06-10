@@ -1,10 +1,9 @@
 .header-logo {
   display: block;
   color: #000;
-  transition: margin .4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
-              color .4s;
+  transition: margin 0.4s ease-in-out 0.2s,
+              color 0.4s linear 0s;
   overflow: hidden;
-
 
   &_collapse {
     margin: -68px 0;

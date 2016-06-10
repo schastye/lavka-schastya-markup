@@ -2,7 +2,7 @@
   @extend .button-group;
 
   &__button {
-    color: #85b892;
+    color: $color-green-dark;
     padding: 0.2rem 1rem;
     line-height: 1;
   }

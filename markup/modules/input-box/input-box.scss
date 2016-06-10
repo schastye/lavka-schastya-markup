@@ -9,7 +9,7 @@
   &_light {
     .input-box__field {
       background-color: #fff !important;
-      color: #666;
+      color: $color-grey-dark;
     }
 
     .input-box__field:focus + .input-box__field,
@@ -28,11 +28,11 @@
     float: right;
     padding: 0.8em;
     border-radius: 0;
-    color: #aaa;
+    color: $color-grey-light;
     font-weight: 500;
-    -webkit-appearance: none; /* for box shadows to show on iOS */
+    appearance: none; /* for box shadows to show on iOS */
     width: 100%;
-    background-color: #e9f0e0;
+    background-color: $color-green;
     border: 2px solid transparent;
     transition: background-color 0.25s, border-color 0.25s;
 
@@ -46,7 +46,7 @@
     float: right;
     margin-bottom: .3em;
     padding: 0 1em;
-    color: #696969;
+    color: $color-grey-dark;
     font-weight: 500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -68,7 +68,7 @@
     position: relative;
     display: block;
     width: 100%;
-    color: #8B8C8B;
+    color: $color-green-dark;
     padding: 0.15em 0;
     transition: transform 0.25s;
     transition-timing-function: ease-in-out;
@@ -81,7 +81,6 @@
       left: 0;
       height: 100%;
       width: 100%;
-      color: #a3d39c;
       padding: 0.25em 0;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -120,7 +119,7 @@
   &__field:focus + &__field,
   &_filled &__field {
     background-color: transparent;
-    border-color: $greyish-brown;
+    border-color: $color-grey-dark;
   }
 
   &_error &__field {
