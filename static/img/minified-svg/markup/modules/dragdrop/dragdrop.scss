@@ -1,0 +1,112 @@
+.grid__item {
+
+  &:hover {
+    cursor: grab;
+  }
+
+  &:active {
+    cursor: grabbing;
+    z-index: 100;
+  }
+
+  &_helper {
+    position: absolute !important;
+    margin: 0;
+  }
+
+  &_animate {
+    transition: all 0.3s ease-out;
+  }
+
+}
+
+.is-dragging {
+  z-index: 1000;
+}
+
+.is-dropped {
+  opacity: 0;
+  transform: scale3d(0.7,0.7,1) !important;
+}
+
+.is-complete {
+  opacity: 1;
+  transition: opacity 0.3s, transform 0.3s !important;
+  transform: scale3d(1,1,1) !important;
+}
+
+.drop-area {
+  transition: background-color 0.6s;
+
+
+  &_show {
+    background-color: $color-green-light;
+
+    & ~ .dragdrop__overlay {
+      opacity: 1;
+    }
+  }
+
+  &_completed {
+    background-color: $color-green;
+  }
+}
+
+.dragdrop__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.drop-area__item {
+  transition: transform 0.3s, background 0.3s;
+
+  &::before,
+  &::after {
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &::before {
+    content: attr(data-order);
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: rgba(52,73,94,0.6);
+    content: '';
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: scale3d(2,2,1);
+  }
+
+  &_highlight {
+    background: $color-green;
+    transform: scale3d(1.08,1.08,1);
+    z-index: 1;
+  }
+
+  &_feedback {
+    &::before {
+      opacity: 0;
+      transform: scale3d(0,0,1);
+    }
+    &::after {
+      opacity: 1;
+      transform: scale3d(1,1,1);
+    }
+  }
+}
+

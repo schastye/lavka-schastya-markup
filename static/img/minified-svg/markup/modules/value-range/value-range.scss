@@ -1,0 +1,9 @@
+.value-range {
+  text-align: center;
+
+  &__value {
+    @extend .button-range__value;
+    display: block;
+    width: 100%;
+  }
+}

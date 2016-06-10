@@ -1,0 +1,35 @@
+@lost gutter 16px;
+@lost flexbox flex;
+
+.main-part {
+  lost-utility: clearfix;
+  lost-center: 100% 16px flex;
+  list-style: none;
+  margin: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: $color-beige;
+
+  &__item {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+
+    &_full {
+      lost-column: 1/1 1 16px flex;
+    }
+
+    &_half {
+
+      &:nth-child(2n+1) {
+        lost-column: 1/2 1 16px flex;
+        opacity: 1;
+      }
+
+      &:nth-child(2n) {
+        lost-column: 1/2 0 16px flex;
+      }
+    }
+  }
+}

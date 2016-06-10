@@ -1,0 +1,7 @@
+mixin header-logo(data)
+  if data.collapse
+    a.header-logo.header-logo_collapse( href="/" )
+      != jadeHelpers.Icon.call(locals, {iconName: 'logo', className: 'header-logo__image'})
+  else
+    a.header-logo( href="/" )
+      != jadeHelpers.Icon.call(locals, {iconName: 'logo', className: 'header-logo__image'})

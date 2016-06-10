@@ -1,0 +1,131 @@
+mixin good-part(data)
+
+  include ../set-cell/set-cell
+  include ../set-variant/set-variant
+  include ../button/button
+  
+  .good-part
+    .part-card
+      .part-card__image(style="background-image: url(%=static=%img/assets/main-part/macarons.jpg)")
+    - if ( data )
+      .set-container.dragdrop
+        h2.set-container__title.set-container__title_right Собери свой набор
+        .set-container__cells
+    
+          +set-cell( data )
+
+        .set-container__variants
+          +set-variant( 10 )
+    
+    .good-information#good-information
+      .good-information__main
+        h2.set-container__title  Название набора
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti ex exercitationem impedit corrupti inventore quidem harum modi, nemo quos veniam voluptas nostrum aliquid nam rem culpa, magni libero fugiat consequatur.
+        dl
+          dt Состав
+          dd
+            ul.list-tags
+              li.list-tags__item
+                a.list-tags__link(href='999') крем
+              li.list-tags__item
+                a.list-tags__link(href='999') миндаль
+              li.list-tags__item
+                a.list-tags__link(href='999') мука
+              li.list-tags__item
+                a.list-tags__link(href='999') орехи
+              li.list-tags__item
+                a.list-tags__link(href='999') миндальнаямука
+              li.list-tags__item
+                a.list-tags__link(href='999') шоколад
+              li.list-tags__item
+                a.list-tags__link(href='999') миндальнаямука
+              li.list-tags__item
+                a.list-tags__link(href='999') шоколад
+              li.list-tags__item
+                a.list-tags__link(href='999') тесто
+      .good-information__box
+        h2.set-container__title.set-container__title_center  Варианты упаковки
+        .box-variant
+          label.box-variant__item
+            input.box-variant__select(type="radio" name="box-variant" data-price="500" value="11")
+            img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 1')
+            h3.box-variant__caption От Счастья
+            .box-variant__price 500 rub
+          label.box-variant__item
+            input.box-variant__select(type="radio" name="box-variant" data-price="750" value="22" checked)
+            img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 2')
+            h3.box-variant__caption Особая
+            .box-variant__price 750 rub
+          label.box-variant__item
+            input.box-variant__select(type="radio" name="box-variant" data-price="1000" value="33")
+            img.box-variant__image(src='%=static=%img/assets/box-variant/box.jpg', alt='Упаковка 3')
+            h3.box-variant__caption Подарочная
+            .box-variant__price 1000 rub
+      .good-information__price
+        h2.set-container__title 
+          form.button-range.pull_right(role='group' action="order.html" method="get" id="order")
+            input(type="hidden" name="id" value="100500")
+            input(type="hidden" name="options[composition]" value="")
+            +button({ mods: {} })(class='button-range__button' value='cart/remove')
+              != jadeHelpers.Icon.call(locals, { iconName: 'arrow_left', className: 'icon icon_arrow_left' } )
+            input.button-range__value(type='number' name='count' value='1' size='2' min='1' max='99' readonly)
+            +button({ mods: {} })(class='button-range__button' value='cart/add')
+              != jadeHelpers.Icon.call(locals, { iconName: 'arrow_right', className: 'icon icon_arrow_right' } )
+          | Количество коробок
+        p 
+          b Сроки хранения:&nbsp;
+          strong ТОЛЬКО
+          |  в холодильнике при температуре от 0 до 6 градусов в течении 2-3 дней.
+        p
+          b Условия доставки:&nbsp;
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        hr
+        h2.set-container__title
+          .price.pull_right
+            span.price__value#price__value(data-price='2000') 2000
+            span.price__currency &nbsp;rub
+          | Стоимость
+        button.button.button_add-to-card(type='submit' form='order')
+          .button__caption Добавить в корзину
+          != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'add-to-card'})
+
+  .peppermint.peppermint-inactive#peppermint
+    figure.part-card.part-card_nohover(data-box="11")
+      .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/main-part/macarons.jpg)")
+    figure.part-card.part-card_nohover(data-box="22")
+      .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/box-variant/box-variant-2.jpg)")
+    figure.part-card.part-card_nohover(data-box="33")
+      .part-card__image.box-preview(style="background-image: url(%=static=%img/assets/box-variant/box-variant-3.jpg)")
+
+  .part-goods
+    h2.part-goods__title С этим товаром покупают
+    .part-goods__item.part-goods__item_1-5
+      a.good-card(href='good.html')
+        img.good-card__image(src='%=static=%img/content/macarons/macaroni_1.png', alt='Название товара')
+        .good-card__caption
+          h3.good-card__title Название товара
+          .good-card__price 500 rub
+    .part-goods__item.part-goods__item_1-5
+      a.good-card(href='good.html')
+        img.good-card__image(src='%=static=%img/content/macarons/macaroni_2.png', alt='Название товара')
+        .good-card__caption
+          h3.good-card__title Название товара
+          .good-card__price 500 rub
+    .part-goods__item.part-goods__item_1-5
+      a.good-card(href='good.html')
+        img.good-card__image(src='http://placehold.it/200x200/', alt='Название товара')
+        .good-card__caption
+          h3.good-card__title Название товара
+          .good-card__price 500 rub
+    .part-goods__item.part-goods__item_1-5
+      a.good-card(href='good.html')
+        img.good-card__image(src='http://placehold.it/200x200/', alt='Название товара')
+        .good-card__caption
+          h3.good-card__title Название товара
+          .good-card__price 500 rub
+    .part-goods__item.part-goods__item_1-5
+      a.good-card(href='good.html')
+        img.good-card__image(src='http://placehold.it/200x200/', alt='Название товара')
+        .good-card__caption
+          h3.good-card__title Название товара
+          .good-card__price 500 rub

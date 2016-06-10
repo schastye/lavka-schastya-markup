@@ -1,0 +1,170 @@
+mixin page-order(data)
+
+  include ../button/button
+
+  .order-page
+    .order-page__form
+      .order-form
+        h2.order-form__title Оформление заказа
+        .order-form__data
+          form
+            .input-box 
+              input.input-box__field(type='text', name='name', id='name', required, autofocus)
+              label.input-box__label(for='name')
+                span.input-box__label-content(data-content='Имя') Имя
+            .input-box.input-box_error
+              input.input-box__field(type='email', name='email', id='email', required, value='поле c ошибкой')
+              label.input-box__label(for='email')
+                span.input-box__label-content(data-content='Email') Email
+            .input-box
+              input.input-box__field(type='phone', name='phone', required)
+              label.input-box__label
+                span.input-box__label-content(data-content='Номер телефона в формате +7 9XX XXX-XXX-XX') Номер телефона
+            label.checkbox(for='sms')
+              input.checkbox__field(type='checkbox', id='sms', name='sms')
+              span.checkbox__label Разрешить информирование по SMS
+            label.checkbox(for='subscribe')
+              input.checkbox__field(type='checkbox', id='subscribe', name='subscribe')
+              span.checkbox__label Подписаться на новости компании
+            .input-box
+              input.input-box__field(type='text', name='card')
+              label.input-box__label
+                span.input-box__label-content(data-content='№ карты или купона') № карты или купона
+            .radio-group
+              label.radio-group__item_1-2.radio(for='cash')
+                input.radio__field(type='radio', id='cash' name='cash' value='cash')
+                span.radio__label Оплата наличными
+              label.radio-group__item_1-2.radio(for='emoney')
+                input.radio__field(type='radio', id='emoney' name='cash' value='emoney' checked)
+                span.radio__label Оплата по карте
+
+            .delivery
+              .delivery__item
+                input.delivery__checked(type='radio' id='type_1' name='delivery__type' checked)
+                label.delivery__title(for='type_1') Доставка курьером
+                .delivery__content
+                  .input-group
+                    .input-group__item_1-2
+                      .input-box.input-box_filled.input-box_freeze
+                        input.input-box__field(type='date', name='date', placeholder='Дата исполнения')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Дата исполнения') Дата исполнения
+                    .input-group__item_1-2
+                      .input-box.input-box_filled.input-box_freeze
+                        input.input-box__field(type='time', name='time')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Время исполнения') Время исполнения
+
+              .delivery__item
+                input.delivery__checked(type='radio' id='type_2' name='delivery__type')
+                label.delivery__title(for='type_2') Экспресс-доставка
+                .delivery__content
+                  .input-group
+                    .input-group__item_1-2
+                      .input-box.input-box_filled.input-box_freeze
+                        input.input-box__field(type='date', name='date', placeholder='Дата исполнения')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Дата исполнения') Дата исполнения
+                    .input-group__item_1-2
+                      .input-box.input-box_filled.input-box_freeze
+                        input.input-box__field(type='time', name='time')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Время исполнения') Время исполнения
+
+              .delivery__item
+                input.delivery__checked(type='radio' id='type_3' name='delivery__type')
+                label.delivery__title(for='type_3') Самовывоз из ресторана
+                .delivery__content
+                  .input-group
+                    .input-group__item_1-2
+                      .input-box.input-box_filled.input-box_freeze
+                        input.input-box__field(type='date', name='date', placeholder='Дата исполнения')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Дата исполнения') Дата исполнения
+                    .input-group__item_1-2
+                      .input-box.input-box_filled.input-box_freeze
+                        input.input-box__field(type='time', name='time')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Время исполнения') Время исполнения
+
+            .input-box
+              input.input-box__field(type='text', name='city', required)
+              label.input-box__label
+                span.input-box__label-content(data-content='Город') Город
+            .input-box
+              input.input-box__field(type='text', name='street')
+              label.input-box__label
+                span.input-box__label-content(data-content='Улица') Улица
+            .input-group
+              .input-group__item_1-2
+                .input-box
+                  input.input-box__field(type='text', name='home')
+                  label.input-box__label
+                    span.input-box__label-content(data-content='Дом') Дом
+              .input-group__item_1-2
+                .input-box
+                  input.input-box__field(type='text', name='room')
+                  label.input-box__label
+                    span.input-box__label-content(data-content='Номер квартиры') Номер квартиры
+            textarea.textarea.textarea_expanded(name='', rows='5', placeholder='Особые пожелания')
+
+        .order-form__aside
+          ul.order-list
+            - var orderList = 0
+              while orderList < 4
+                - orderList++
+                  li.order-list__item
+                    .order-card
+                      .order-card__good
+                        +button( { mods: {} } )(class='order-card__remove') &times;
+                        img.order-card__picture(src='%=static=%img/assets/page-order/200x200_outbound_macroni23_mal.jpg')
+                        .order-card__content
+                          a.order-card__title(href='good.html')
+                            | Конфета с ягодами годжи
+                          .order-card__price
+                            | 500 RUB
+                        .order-card__value
+                          .value-range
+                            +button( { mods: {} } )(class='value-range__button' value="cart/add")
+                              != jadeHelpers.Icon.call(locals, {iconName: 'arrow_up_small', className: 'icon-chevron-up'})
+                            input.value-range__value(type='number' name='count' value='1' size='2' min='1' max='99' readonly)
+                            +button( { mods: {} } )(class='value-range__button' value="cart/remove")
+                              != jadeHelpers.Icon.call(locals, {iconName: 'arrow_down_small', className: 'icon-chevron-down'})
+                      .order-card__additional
+                        .box-select
+                          +button( { mods: {} } )(class='box-select__button')
+                            img.box-select__icon(src='%=static=%img/assets/box-variant/box.jpg')
+                            .box-select__title Подарочная
+                            .box-select__dropdown
+                              != jadeHelpers.Icon.call(locals, {iconName: 'arrow_down_small', className: 'icon-chevron-down'})
+                          .box-select__popup
+                            .dropdown-list
+                              .dropdown-list__item
+                                +button( { mods: {} } )(class='box-select__button')
+                                  img.box-select__icon(src='%=static=%img/assets/box-variant/box.jpg')
+                                  .box-select__title От Счастья
+                              .dropdown-list__item
+                                +button( { mods: {} } )(class='box-select__button')
+                                  img.box-select__icon(src='%=static=%img/assets/box-variant/box.jpg')
+                                  .box-select__title Подарочная
+                        .add-postcard
+                          +button( { mods: { type: 'link' }, url: 'postcard.html' } )(class='add-postcard__button')
+                            .add-postcard__icon
+                              != jadeHelpers.Icon.call(locals, {iconName: 'angel', className: 'icon-angel'})
+                            .add-postcard__title Добавить открытку
+          .order-sets
+            - var orderSet = 0
+              while orderSet < 3
+                - orderSet++
+                  .order-sets__item
+                    .order-set
+                      .order-set__remove
+                        +button( { mods: {} } )
+                          | &times;
+                      .order-set__content Наименование #{orderSet}
+                      .order-set__price 1500 rub
+          .order-final
+            a.button.button_add-to-card
+              | Оформить заказ
+              != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'add-to-card'})
+              span.order-final__price 2000 rub

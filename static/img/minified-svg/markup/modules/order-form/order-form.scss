@@ -1,0 +1,30 @@
+@lost flexbox flex;
+@lost gutter 16px;
+
+.order-form {
+  lost-column: 8/12 0 16px flex;
+  lost-offset: -4/12 0 16px flex;
+  lost-center: 100% 30px flex;
+  background-color: #fff;
+  margin-top: 126px;
+  margin-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &__title {
+    lost-column: 1/1 1 30px flex;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1.2px;
+    color: $color-grey-dark;
+  }
+
+  &__data {
+    lost-column: 1/2 0 30px flex;
+  }
+
+  &__aside {
+    lost-column: 1/2 1 30px flex;
+  }
+}

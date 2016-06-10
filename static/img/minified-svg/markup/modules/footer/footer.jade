@@ -1,0 +1,42 @@
+mixin footer(data)
+  footer.footer
+    h3.footer__title Поделитесь Счастьем с друзьями
+    .footer__tags
+      .footer-tags
+        a.footer-tags__item(href='777', target='_blank', rel='no-follow')
+          | УСчастьяЕстьВкус
+        a.footer-tags__item(href='777', target='_blank', rel='no-follow')
+          | СчастьеЕсть
+        a.footer-tags__item(href='777', target='_blank', rel='no-follow')
+          | ВкусСчастья
+    .footer__menu
+      ul.footer-menu
+        li.footer-menu__item
+          a.footer-menu__link(href='payment.html') Способ оплаты
+        li.footer-menu__item
+          a.footer-menu__link(href='delivery.html') Условия доставки
+        li.footer-menu__item
+          a.footer-menu__link(href='555') Фабрика счастья
+        li.footer-menu__item
+          a.footer-menu__link(href='shops.html') Магазины «Лавка Счастья»
+        li.footer-menu__item
+          a.footer-menu__link(href='555') Рестораны «Счастье»
+        li.footer-menu__item
+          a.footer-menu__link(href='555') Ингредиенты
+        li.footer-menu__item
+          a.footer-menu__link(href='555') Корпоративным клиентам
+        li.footer-menu__item
+          a.footer-menu__link(href='555') Личный кабинет
+        li.footer-menu__item
+          a.footer-menu__link(href='contacts.html') Контакты
+    .footer__social
+      ul.footer-social
+        li.footer-social__item
+          a.footer-social__link(href='222', target='_blank', rel='no-follow')
+            != jadeHelpers.Icon.call(locals, {iconName: 'instagram', className: 'icon icon_instagram'})
+        li.footer-social__item
+          a.footer-social__link(href='222', target='_blank', rel='no-follow')
+            != jadeHelpers.Icon.call(locals, {iconName: 'angel', className: 'icon icon_angel'})
+        li.footer-social__item
+          a.footer-social__link(href='222', target='_blank', rel='no-follow')
+            != jadeHelpers.Icon.call(locals, {iconName: 'pinterest', className: 'icon icon_pinterest'})

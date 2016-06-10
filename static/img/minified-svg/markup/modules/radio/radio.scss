@@ -1,0 +1,20 @@
+.radio {
+  padding: .3em 0;
+
+  &__field {
+    display: inline-block;
+  }
+
+  &__label {
+    display: inline-block;
+
+  }
+
+  &__field + &__label {
+    margin-left: 1em;
+  }
+
+  &__label + &__field {
+    margin-left: 1em;
+  }
+}

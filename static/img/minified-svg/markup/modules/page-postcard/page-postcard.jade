@@ -1,0 +1,26 @@
+mixin page-postcard(data)
+
+  include ../button/button
+
+  .popup.popup_fullscreen
+    +button( { mods: { type: 'link' }, url: 'order.html' } )(class='popup__close')
+      | &times;
+    h3.popup__header Выберите открытку
+    .popup__content
+      ul.elasticstack#elasticstack
+        li.elasticstack__item
+          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-1.jpg', alt='')
+          h5.elasticstack__header Saudade
+        li.elasticstack__item
+          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-2.jpg', alt='')
+          h5.elasticstack__header Tuqburni
+        li.elasticstack__item
+          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-3.jpg', alt='')
+          h5.elasticstack__header Retrouvailles
+        li.elasticstack__item
+          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-4.jpg', alt='')
+          h5.elasticstack__header Retrouvailles
+    .popup__footer
+      +button( { mods: { type: 'link' }, url: 'order.html' } )
+        | Выбрать
+        != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'add-to-card'})

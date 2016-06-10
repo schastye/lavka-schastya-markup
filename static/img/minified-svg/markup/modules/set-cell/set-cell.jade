@@ -1,0 +1,10 @@
+mixin set-cell(data)
+  
+  .set-cell.drop-area(class='set-cell_column_#{data.columns}' id='drop-area')
+    - var cells = 0
+    while cells < (data.columns * data.rows)
+      - cells++
+      .set-cell__item.drop-area__item
+        if cells < (data.sets + 1)
+          .set-cell-content(style='background-image: url(%=static=%img/assets/set-variant/mac#{cells}.png);')
+            input.set-cell-content__id(type='hidden' name="cell-#{cells}" form="order")

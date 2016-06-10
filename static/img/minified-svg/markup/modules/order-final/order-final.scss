@@ -1,0 +1,12 @@
+.order-final {
+  margin-top: 20px;
+
+  &__price {
+    margin-left: 30px;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 1.6px;
+    color: $color-grey-dark;
+  }
+}
