@@ -20,11 +20,11 @@
 
     &:checked {
       & + .box-variant__image {
-        border: 1px solid #85b892;
+        border: 1px solid $color-green-dark;
       }
 
       & ~ .box-variant__caption {
-        color: #85b892;
+        color: $color-green-dark;
       }
     }
   }
@@ -42,7 +42,7 @@
     font-weight: 500;
     font-size: 11px;
     letter-spacing: 1.1px;
-    color: #4a4a4a;
+    color: $color-grey-dark;
     position: relative;
     padding-bottom: 8px;
 
@@ -54,7 +54,7 @@
       bottom: 0;
       width: 16px;
       margin: 0 auto;
-      border-bottom: 1px solid #4a4a4a;
+      border-bottom: 1px solid $color-grey-dark;
     }
   }
 

@@ -36,7 +36,7 @@
         left: 10px;
         bottom: 10px;
         right: 10px;
-        border: solid 1px #666666;
+        border: solid 1px $color-grey-dark;
         border-top-width: 0;
       }
     }
@@ -51,8 +51,8 @@
     text-transform: uppercase;
     text-align: center;
     padding: 21px 0;
-    background-color: #f0f0f0;
-    border: solid 1px #979797;
+    background-color: $color-grey;
+    border: solid 1px $color-grey-light;
     margin: 0;
     position: relative;
 
@@ -65,7 +65,7 @@
       margin-left: -10px;
       width: 20px;
       height: 18px;
-      background-color: #f0f0f0;
+      background-color: $color-grey;
       background-image: svg-load('./arrow_up_small.svg');
       background-size: cover;
       z-index: 10;
@@ -79,7 +79,7 @@
       left: 9px;
       bottom: 9px;
       right: 9px;
-      border: solid 1px #666666;
+      border: solid 1px $color-grey-dark;
     }
   }
 
@@ -90,11 +90,11 @@
 
     &:checked {
       & ~ .delivery__title {
-        background-color: #e9f0e0;
+        background-color: $color-green;
         border-color: transparent;
 
         &:before {
-          background-color: #e9f0e0;
+          background-color: $color-green;
           background-image: svg-load('./arrow_down_small.svg');
         }
       }
@@ -108,7 +108,7 @@
   &__content {
     max-height: 0px;
     overflow: auto;
-    background-color: $off-white;
+    background-color: $color-beige;
     padding: 0;
     // transition: max-height .1s linear .1s;
   }

@@ -1,13 +1,13 @@
 .add-postcard {
 
   &__button {
-    background-color: #e9f0e0 !important;
-    padding: 10px !important;
-    text-align: center !important;
-    font-weight: 500 !important;
-    font-size: 10px !important;
-    letter-spacing: 1px !important;
-    color: $greyish-brown !important;
+    background-color: $color-green !important;
+    padding: 10px                  !important;
+    text-align: center             !important;
+    font-weight: 500               !important;
+    font-size: 10px                !important;
+    letter-spacing: 1px            !important;
+    color: $color-grey-dark        !important;
     width: 100%;
   }
 

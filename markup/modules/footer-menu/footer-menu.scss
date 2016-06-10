@@ -19,13 +19,13 @@
   }
 
   &__link {
-    color: #4a4a4a;
+    color: $color-grey-dark;
     font-size: 14px;
     font-weight: 200;
 
     &:hover,
     &:focus {
-      color: darken(#4a4a4a, 10%);
+      color: darken($color-grey-dark, 10%);
     }
   }
 }
