@@ -92,7 +92,16 @@
     }
 
     &_breadcrumbs {
-      transform: translateY(calc(2.5rem - 10%));
+      top: auto;
+      bottom: -($space-2);
+      transform: translateY( 0 );
+      animation-name: dropBreadcrumbs;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      animation-duration: 0.5s;
+      animation-delay: 3s;
+
     }
 
     & > * {
@@ -132,4 +141,13 @@
     }
   }
 
+}
+
+@keyframes dropBreadcrumbs {
+  0% {
+    transform: translateY( 0 );
+  }
+  100% {
+    transform: translateY(calc(2.5rem - 10%));
+  }
 }
