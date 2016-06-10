@@ -52,14 +52,14 @@
     }
 
     &_grey-outline {
-      @include button-variant(#4a4a4a, transparent, #4a4a4a);
+      @include button-variant($color-grey-dark, transparent, $color-grey-dark);
     }
 
   }
 
   &_add-to-card {
-    color: #4a4a4a;
-    border-color: #4a4a4a;
+    color: $color-grey-dark;
+    border-color: $color-grey-dark;
     display: block;
     width: 100%;
     background-color: transparent;
