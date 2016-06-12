@@ -1,0 +1,20 @@
+.text {
+
+  &_lead {
+    font-size: 120%;
+  }
+  
+  &_align {
+    &_left {
+      text-align: left;
+    }
+
+    &_right {
+      text-align: right;
+    }
+
+    &_center {
+      text-align: center;
+    }
+  }
+}
