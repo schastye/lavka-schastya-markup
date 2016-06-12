@@ -1,11 +1,36 @@
 @lost flexbox flex;
-@lost gutter 30px;
+@lost gutter 15px;
 
 .contacts {
-  lost-center: 1170px;
+  lost-column: 10/18 1;
+  lost-offset: 3/18;
+  lost-center: 100%;
   background-color: $color-beige;
   padding-top: 70px;
   padding-bottom: 100px;
+
+
+  &__address {
+    lost-column: 8/10 1;
+    lost-offset: 1/10;
+    lost-utility: clearfix;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.1;
+    color: $color-grey-dark;
+  }
+
+  &__time {
+    margin-top: 10px;
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 1.6;
+    color: $color-grey-dark;
+  }
+
+  &__logo {
+    float: right;
+  }
 
   &__title {
     text-align: left;
@@ -15,31 +40,9 @@
     color: $color-grey-dark;
   }
 
-  &__address {
-    lost-column: 2/10 0 30px flex;
-    lost-offset: -1/10;
-    padding-top: 20px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 1;
-    color: $color-grey-dark;
-  }
-
-  &__time {
-    margin-top: 10px;
-    font-weight: 200;
-    font-size: 14px;
-    line-height: 1;
-    color: $color-grey-dark;
-  }
-
-  &__logo {
-    margin-top: 55px;
-  }
-
   &__feedback {
-    lost-column: 5/10 1 30px flex;
-    lost-offset: -1/10;
+    lost-column: 8/10 1;
+    lost-offset: 1/10;
     text-align: right;
   }
 

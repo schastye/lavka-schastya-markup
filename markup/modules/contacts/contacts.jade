@@ -5,14 +5,14 @@ mixin contacts(data)
   .page-contacts
     .contacts
       .contacts__address
+        .contacts__logo
+          != jadeHelpers.Icon.call(locals, {iconName: 'angels_contacts', className: 'watermark'})
         | Санкт-Петербург,<br>
         | ул. Рубинштейна 15-17
         .contacts__time
           | пн-чт, вс: 09:00 - 00:00<br>
           | пт, сб 09:00 - 02:00<br>
           | +7 (812) 572-26-75
-        .contacts__logo
-          != jadeHelpers.Icon.call(locals, {iconName: 'angels_contacts', className: 'watermark'})
       .contacts__feedback
         h2.contacts__title Напишите нам
         form.form-feedback
