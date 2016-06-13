@@ -4,6 +4,7 @@ mixin button(data, ...items)
   - var styles       = [ 'primary', 'secondary', 'glass', 'success', 'info', 'warning', 'danger', 'link' ]
   - var sizes        = [ 's', 'm', 'l', 'xl' ]
   - var toggle       = [ 'check', 'radio' ]
+
   - var modType      = types.some(  element => element == data.mods.type  ) ? data.mods.type : 'button'
   - var modView      = views.some(  element => element == data.mods.view  ) ? data.mods.view : null
   - var modStyle     = styles.some( element => element == data.mods.style ) ? ('button_style_' + data.mods.style) : 'button_style_glass'

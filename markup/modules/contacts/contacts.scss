@@ -47,6 +47,7 @@
   }
 
   &__submit[type='submit'] {
+    @extend .button_add-to-card;
     margin-top: 42px;
     display: inline-block;
     width: auto;

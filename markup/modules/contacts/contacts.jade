@@ -25,6 +25,6 @@ mixin contacts(data)
             label.input-box__label(for='email')
               span.input-box__label-content(data-content='Email') Email
           textarea.textarea(name='', rows='5', placeholder='Сообщение')
-          button.button.button_add-to-card.contacts__submit(type='submit')
+          button.button.contacts__submit(type='submit')
             | Отправить
             != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'submit-button'})
