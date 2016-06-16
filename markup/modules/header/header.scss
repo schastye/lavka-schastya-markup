@@ -82,19 +82,17 @@
     &_hidden {
       top: auto;
       bottom: -($space-2);
-      transform: translateY( calc(2rem - 10%) );
+      transform: translateY( 0 );
       z-index: -10;
     }
 
     &_show {
-      transform: translateY( calc(100% - 2rem) );
+      transform: translateY( calc( 100% - 2rem ) );
       z-index: -5 !important;
     }
 
     &_breadcrumbs {
-      top: auto;
-      bottom: -($space-2);
-      transform: translateY( 0 );
+      @extend .header__menu_hidden;
       animation-name: dropBreadcrumbs;
       animation-iteration-count: 1;
       animation-fill-mode: forwards;
