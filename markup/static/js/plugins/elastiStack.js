@@ -1,20 +1,11 @@
 /* global Modernizr, Draggabilly, classie */
-/**
- * elastiStack.js v1.0.0
- * http://www.codrops.com
- *
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- *
- * Copyright 2013, Codrops
- * http://www.codrops.com
- */
-( function ( window ) {
 
-  'use strict';
+( function( window ) {
+
+'use strict';
 
   function extend( a, b ) {
-    for ( let key in b ) {
+    for ( var key in b ) {
       if ( b.hasOwnProperty( key ) ) {
         a[key] = b[key];
       }
@@ -23,7 +14,7 @@
   }
 
   // support
-  let is3d = true,
+  var is3d = true,
     supportTransitions = Modernizr.csstransitions,
     // transition end event name
     transEndEventNames = {
@@ -85,7 +76,7 @@
   };
 
   ElastiStack.prototype._initEvents = function () {
-    let self = this;
+    var self = this;
     this.draggie.on( 'dragStart', function ( i, e, p ) {
       self._onDragStart( this );
     } );
@@ -105,7 +96,7 @@
     classie.add( instance.element, this.options.animateClass );
 
     // calculate how much to translate in the x and y axis
-    let tVal = this._getTranslateVal( instance );
+    var tVal = this._getTranslateVal( instance );
 
     // apply it
     setTransformStyle( instance.element, is3d ? 'translate3d(' + tVal.x + 'px,' + tVal.y + 'px, 0px)' : 'translate(' + tVal.x + 'px,' + tVal.y + 'px)' );
@@ -114,7 +105,7 @@
     instance.element.style.opacity = 0;
 
     // other items move back to stack
-    let item2 = this._secondItem(), item3 = this._thirdItem();
+    var item2 = this._secondItem(), item3 = this._thirdItem();
 
     if ( item2 ) {
       classie.add( item2, this.options.moveBackClass );
@@ -129,7 +120,7 @@
     }
 
     // after transition ends..
-    let self = this,
+    var self = this,
       onEndTransFn = function () {
         instance.element.removeEventListener( transEndEventName, onEndTransFn );
 
@@ -142,7 +133,7 @@
         // reorder stack
         self.current = self.current < self.itemsCount - 1 ? self.current + 1 : 0;
         // new front items
-        let item1 = self._firstItem();
+        var item1 = self._firstItem();
         item2 = self._secondItem();
         item3 = self._thirdItem();
 
@@ -180,7 +171,7 @@
   };
 
   ElastiStack.prototype._setStackStyle = function () {
-    let item1 = this._firstItem(), item2 = this._secondItem(), item3 = this._thirdItem();
+    var item1 = this._firstItem(), item2 = this._secondItem(), item3 = this._thirdItem();
 
     if ( item1 ) {
       item1.style.opacity = 1;
@@ -202,7 +193,7 @@
   };
 
   ElastiStack.prototype._moveBack = function ( instance ) {
-    let item2 = this._secondItem(), item3 = this._thirdItem();
+    var item2 = this._secondItem(), item3 = this._thirdItem();
 
     classie.add( instance.element, this.options.moveBackClass );
     classie.add( instance.element, this.options.animateClass );
@@ -224,7 +215,7 @@
 
   ElastiStack.prototype._onDragStart = function ( instance, event, pointer ) {
     // remove transition classes if any
-    let item2 = this._secondItem(), item3 = this._thirdItem();
+    var item2 = this._secondItem(), item3 = this._thirdItem();
 
     classie.remove( instance.element, this.options.moveBackClass );
     classie.remove( instance.element, this.options.animateClass );
@@ -244,7 +235,7 @@
       this._moveAway( instance );
     } else {
       // the second and third items also move
-      let item2 = this._secondItem(), item3 = this._thirdItem();
+      var item2 = this._secondItem(), item3 = this._thirdItem();
       if ( item2 ) {
         setTransformStyle( item2, is3d ? 'translate3d(' + ( instance.position.x * 0.6 ) + 'px,' + ( instance.position.y * 0.6 ) + 'px, -60px)' : 'translate(' + ( instance.position.x * 0.6 ) + 'px,' + ( instance.position.y * 0.6 ) + 'px)' );
       }
@@ -284,7 +275,7 @@
   };
 
   ElastiStack.prototype._getTranslateVal = function ( el ) {
-    let h = Math.sqrt( Math.pow( el.position.x, 2 ) + Math.pow( el.position.y, 2 ) ),
+    var h = Math.sqrt( Math.pow( el.position.x, 2 ) + Math.pow( el.position.y, 2 ) ),
       a = Math.asin( Math.abs( el.position.y ) / h ) / ( Math.PI / 180 ),
       hL = h + this.options.distDragBack,
       dx = Math.cos( a * ( Math.PI / 180 ) ) * hL,
