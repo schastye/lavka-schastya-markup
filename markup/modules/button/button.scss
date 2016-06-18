@@ -55,6 +55,11 @@
       @include button-variant($color-grey-dark, transparent, $color-grey-dark);
     }
 
+    &_primary {
+      @include button-variant(#000, $color-beige, $color-beige);
+    }
+
+
   }
 
   &_add-to-card {

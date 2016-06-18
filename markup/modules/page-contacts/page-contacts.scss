@@ -1,5 +1,8 @@
-.page-contacts {
-  background-image: url(%=static=%assets/order-page/background.jpg);
-  padding: 400px 30px 60px;
+@lost flexbox flex;
+@lost gutter: 15px;
 
+.page-contacts {
+  lost-center: 100%;
+  background-image: url(%=static=%assets/order-page/background.jpg);
+  padding: 300px 30px 60px;
 }
