@@ -1,3 +1,4 @@
 .flip-card-toggle {
-  margin: 0 auto;
+  @include button-variant($color-grey-dark, transparent, $color-grey-dark);
+  margin: 1rem auto;
 }
