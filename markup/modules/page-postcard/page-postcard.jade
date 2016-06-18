@@ -7,17 +7,44 @@ mixin page-postcard(data)
       | &times;
     h3.popup__header Выберите открытку
     .popup__content
+      +button( { mods: {} } )(class='flip-card-toggle')
+        | Перевернуть
       ul.elasticstack#elasticstack
         li.elasticstack__item
-          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-1.jpg', alt='')
           h5.elasticstack__header Saudade
+          .flip-card
+            .flip-card__container
+              img.flip-card__front.elasticstack__image(src='http://babeholder.pixoil.com/img/640/380/?1234567890121', alt='')
+              .flip-card__back
+                .input-group
+                  .input-group__item_1-3
+                    .input-box.input-box__filled
+                      input.input-box__field(type='date', name='postcard-date', placeholder='дд.мм.гггг')
+                  .input-group__item_2-3
+                    .input-box.input-box__filled
+                      input.input-box__field(type='tetx', name='postcard-fullname', placeholder='Имя', required)
+                .input-box
+                  input.input-box__field(type='text', name='postcard-address', placeholder='Адрес', required)
+                textarea.textarea(name='', rows='5', placeholder='Ваше пожелание')
         li.elasticstack__item
-          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-2.jpg', alt='')
           h5.elasticstack__header Tuqburni
+          .flip-card
+            .flip-card__container
+              img.flip-card__front.elasticstack__image(src='http://babeholder.pixoil.com/img/640/380/?1234567890122', alt='')
+          .flip-card__back
         li.elasticstack__item
-          img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-3.jpg', alt='')
           h5.elasticstack__header Retrouvailles
+          .flip-card
+            .flip-card__container
+              img.flip-card__front.elasticstack__image(src='http://babeholder.pixoil.com/img/640/380/?1234567890123', alt='')
+          .flip-card__back
         li.elasticstack__item
+          h5.elasticstack__header Retrouvailles
+          .flip-card
+            .flip-card__container
+              img.flip-card__front.elasticstack__image(src='http://babeholder.pixoil.com/img/640/380/?1234567890124', alt='')
+          .flip-card__back
+        //- li.elasticstack__item
           img.elasticstack__image(src='%=static=%img/assets/postcard/postcard-4.jpg', alt='')
           h5.elasticstack__header Retrouvailles
     .popup__footer

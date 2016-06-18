@@ -1,0 +1,37 @@
+// .flip-card {
+//   display: block;
+//   perspective: 1000px;
+
+//   &:hover,
+//   &_hover {
+//     &__container {
+//       transform: rotateY(180deg);
+//     }
+//   }
+
+//   &__container {
+//     transition: .6s;
+//     transform-style: preserve-3d;
+//     position: relative;
+//   }
+
+//   &__front,
+//   &__back {
+//     backface-visibility: hidden;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     // bottom: 0;
+//   }
+
+//   &__front {
+//     z-index: 2;
+//     /* for firefox 31 */
+//     transform: rotateY(0deg);
+//   }
+
+//   &__back {
+//     transform: rotateY(180deg);
+//   }
+// }
