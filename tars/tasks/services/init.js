@@ -16,12 +16,12 @@ const githubConfig = {
  * @return {String}         Url to download
  */
 function makeUrl(type, version) {
-    const urlTemplate = 'https://github.com/' + githubConfig.user + '/' + githubConfig.repoPrefix;
+    const urlTemplate = `https://github.com/${githubConfig.user}/${githubConfig.repoPrefix}`;
 
     if (type === 'templater') {
-        return urlTemplate + tars.templater.name + '/archive/' + version + '.zip';
+        return `${urlTemplate}${tars.templater.name}/archive/${version}.zip`;
     } else {
-        return urlTemplate + tars.cssPreproc.name + '/archive/' + version + '.zip';
+        return `${urlTemplate}${tars.cssPreproc.name}/archive/${version}.zip`;
     }
 }
 
@@ -44,7 +44,7 @@ module.exports = () => {
                 let version;
 
                 if (process.env.tarsVersion) {
-                    version = 'version-' + process.env.tarsVersion;
+                    version = `version-${process.env.tarsVersion}`;
                 } else {
                     version = 'version-' + require(process.cwd() + '/tars.json').version;
                 }
@@ -97,64 +97,61 @@ module.exports = () => {
          * @return {Object}        Promise
          */
         function applyDownloadedParts(params) {
-            return new Promise((resolve, reject) => {
-                let downloadedPartsPath;
+            return new Promise((resolveDownloadedPartsApplying, rejectDownloadedPartsApplying) => {
 
                 if (
                     (params.type === 'templater' && tars.flags['exclude-html']) ||
                     (params.type === 'preprocessor' && tars.flags['exclude-css'])
                 ) {
-                    resolve();
+                    resolveDownloadedPartsApplying();
                     return;
                 }
 
                 if (params.type === 'templater') {
                     ncp(
-                        './.tmpTemplater/tars-' + tars.templater.name + '-' + params.version + '/markup',
+                        `./.tmpTemplater/tars-${tars.templater.name}-${params.version}/markup`,
                         './markup',
                         error => {
                             if (error) {
-                                reject(error);
+                                rejectDownloadedPartsApplying(error);
                                 return;
                             }
-                            resolve();
+                            resolveDownloadedPartsApplying();
                         }
                     );
                 } else {
                     const downloadedPreprocPartsPath = `./.tmpPreproc/tars-${tars.cssPreproc.name}-${params.version}/markup`;
                     Promise
-                        .all(
-                            [
-                                new Promise((resolve, reject) => {
-                                    ncp(
-                                        `${downloadedPreprocPartsPath}/static`,
-                                        `./markup/${tars.config.fs.staticFolderName}`,
-                                        error => {
-                                            if (error) {
-                                                reject(error);
-                                                return;
-                                            }
-                                            resolve();
+                        .all([
+                            new Promise((resolve, reject) => {
+                                ncp(
+                                    `${downloadedPreprocPartsPath}/static`,
+                                    `./markup/${tars.config.fs.staticFolderName}`,
+                                    error => {
+                                        if (error) {
+                                            reject(error);
+                                            return;
                                         }
-                                    );
-                                }),
-                                new Promise((resolve, reject) => {
-                                    ncp(
-                                        `${downloadedPreprocPartsPath}/modules`,
-                                        `./markup/modules`,
-                                        error => {
-                                            if (error) {
-                                                reject(error);
-                                                return;
-                                            }
-                                            resolve();
+                                        resolve();
+                                    }
+                                );
+                            }),
+                            new Promise((resolve, reject) => {
+                                ncp(
+                                    `${downloadedPreprocPartsPath}/components`,
+                                    `./markup/${tars.config.fs.componentsFolderName}`,
+                                    error => {
+                                        if (error) {
+                                            reject(error);
+                                            return;
                                         }
-                                    );
-                                })
-                            ]
-                        )
-                        .then(() => resolve())
-                        .catch(error => reject(error))
+                                        resolve();
+                                    }
+                                );
+                            })
+                        ])
+                        .then(() => resolveDownloadedPartsApplying())
+                        .catch(error => rejectDownloadedPartsApplying(error));
                 }
             });
         }
