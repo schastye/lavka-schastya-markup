@@ -12,6 +12,12 @@
           event.currentTarget.classList.add( 'button_add-to-card_added' );
           event.currentTarget.querySelectorAll( '.button__caption' )[ 0 ]
             .innerText = 'Перейти к заказу';
+
+          // Add header menu indicator
+          [].slice.call( document.querySelectorAll( '.order-button' ) ).forEach( ( orderButton ) => {
+            orderButton.classList.add( 'order-button_update' );
+          });
+          window.localStorage.setItem( 'order_updated', 'true' );
         } else {
           console.log( 'Go to order!' );
         }

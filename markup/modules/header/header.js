@@ -18,6 +18,15 @@
       event.preventDefault();
       classie.remove( document.getElementById( 'header-menu' ), 'header__menu_show' );
       classie.toggle( document.getElementById( 'header-order' ), 'header__menu_show' );
+
+      // Remove header menu indicator
+      let orderButton = document.querySelectorAll( '.order-button_update' );
+      if ( orderButton.length ) {
+        [].slice.call( orderButton ).forEach( ( orderButtonElement ) => {
+          orderButtonElement.classList.remove( 'order-button_update' );
+        });
+        window.localStorage.removeItem( 'order_updated' );
+      }
     });
   }
 
@@ -39,7 +48,8 @@
       let slider = new Peppermint( headerCityItem, {
         speed: 500,
         touchSpeed: 500,
-        mouseDrag: true
+        mouseDrag: true,
+        startSlide: window.localStorage.getItem( 'cityID' ) || 0
       } );
 
       let headerCityPrev = headerCityItem.querySelectorAll( '.city-select__prev' );
@@ -47,6 +57,7 @@
         headerCityPrevItem.addEventListener( 'click', event => {
           event.preventDefault();
           slider.prev();
+          window.localStorage.setItem( 'cityID', slider.getCurrentPos() );
         } );
       } );
 
@@ -55,6 +66,7 @@
         headerCityNextItem.addEventListener( 'click', event => {
           event.preventDefault();
           slider.next();
+          window.localStorage.setItem( 'cityID', slider.getCurrentPos() );
         } );
       } );
     } );

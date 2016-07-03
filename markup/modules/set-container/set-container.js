@@ -9,6 +9,51 @@ function getElIndex(el) {
 }
 /* eslint-enable */
 
+/**
+ * Gets the stack.
+ *
+ * @param      {string}  rootElement  The element
+ * @param      {object}  stack        The stack
+ * @return     {object}  The stack.
+ */
+function getStack( rootElement, stack = {} ) {
+  if ( typeof rootElement === 'undefined' || typeof stack !== 'object' ) {
+    return false;
+  }
+
+  [].slice.call( document.querySelectorAll( rootElement ) ).forEach( ( rootEl ) => {
+    let children = rootEl.children;
+    children.forEach( ( el, index ) => {
+      stack[ index ] = {
+        itemId: el.firstElementChild ? el.firstElementChild.firstElementChild.value : null
+      };
+    });
+  });
+  return stack;
+}
+
+function addStack( rootElement, stack = {} ) {
+  [].slice.call( document.querySelectorAll( rootElement ) ).forEach( ( el ) => {
+    console.log( el.children );
+  });
+}
+
+// function addItem( item, stack = getStack( '.drop-area__item' ) ) {
+//   for ( let index in stack ) {
+//     if ( {}.hasOwnProperty.call( stack, index ) && stack[ index ].itemId === null ) {
+//       stack[ index ].itemId = item;
+//       break;
+//     }
+//   }
+//   return stack;
+// }
+
+function onClickAdd( event ) {
+  // console.log( event.currentTarget.dataset.good );
+  getStack( '#drop-area' );
+}
+
+
 (function () {
 
   let initElem = document.querySelectorAll( '.dragdrop' );
@@ -21,8 +66,9 @@ function getElIndex(el) {
       dropAreaTimeout,
       gridItem = 'grid__item';
 
+
     // initialize droppables
-    [].slice.call( document.querySelectorAll( '.' + dropAreaItem )).forEach( el => {
+    [].slice.call( document.querySelectorAll( '.' + dropAreaItem )).forEach( ( el ) => {
       droppableArr.push( new Droppable( el, {
         highlightClass: dropAreaItem + '_highlight',
         feedbackClass: dropAreaItem + '_feedback',
@@ -45,6 +91,8 @@ function getElIndex(el) {
             classie.remove( instance.el, this.feedbackClass );
           }, 800 );
 
+          console.log( document.querySelectorAll( '.set-cell__item' ).length -
+           document.querySelectorAll( '.set-cell-content' ).length );
           if ( document.querySelectorAll( '.set-cell__item' ).length ===
                document.querySelectorAll( '.set-cell-content' ).length ) {
             document.querySelectorAll( '.button_add-to-card' )[0].disabled = false;
@@ -56,6 +104,7 @@ function getElIndex(el) {
 
     // initialize draggable(s)
     [].slice.call(document.querySelectorAll( '.' + gridItem )).forEach( el => {
+      el.addEventListener( 'click', onClickAdd, false );
       new Draggable( el, droppableArr, {
         scroll: true,
         scrollable: '#drop-area',

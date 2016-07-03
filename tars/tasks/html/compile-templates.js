@@ -8,7 +8,8 @@ const through2 = tars.packages.through2;
 const fs = require('fs');
 const notifier = tars.helpers.notifier;
 const browserSync = tars.packages.browserSync;
-const generateStaticPath = require(tars.root + '/tasks/html/helpers/generate-static-path');
+const generateStaticPath = require(`${tars.root}/tasks/html/helpers/generate-static-path`);
+const templaterName = require(`${tars.root}/helpers/get-templater-name`)(tars.config.templater.toLowerCase());
 
 let patterns = [];
 
@@ -34,34 +35,36 @@ function traverseThroughObject(obj, fullData) {
 }
 
 /**
- * Concat all data for all modules to one file
- * @return {Object} Object with data for modules
+ * Concat all data for all components to one file
+ * @return {Object} Object with data for components
  */
-function concatModulesData() {
+function concatComponentsData() {
     let dataEntry;
-    let readyModulesData;
+    let readyMocksData;
 
     try {
-        dataEntry = fs.readFileSync('./dev/temp/modulesData.js', 'utf8');
+        dataEntry = fs.readFileSync('./dev/temp/mocksData.js', 'utf8');
     } catch (er) {
         dataEntry = false;
     }
 
     if (dataEntry) {
-        eval('readyModulesData = {' + dataEntry + '}');
-        traverseThroughObject(readyModulesData, readyModulesData);
+        eval(`readyMocksData = {${dataEntry}}`);
+        // readyMocksData passed as second argument
+        // to be an argument for each function from data
+        traverseThroughObject(readyMocksData, readyMocksData);
     } else {
-        readyModulesData = '{}';
+        readyMocksData = '{}';
     }
 
-    // Add helpers for Jade into readyModulesData in case of using Jade as templater
-    if (tars.templater.name === 'jade') {
-        readyModulesData = Object.assign(readyModulesData, {
-            jadeHelpers: require(tars.root + '/tasks/html/helpers/jade-helpers')
+    // Add helpers for Jade into readyMocksData in case of using Jade as templater
+    if (templaterName === 'jade') {
+        readyMocksData = Object.assign(readyMocksData, {
+            jadeHelpers: require(`${tars.root}/tasks/html/helpers/jade-helpers`)
         });
     }
 
-    return readyModulesData;
+    return readyMocksData;
 }
 
 if (!tars.flags.ie8 && !tars.flags.ie) {
@@ -104,7 +107,7 @@ if (
                 /* eslint-disable no-unused-vars */
 
                 try {
-                    return fs.readFileSync('./dev/temp/svg-symbols' + tars.options.build.hash + '.svg', 'utf8');
+                    return fs.readFileSync(`./dev/temp/svg-symbols${tars.options.build.hash}.svg`, 'utf8');
                 } catch (error) {
                     return '';
                 }
@@ -139,24 +142,53 @@ if (
 }
 
 /**
+ * Add some specific functions for Jade-processing
+ * @return {Pipe}
+ */
+function jadeInheritanceProcessing() {
+    if (tars.options.watch.isActive && templaterName === 'jade') {
+        return tars.packages.streamCombiner(
+            tars.packages.cache('templates'),
+            tars.require('gulp-jade-inheritance')({ basedir: './markup/' }),
+            tars.helpers.filterFilesByPath([
+                new RegExp(`\/markup\/${tars.config.fs.componentsFolderName}\/`),
+                /_[\w]+.jade/
+            ])
+        );
+    }
+
+    return tars.packages.gutil.noop();
+}
+
+/**
  * HTML compilation of pages templates.
  * Templates with _ prefix won't be compiled
  */
 module.exports = () => {
     return gulp.task('html:compile-templates', () => {
-        let modulesData;
+        let mocksData;
         let error;
         let compileError;
+        let filesToCompile = [
+            `./markup/pages/**/*.${tars.templater.ext}`,
+            `!./markup/pages/**/_*.${tars.templater.ext}`
+        ];
 
-        try {
-            modulesData = concatModulesData();
-        } catch (er) {
-            error = er;
-            modulesData = false;
+        if (tars.templater.name === 'jade' && tars.options.watch.isActive) {
+            filesToCompile.push(
+                `!./markup/${tars.config.fs.componentsFolderName}/**/_*.${tars.templater.ext}`,
+                `./markup/${tars.config.fs.componentsFolderName}/**/*.${tars.templater.ext}`
+            );
         }
 
-        return gulp.src(['./markup/pages/**/*.' + tars.templater.ext,
-                         '!./markup/pages/**/_*.' + tars.templater.ext])
+        try {
+            mocksData = concatComponentsData();
+        } catch (er) {
+            error = er;
+            mocksData = false;
+        }
+
+        return gulp.src(filesToCompile)
             .pipe(plumber({
                 errorHandler(pipeError) {
                     notifier.error('An error occurred while compiling to html.', pipeError);
@@ -164,9 +196,10 @@ module.exports = () => {
                     compileError = true;
                 }
             }))
+            .pipe(jadeInheritanceProcessing())
             .pipe(
-                modulesData
-                    ? tars.templater.fn(modulesData)
+                mocksData
+                    ? tars.templater.fn(mocksData)
                     : through2.obj(
                         function () {
                             /* eslint-disable no-invalid-this */
@@ -183,13 +216,18 @@ module.exports = () => {
             }))
             .pipe(generateStaticPath())
             .pipe(rename(pathToFileToRename => {
+
+                if (tars.templater.name === 'jade') {
+                    pathToFileToRename.dirname = pathToFileToRename.dirname.replace(/^pages/, '');
+                }
+
                 pathToFileToRename.extname = '.html';
             }))
             .pipe(gulp.dest('./dev/'))
             .on('end', () => {
                 if (!compileError) {
                     browserSync.reload();
-                    notifier.success('Templates\'ve been compiled');
+                    notifier.success('Templates\'ve been compiled', { notStream: true });
                 }
             });
     });
