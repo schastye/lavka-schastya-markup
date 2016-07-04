@@ -5,17 +5,10 @@
 /* eslint-disable */
 function getElIndex(el) {
   for (var i = 0; el = el.previousElementSibling; i++);
-  return i;
+    return i;
 }
 /* eslint-enable */
 
-/**
- * Gets the stack.
- *
- * @param      {string}  rootElement  The element
- * @param      {object}  stack        The stack
- * @return     {object}  The stack.
- */
 function getStack( rootElement, stack = {} ) {
   if ( typeof rootElement === 'undefined' || typeof stack !== 'object' ) {
     return false;
@@ -35,21 +28,24 @@ function getStack( rootElement, stack = {} ) {
   return stack;
 }
 
-function addItem( item, image, stack = getStack( '#drop-area' ) ) {
-  for ( let index in stack ) {
-    if ( {}.hasOwnProperty.call( stack, index ) && stack[ index ].itemId === null ) {
-      stack[ index ].itemId = item;
-      stack[ index ].image = image;
-      break;
+function addItem( item, image, position = null, stack = getStack( '#drop-area' ) ) {
+  if ( position ) {
+    stack[ position ].itemId = item;
+    stack[ position ].image = image;
+  } else {
+    for ( let index in stack ) {
+      if ( {}.hasOwnProperty.call( stack, index ) && stack[ index ].itemId === null ) {
+        stack[ index ].itemId = item;
+        stack[ index ].image = image;
+        break;
+      }
     }
   }
   return stack;
 }
 
-var STACK = {};
-
-function onClickAdd( item, image, stack = STACK ) {
-  let newStack = addItem( item, image, getStack( '#drop-area' ), stack );
+function updateStack( item, image, position ) {
+  let newStack = addItem( item, image, position, getStack( '#drop-area' ) );
   [].slice.call( document.querySelectorAll( '.set-cell' ) ).forEach( ( rootEl ) => {
     let children = rootEl.children;
     for ( let child in children ) {
@@ -68,6 +64,7 @@ function onClickAdd( item, image, stack = STACK ) {
   });
 }
 
+window.updateStack = updateStack;
 
 
 (function () {
@@ -90,17 +87,8 @@ function onClickAdd( item, image, stack = STACK ) {
         feedbackClass: dropAreaItem + '_feedback',
 
         onDrop: function ( instance, dragEl ) {
+          updateStack( dragEl.dataset.good, dragEl.dataset.drag, getElIndex( instance.el ) );
 
-          instance.el.innerHTML = `<div style="background-image: url(${ dragEl.dataset.drag });" class="set-cell-content">
-                                     <input type="hidden" name="options[composition][${ getElIndex( instance.el ) }]" class="set-cell-content__id" value="${dragEl.dataset.good}" form="order">
-                                   </div>`;
-          instance.el.firstChild.addEventListener( 'click', event => {
-            event.preventDefault();
-            event.srcElement.remove();
-            document.querySelectorAll( '.button_add-to-card' )[0].disabled = true;
-            dropArea.classList.remove( 'drop-area_completed' );
-          });
-          // debugger; // eslint-disable-line
           // show checkmark inside the droppabe element
           classie.add( instance.el, this.feedbackClass );
           clearTimeout( instance.checkmarkTimeout );
@@ -120,7 +108,7 @@ function onClickAdd( item, image, stack = STACK ) {
     // initialize draggable(s)
     [].slice.call(document.querySelectorAll( '.' + gridItem ) ).forEach( el => {
       el.addEventListener( 'click', ( event ) => {
-        onClickAdd( event.currentTarget.dataset.good, event.currentTarget.dataset.drag );
+        updateStack( event.currentTarget.dataset.good, event.currentTarget.dataset.drag );
       }, false );
       new Draggable( el, droppableArr, {
         scroll: true,
