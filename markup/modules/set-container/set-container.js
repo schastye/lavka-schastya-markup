@@ -27,7 +27,7 @@ function getStack( rootElement, stack = {} ) {
       if ( {}.hasOwnProperty.call( children, item ) ) {
         stack[ item ] = {
           itemId: children[ item ].firstElementChild ? children[ item ].firstElementChild.firstElementChild.value : null,
-          image: children[ item ].firstElementChild ? children[ item ].firstElementChild.style.backgroundImage.match(/url\("(.*)"\)/)[1] : ''
+          image: children[ item ].firstElementChild ? children[ item ].firstElementChild.style.backgroundImage.match(/url\("?(.*)"?\)/)[1] : ''
         };
       }
     }
@@ -48,10 +48,8 @@ function addItem( item, image, stack = getStack( '#drop-area' ) ) {
 
 var STACK = {};
 
-function onClickAdd( event, stack = STACK ) {
-  let item = event.currentTarget.dataset.good,
-    image = event.currentTarget.dataset.drag,
-    newStack = addItem( item, image, getStack( '#drop-area' ), stack );
+function onClickAdd( item, image, stack = STACK ) {
+  let newStack = addItem( item, image, getStack( '#drop-area' ), stack );
   [].slice.call( document.querySelectorAll( '.set-cell' ) ).forEach( ( rootEl ) => {
     let children = rootEl.children;
     for ( let child in children ) {
@@ -92,6 +90,7 @@ function onClickAdd( event, stack = STACK ) {
         feedbackClass: dropAreaItem + '_feedback',
 
         onDrop: function ( instance, dragEl ) {
+
           instance.el.innerHTML = `<div style="background-image: url(${ dragEl.dataset.drag });" class="set-cell-content">
                                      <input type="hidden" name="options[composition][${ getElIndex( instance.el ) }]" class="set-cell-content__id" value="${dragEl.dataset.good}" form="order">
                                    </div>`;
@@ -119,9 +118,9 @@ function onClickAdd( event, stack = STACK ) {
     } );
 
     // initialize draggable(s)
-    [].slice.call(document.querySelectorAll( '.' + gridItem )).forEach( el => {
-      el.addEventListener( 'click', (event) => {
-        onClickAdd( event );
+    [].slice.call(document.querySelectorAll( '.' + gridItem ) ).forEach( el => {
+      el.addEventListener( 'click', ( event ) => {
+        onClickAdd( event.currentTarget.dataset.good, event.currentTarget.dataset.drag );
       }, false );
       new Draggable( el, droppableArr, {
         scroll: true,
