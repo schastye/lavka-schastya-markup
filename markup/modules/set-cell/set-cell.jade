@@ -7,4 +7,4 @@ mixin set-cell(data)
       .set-cell__item.drop-area__item
         if cells < (data.sets + 1)
           .set-cell-content(style='background-image: url(%=static=%img/assets/set-variant/mac#{cells}.png);')
-            input.set-cell-content__id(type='hidden' name="cell-#{cells}" form="order" value="#{cells}")
+            input.set-cell-content__id(type='hidden' name='cell-#{cells}' form='order' value='#{cells}')

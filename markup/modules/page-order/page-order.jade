@@ -5,7 +5,24 @@ mixin page-order(data)
   .order-page
     .order-page__form
       .order-form
-        h2.order-form__title Оформление заказа
+        .contacts-header
+          .contacts-header__aside
+            h2.order-form__title Оформление заказа
+            | ул. Рубинштейна, 15-17
+            br
+            p Часы работы:
+              br
+              b пн-чт
+              | , 
+              b вс
+              | : с 9 до 0
+              br 
+              b пт
+              | , 
+              b сб
+              | : с 9 до 2
+          .contacts-header__aside
+            != jadeHelpers.Icon.call(locals, {iconName: 'angels_contacts', className: 'watermark'})
         .order-form__data
           form
             .input-box 
@@ -40,78 +57,84 @@ mixin page-order(data)
 
             .delivery
               .delivery__item
-                input.delivery__checked(type='radio' id='type_1' name='delivery__type' checked)
-                label.delivery__title(for='type_1') Доставка курьером
-                .delivery__content
-                  .input-group
-                    .input-group__item_1-2
-                      .input-box.input-box_filled.input-box_freeze
-                        input.input-box__field(type='date', name='date', placeholder='Дата исполнения')
-                        label.input-box__label
-                          span.input-box__label-content(data-content='Дата исполнения') Дата исполнения
-                    .input-group__item_1-2
-                      .input-box.input-box_filled.input-box_freeze
-                        input.input-box__field(type='time', name='time')
-                        label.input-box__label
-                          span.input-box__label-content(data-content='Время исполнения') Время исполнения
-
-              .delivery__item
-                input.delivery__checked(type='radio' id='type_2' name='delivery__type')
-                label.delivery__title(for='type_2') Экспресс-доставка
-                .delivery__content
-                  .input-group
-                    .input-group__item_1-2
-                      .input-box.input-box_filled.input-box_freeze
-                        input.input-box__field(type='date', name='date', placeholder='Дата исполнения')
-                        label.input-box__label
-                          span.input-box__label-content(data-content='Дата исполнения') Дата исполнения
-                    .input-group__item_1-2
-                      .input-box.input-box_filled.input-box_freeze
-                        input.input-box__field(type='time', name='time')
-                        label.input-box__label
-                          span.input-box__label-content(data-content='Время исполнения') Время исполнения
-
-              .delivery__item
-                input.delivery__checked(type='radio' id='type_3' name='delivery__type')
+                input.delivery__checked(type='radio' id='type_3' name='delivery__type' checked)
                 label.delivery__title(for='type_3') Самовывоз из ресторана
                 .delivery__content
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam perspiciatis dolore facilis laboriosam eos aspernatur modi, provident necessitatibus neque sit. At a repudiandae vel recusandae ipsam non impedit? In, incidunt!
+                  .input-box
+                    select.input-box__field.select-box#delivery-point(name='pickup__shop')
+                      option.select-box__item(selected disabled)
+                      option.select-box__item Пункт самовывоза 1
+                      option.select-box__item Пункт самовывоза 2
+                      option.select-box__item Пункт самовывоза 3
+                    label.input-box__label(for='delivery-point')
+                      span.input-box__label-content(data-content='Пункт самовывоза') Пункт самовывоза
+                  .input-box.input-box_filled.input-box_freeze
+                    input.input-box__field.input-box__field_from-today(type='date', id='pickup__date', name='pickup__date',  max="2016-08-31")
+                    label.input-box__label
+                      span.input-box__label-content(data-content='Дата исполнения') Дата исполнения
+              .delivery__item
+                input.delivery__checked.for-delivery-item(type='radio' id='type_1' name='delivery__type')
+                label.delivery__title(for='type_1') Доставка курьером
+                .delivery__content
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis neque magni reprehenderit earum sunt, dolore corporis aliquid in itaque quos nam temporibus saepe laudantium atque, architecto recusandae alias vitae exercitationem!
                   .input-group
                     .input-group__item_1-2
                       .input-box.input-box_filled.input-box_freeze
-                        input.input-box__field(type='date', name='date', placeholder='Дата исполнения')
+                        input.input-box__field.input-box__field_from-today(type='date', name='courier__date', min='2016-07-09' max="2016-08-31")
                         label.input-box__label
                           span.input-box__label-content(data-content='Дата исполнения') Дата исполнения
                     .input-group__item_1-2
                       .input-box.input-box_filled.input-box_freeze
-                        input.input-box__field(type='time', name='time')
+                        input.input-box__field(type='time', name='courier__time', min='09:00' max="20:00" step='00:10')
                         label.input-box__label
                           span.input-box__label-content(data-content='Время исполнения') Время исполнения
-
-            .input-box
-              input.input-box__field(type='text', name='city', required)
-              label.input-box__label
-                span.input-box__label-content(data-content='Город') Город
-            .input-box
-              input.input-box__field(type='text', name='street')
-              label.input-box__label
-                span.input-box__label-content(data-content='Улица') Улица
-            .input-group
-              .input-group__item_1-2
-                .input-box
-                  input.input-box__field(type='text', name='home')
-                  label.input-box__label
-                    span.input-box__label-content(data-content='Дом') Дом
-              .input-group__item_1-2
-                .input-box
-                  input.input-box__field(type='text', name='room')
-                  label.input-box__label
-                    span.input-box__label-content(data-content='Номер квартиры') Номер квартиры
-            textarea.textarea.textarea_expanded(name='', rows='5', placeholder='Особые пожелания')
-
+                  .input-box.input-box_freeze
+                    input.input-box__field(type='text', name='courier__street' placeholder='Адрес')
+                  .input-group
+                    .input-group__item_1-2
+                      .input-box
+                        input.input-box__field(type='text', name='courier__home')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Дом') Дом
+                    .input-group__item_1-2
+                      .input-box
+                        input.input-box__field(type='text', name='courier__room')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Номер квартиры') Номер квартиры
+              .delivery__item
+                input.delivery__checked.for-delivery-item(type='radio' id='type_2' name='delivery__type')
+                label.delivery__title(for='type_2') Экспресс-доставка
+                .delivery__content
+                  | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem voluptatum nesciunt eaque dolores doloremque, reiciendis! Hic illo, quos iste quas corporis aperiam unde quasi eius nam quis, rerum voluptatem consequuntur!
+                  .input-group
+                    .input-group__item_1-2
+                      .input-box.input-box_filled.input-box_freeze
+                        input.input-box__field(type='date', name='express__date', placeholder='Дата исполнения')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Дата исполнения') Дата исполнения
+                    .input-group__item_1-2
+                      .input-box.input-box_filled.input-box_freeze
+                        input.input-box__field(type='time', name='express__time')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Время исполнения') Время исполнения
+                  .input-box.input-box_freeze
+                    input.input-box__field(type='text', name='express__street' placeholder='Адрес')
+                  .input-group
+                    .input-group__item_1-2
+                      .input-box
+                        input.input-box__field(type='text', name='express__home')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Дом') Дом
+                    .input-group__item_1-2
+                      .input-box
+                        input.input-box__field(type='text', name='express__room')
+                        label.input-box__label
+                          span.input-box__label-content(data-content='Номер квартиры') Номер квартиры
         .order-form__aside
           ul.order-list
             - var orderList = 0
-              while orderList < 4
+              while orderList < 2
                 - orderList++
                   li.order-list__item
                     .order-card
@@ -163,6 +186,7 @@ mixin page-order(data)
                           | &times;
                       .order-set__content Наименование #{orderSet}
                       .order-set__price 1500 rub
+          textarea.textarea.textarea_expanded(name='', rows='5', placeholder='Особые пожелания')
           .order-final
             a.button.button_add-to-card
               | Оформить заказ

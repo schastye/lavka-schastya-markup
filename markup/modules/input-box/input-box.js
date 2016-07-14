@@ -39,3 +39,29 @@
     inputEl.addEventListener( 'blur', onInputBlur );
   } );
 })();
+
+
+(function () {
+
+  function setToday() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; // January is 0!
+    let yyyy = today.getFullYear();
+    if ( dd < 10 ) {
+      dd = '0' + dd;
+    }
+    if ( mm < 10 ) {
+      mm = '0' + mm;
+    }
+    return `${ yyyy }-${ mm }-${ dd }`;
+  }
+
+  let initElem = document.querySelectorAll( '.input-box__field_from-today' );
+  if ( initElem.length ) {
+    [].slice.call( initElem ).forEach( input => {
+      input.setAttribute( 'min', setToday());
+    } );
+  }
+
+})();

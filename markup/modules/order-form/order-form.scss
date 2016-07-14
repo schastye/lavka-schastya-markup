@@ -2,14 +2,20 @@
 @lost gutter 16px;
 
 .order-form {
-  lost-column: 8/12 0 16px flex;
-  lost-offset: -4/12 0 16px flex;
   lost-center: 100% 30px flex;
+  lost-column: 7/12 0 16px flex;
+  lost-offset: -4/12 0 16px flex;
   background-color: #fff;
   margin-top: 126px;
   margin-bottom: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
+
+  @media only screen  and (min-width : 1600px) {
+    lost-column: 8/12 0 16px flex;
+    lost-offset: -4/12 0 16px flex;
+  }
+
 
   &__title {
     lost-column: 1/1 1 30px flex;
@@ -21,10 +27,30 @@
   }
 
   &__data {
-    lost-column: 1/2 0 30px flex;
+    lost-center: 100% 0 flex;
+    lost-column: 1/1 1 30px flex;
+
+    @media only screen and (min-device-width: 1025px) {
+      lost-column: 1/2 0 30px flex;
+    }
+
   }
 
   &__aside {
-    lost-column: 1/2 1 30px flex;
+    lost-center: 100% 0 flex;
+    lost-column: 1/1 1 30px flex;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid $color-grey-dark;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    @media only screen and (min-device-width: 1025px) {
+      lost-column: 1/2 0 30px flex;
+      padding-top: 0;
+      margin-top: 28px;
+      border-top-width: 0;
+    }
+
   }
 }

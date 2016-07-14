@@ -2,6 +2,13 @@
   position: relative;
   background-color: $color-beige !important;
 
+  &:active,
+  &:hover {
+    .box-select__popup {
+      display: block;
+    }
+  }
+
   &__button {
     padding: 10px !important;
     text-align: center !important;
@@ -15,12 +22,6 @@
     align-items: center;
     align-content: center;
 
-    &:active,
-    &:focus {
-      & + .box-select__popup {
-        display: block;
-      }
-    }
   }
 
   &__icon {

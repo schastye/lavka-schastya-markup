@@ -5,56 +5,104 @@
 /* eslint-disable */
 function getElIndex(el) {
   for (var i = 0; el = el.previousElementSibling; i++);
-  return i;
+    return i;
 }
 /* eslint-enable */
 
-/**
- * Gets the stack.
- *
- * @param      {string}  rootElement  The element
- * @param      {object}  stack        The stack
- * @return     {object}  The stack.
- */
-function getStack( rootElement, stack = {} ) {
-  if ( typeof rootElement === 'undefined' || typeof stack !== 'object' ) {
-    return false;
+(function () {
+
+  function Stack( stackRootDOM ) {
+    if ( typeof stackRootDOM === 'undefined' ) {
+      return false;
+    }
+
+    this.root = document.querySelectorAll( stackRootDOM );
+    this.stack = this.get();
   }
 
-  [].slice.call( document.querySelectorAll( rootElement ) ).forEach( ( rootEl ) => {
-    let children = rootEl.children;
-    children.forEach( ( el, index ) => {
-      stack[ index ] = {
-        itemId: el.firstElementChild ? el.firstElementChild.firstElementChild.value : null
-      };
+  Stack.prototype.get = function ( stack = {} ) {
+    [].slice.call( this.root ).forEach( ( rootEl ) => {
+      let children = rootEl.children;
+      for ( let item in children ) {
+        if ( {}.hasOwnProperty.call( children, item ) ) {
+          stack[ item ] = {
+            itemId: children[ item ].firstElementChild ? children[ item ].firstElementChild.firstElementChild.value : null,
+            image: children[ item ].firstElementChild ? children[ item ].firstElementChild.style.backgroundImage.match( /url\("(.*)"\)/i )[1] : null
+          };
+        }
+      }
     });
-  });
-  return stack;
-}
+    return stack;
+  };
 
-function addStack( rootElement, stack = {} ) {
-  [].slice.call( document.querySelectorAll( rootElement ) ).forEach( ( el ) => {
-    console.log( el.children );
-  });
-}
+  Stack.prototype.add = function ( item, image, position, stack = this.stack ) {
+    if ( typeof item === 'undefined' || typeof image === 'undefined' ) {
+      return false;
+    }
+    if ( position ) {
+      stack[ position ].itemId = item;
+      stack[ position ].image = image;
+    } else {
+      for ( let index in stack ) {
+        if ( {}.hasOwnProperty.call( stack, index ) && stack[ index ].itemId === null ) {
+          stack[ index ].itemId = item;
+          stack[ index ].image = image;
+          break;
+        }
+      }
+    }
 
-// function addItem( item, stack = getStack( '.drop-area__item' ) ) {
-//   for ( let index in stack ) {
-//     if ( {}.hasOwnProperty.call( stack, index ) && stack[ index ].itemId === null ) {
-//       stack[ index ].itemId = item;
-//       break;
-//     }
-//   }
-//   return stack;
-// }
+    return this.update( stack );
+  };
 
-function onClickAdd( event ) {
-  // console.log( event.currentTarget.dataset.good );
-  getStack( '#drop-area' );
-}
+  Stack.prototype.remove = function ( position, event ) {
+    let newStack = this.stack;
+    newStack[ position ].itemId = null;
+    newStack[ position ].image = null;
 
+    return this.update( newStack );
+  };
 
-(function () {
+  Stack.prototype.status = function ( count ) {
+    if ( count === 0 ) {
+      [].slice.call( this.root ).forEach( root => {
+        root.classList.add( 'drop-area_completed' );
+      } );
+      document.querySelectorAll( '.button_add-to-card' )[0].disabled = false;
+    } else {
+      [].slice.call( this.root ).forEach( root => {
+        root.classList.remove( 'drop-area_completed' );
+      } );
+      document.querySelectorAll( '.button_add-to-card' )[0].disabled = true;
+    }
+    console.log( count );
+  };
+
+  Stack.prototype.update = function ( newStack = this.get() ) {
+    let stack = newStack;
+    let stackLength = Object.keys( stack ).length;
+    [].slice.call( this.root ).forEach( ( rootEl ) => {
+      let children = rootEl.children;
+      for ( let item in children ) {
+        if ( {}.hasOwnProperty.call( children, item ) ) {
+          if ( stack[ item ].itemId !== null ) {
+            children[ item ].innerHTML = `<div style="background-image: url(${ stack[ item ].image });" class="set-cell-content">
+                                            <input type="hidden" name="options[composition][${ item }]" class="set-cell-content__id" value="${ stack[ item ].itemId }" form="order">
+                                          </div>`;
+            children[ item ].firstChild.addEventListener( 'click', this.remove.bind( this, item, event ), false );
+            stackLength--;
+          } else {
+            children[ item ].innerHTML = '';
+          }
+        }
+      }
+      this.status( stackLength );
+      return stack;
+    });
+  };
+
+  let setStack = new Stack( '#drop-area' );
+  window.Stack = setStack;
 
   let initElem = document.querySelectorAll( '.dragdrop' );
 
@@ -66,7 +114,6 @@ function onClickAdd( event ) {
       dropAreaTimeout,
       gridItem = 'grid__item';
 
-
     // initialize droppables
     [].slice.call( document.querySelectorAll( '.' + dropAreaItem )).forEach( ( el ) => {
       droppableArr.push( new Droppable( el, {
@@ -74,37 +121,23 @@ function onClickAdd( event ) {
         feedbackClass: dropAreaItem + '_feedback',
 
         onDrop: function ( instance, dragEl ) {
-          instance.el.innerHTML = `<div style="background-image: url(${ dragEl.dataset.drag });" class="set-cell-content">
-                                     <input type="hidden" name="options[composition][${ getElIndex( instance.el ) }]" class="set-cell-content__id" value="${dragEl.dataset.good}" form="order">
-                                   </div>`;
-          instance.el.firstChild.addEventListener( 'click', event => {
-            event.preventDefault();
-            event.srcElement.remove();
-            document.querySelectorAll( '.button_add-to-card' )[0].disabled = true;
-            dropArea.classList.remove( 'drop-area_completed' );
-          });
-          // debugger; // eslint-disable-line
+          setStack.add( dragEl.dataset.good, dragEl.dataset.drag, getElIndex( instance.el ) );
+
           // show checkmark inside the droppabe element
           classie.add( instance.el, this.feedbackClass );
           clearTimeout( instance.checkmarkTimeout );
           instance.checkmarkTimeout = setTimeout( () => {
             classie.remove( instance.el, this.feedbackClass );
           }, 800 );
-
-          console.log( document.querySelectorAll( '.set-cell__item' ).length -
-           document.querySelectorAll( '.set-cell-content' ).length );
-          if ( document.querySelectorAll( '.set-cell__item' ).length ===
-               document.querySelectorAll( '.set-cell-content' ).length ) {
-            document.querySelectorAll( '.button_add-to-card' )[0].disabled = false;
-            dropArea.classList.add( 'drop-area_completed' );
-          }
         }
       } ) );
     } );
 
     // initialize draggable(s)
-    [].slice.call(document.querySelectorAll( '.' + gridItem )).forEach( el => {
-      el.addEventListener( 'click', onClickAdd, false );
+    [].slice.call(document.querySelectorAll( '.' + gridItem ) ).forEach( el => {
+      el.addEventListener( 'click', ( event ) => {
+        setStack.add( event.currentTarget.dataset.good, event.currentTarget.dataset.drag );
+      }, false );
       new Draggable( el, droppableArr, {
         scroll: true,
         scrollable: '#drop-area',
