@@ -1,0 +1,7 @@
+.for-delivery {
+  display: none !important;
+
+  &_show {
+    display: flex !important;
+  }
+}
