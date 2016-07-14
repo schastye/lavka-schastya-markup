@@ -1,4 +1,4 @@
-/* global Draggabilly, Modernizr, getStyleProperty, classie, updateStack */
+/* global Draggabilly, Modernizr, getStyleProperty, classie, Stack */
 
 ( function () {
 
@@ -305,7 +305,7 @@
     let clone = this.el.cloneNode( true );
 
     clone.addEventListener( 'click', ( event ) => {
-      updateStack( event.currentTarget.dataset.good, event.currentTarget.dataset.drag );
+      Stack.add( event.currentTarget.dataset.good, event.currentTarget.dataset.drag );
     }, false );
     // because the original element started the dragging, we need to remove
     // the is-dragging class
