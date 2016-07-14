@@ -2,7 +2,7 @@
 
   &__list {
     display: block;
-    height: 200px;
+    max-height: 200px;
     overflow-y: auto;
     padding-bottom: $space-2;
   }
