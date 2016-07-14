@@ -25,6 +25,10 @@
 
       & ~ .box-variant__caption {
         color: $color-green-dark;
+
+        &:after {
+          width: 46px;
+        }
       }
     }
   }
@@ -55,6 +59,7 @@
       width: 16px;
       margin: 0 auto;
       border-bottom: 1px solid $color-grey-dark;
+      transition: width linear .5s;
     }
   }
 
