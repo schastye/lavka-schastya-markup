@@ -65,9 +65,10 @@
   &_add-to-card {
     color: $color-grey-dark;
     border-color: $color-grey-dark;
+    border-width: 1px;
+    background-color: $color-green;
     display: block;
     width: 100%;
-    background-color: transparent;
     border-radius: 0;
     letter-spacing: 1.5px;
     text-transform: uppercase;
@@ -75,6 +76,10 @@
     padding-bottom: 10px;
     font-weight: 200;
     font-size: 14px;
+
+    &:disabled {
+      background-color: transparent;
+    }
   }
 
   &__caption {
