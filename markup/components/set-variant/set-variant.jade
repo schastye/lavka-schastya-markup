@@ -1,0 +1,12 @@
+mixin set-variant(data)
+
+  include ../button/button
+
+  .set-variant#set-variant
+    - var n = 0
+    while n < data
+      - n++
+      .set-variant__item
+        +button({ mods: {}, val: 'variant[#{n}]' })(class='variant-item grid__item' data-good="печенька-#{n}" data-drag='%=static=%img/assets/set-variant/drag.png')
+          img.variant-item__image(src='%=static=%img/assets/set-variant/mac#{n}.png', alt='Название товара')
+          h4.variant-item__caption Название продукта&nbsp;#{n}

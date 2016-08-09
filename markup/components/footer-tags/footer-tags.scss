@@ -1,0 +1,39 @@
+.footer-tags {
+  border: .125rem solid $color-green-dark;
+  border-left-width: 0;
+  border-right-width: 0;
+  display: inline-block;
+  padding: .5rem 0;
+  margin: 1rem 0;
+
+  &__item {
+    color: $color-green-dark;
+    font-size: 1.2rem;
+    font-weight: 200;
+    margin: 0 .5rem;
+    text-decoration: none;
+    display: block;
+
+    @media (min-width: 768px) {
+      display: inline-block;
+    }
+
+    &:hover,
+    &:focus {
+      color: #348509;
+      text-decoration: none;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &::before {
+      content: '#';
+    }
+  }
+}

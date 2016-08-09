@@ -1,0 +1,97 @@
+doctype html
+html(class="no-js", lang="ru")
+
+  include ../components/head/head
+  include ../components/footer/footer
+
+  head
+    +head(head.defaults)
+    body.page
+      |%=symbols=%
+
+      #map(style='height: 250px;')
+      .input-box.input-box_freeze
+        input.input-box__field(type='text', name='address', id='address', placeholder='Адрес')
+      .input-box.input-box_freeze
+        input.input-box__field(type='text', name='house', id='house', placeholder='Дом')
+
+      script(src="//api-maps.yandex.ru/2.1/?lang=ru_RU&load=package.full&onload=onLoad")
+
+      script.
+        function onLoad(ymaps) {
+          var userPosition = [];
+          var input = document.getElementById( 'address' );
+          var shipArea = new ymaps.Polygon([
+            [
+              [ 60.005308434254125, 30.330988203546884 ],
+              [ 59.9868830002899  , 30.339512957214648 ],
+              [ 59.987349958269036, 30.362055628612616 ],
+              [ 59.97565075685213 , 30.43998989374935  ],
+              [ 59.932603312954086, 30.43792995722586  ],
+              [ 59.91398945881347 , 30.34282955439372  ],
+              [ 59.90709277974325 , 30.323260157421135 ],
+              [ 59.90761008053195 , 30.259745447948646 ],
+              [ 59.92536583681698 , 30.236056177928962 ],
+              [ 59.9832213020565  , 30.20962032587816  ],
+              [ 60.00103461843391 , 30.276801523609624 ],
+              [ 60.005308434254125, 30.330988203546884 ]
+            ], [] ]);
+
+          ymaps.geolocation.get( { provider: 'yandex' } ).then( function ( res ) {
+            userPosition = res.geoObjects.get(0).geometry.getCoordinates();
+            var userArea = res.geoObjects.get(0).properties.get('boundedBy');
+            var userMap = new ymaps.Map( 'map', {
+              center: userPosition,
+              zoom: 10,
+              controls: [ 'zoomControl','fullscreenControl', 'geolocationControl' ]
+            });
+
+            userMap.geoObjects.add( shipArea );
+
+            var expressStreet = new ymaps.SuggestView( 'address', {
+              boundedBy: userArea
+            } );
+            expressStreet.events.add( 'select', function ( event ) {
+              var value = event.get( 'item' ).value;
+              var geocode = ymaps.geocode( value, {
+                boundedBy: userArea,
+                results: 1
+              });
+
+              geocode.then( function ( res ) {
+                var shipCoords = res.geoObjects.get(0).geometry.getCoordinates();
+                console.log( res.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.AddressDetails.Country.AdministrativeArea );
+                var shipAddress = res.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.AddressDetails.Country.AdministrativeArea.Locality;
+                console.log( shipAddress );
+                //- input.value = shipAddress.AdministrativeAreaName + ' / ' + shipAddress.Thoroughfare.ThoroughfareName + ' / ' + shipAddress.Thoroughfare.Premise.PremiseNumber
+                //- input.value = shipAddress;
+
+                var shipPlacemark = new ymaps.Placemark( shipCoords, {
+                    iconCaption: shipAddress
+                  }, {
+                  preset: 'twirl#truckIcon'
+                });
+                userMap.geoObjects.add( shipPlacemark );
+
+                userMap.setCenter( shipCoords, 17, {
+                  checkZoomRange: true,
+                  duration: 1500
+                } );
+
+
+                console.log( shipArea.geometry.contains( shipCoords ) ? 'Ранил!' : 'Мимо!');
+              }, function ( err ) {
+                console.log( err );
+              } );
+            });
+          }, function ( err ) {
+            console.log( err );
+          });
+
+        }
+
+      script(src='%=static=%js/separate-js/svg4everybody.min.js')
+      script svg4everybody();
+
+      //- Main scripts. You can replace it, but I recommend you to leave it here
+      script(src='%=static=%js/main%=hash=%%=min=%.js')

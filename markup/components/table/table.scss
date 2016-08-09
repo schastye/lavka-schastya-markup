@@ -1,0 +1,62 @@
+.table {
+  width: 100%;
+  max-width: 100%;
+
+  &_striped {
+    .table__body .table__row:nth-of-type(odd) {
+      background-color: $table-bg-accent;
+    }
+  }
+
+  &__caption {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    text-align: left;
+    caption-side: top;
+  }
+
+  &__cell {
+    padding: $table-cell-padding;
+    line-height: $line-height;
+    vertical-align: middle;
+    border-top: $table-border-width solid $table-border-color;
+  }
+
+  &__head &__cell {
+    vertical-align: bottom;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  &__head &__cell,
+  &__head &__cell {
+    &:nth-child(1) {
+      text-align: left;
+      width: 1%;
+    }
+
+    &:nth-child(2) {
+      text-align: left;
+      vertical-align: middle;
+      width: 10%;
+    }
+
+    &:nth-child(3) {
+      text-align: right;
+      width: 1%;
+    }
+
+    &:nth-child(4) {
+      text-align: right;
+      width: 1%;
+    }
+
+    &:nth-child(5) {
+      text-align: right;
+      width: 1%;
+    }
+  }
+
+  &__body + &__body {
+    border-top: (2 * $table-border-width) solid $table-border-color;
+  }
+}

@@ -1,0 +1,26 @@
+doctype html
+html(class="no-js", lang="ru")
+
+  include ../components/head/head
+  include ../components/page/page
+  include ../components/header/header
+  include ../components/good-part/good-part
+  include ../components/footer/footer
+
+  head
+    +head(head.defaults)
+  +page()
+    |%=symbols=%
+    +header( { menu: { active: false, url: 'index__menu.html' }
+             , order: { active: false, url: 'index__order.html' }
+             , breadcrumbs: { title: 'Макарони', url: 'part.html' } } )
+
+    +good-part( { columns: 4, rows: 2 ,sets: 3 } )
+
+    +footer()
+
+    script(src='%=static=%js/separate-js/svg4everybody.min.js')
+    script svg4everybody();
+
+    //- Main scripts. You can replace it, but I recommend you to leave it here
+    script(src='%=static=%js/main%=hash=%%=min=%.js')

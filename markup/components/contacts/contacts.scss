@@ -1,0 +1,54 @@
+@lost flexbox flex;
+@lost gutter 15px;
+
+.contacts {
+  lost-column: 10/18 1;
+  lost-offset: 3/18;
+  lost-center: 100%;
+  background-color: $color-beige;
+  padding-top: 70px;
+  padding-bottom: 100px;
+
+
+  &__address {
+    lost-column: 8/10 1;
+    lost-offset: 1/10;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.1;
+    color: $color-grey-dark;
+  }
+
+  &__time {
+    margin-top: 10px;
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 1.6;
+    color: $color-grey-dark;
+  }
+
+  &__logo {
+    float: right;
+  }
+
+  &__title {
+    text-align: left;
+    font-weight: 200;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: $color-grey-dark;
+  }
+
+  &__feedback {
+    lost-column: 8/10 1;
+    lost-offset: 1/10;
+    text-align: right;
+  }
+
+  &__submit[type='submit'] {
+    @extend .button_add-to-card;
+    margin-top: 42px;
+    display: inline-block;
+    width: auto;
+  }
+}

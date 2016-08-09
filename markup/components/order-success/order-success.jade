@@ -1,0 +1,42 @@
+mixin order-success(data)
+  .order-success
+    - var orderList = 0
+    table.table.table_striped
+      caption.table__caption Спасибо за оформление заказа 
+        b #1607/6
+        |  на нашем сайте 
+        b Лавка Счастья
+        | !
+      thead.table__head
+        tr.table__row.order-table
+          th.table__cell &nbsp;
+          th.table__cell Наименование
+          th.table__cell Количество
+          th.table__cell Вес
+          th.table__cell Стоимость
+      tbody.table__body
+        while orderList < 4
+          - orderList++
+          tr.table__row.order-table
+            td.table__cell.order-table__image
+              img(src="https://lavkaschastya.com/assets/images/products/32/120x90/mak8penal.png")
+            td.table__cell.order-table__title
+              a(href="https://lavkaschastya.com/macarons/set_of_12_macarons") Набор из 12 макарони
+            td.table__cell.order-table__count 1 шт.
+            td.table__cell.order-table__weight 0.180 г
+            td.table__cell.order-table__cost 1020 ₽
+      tfoot.table__footer
+        tr.table__row.order-table
+          th.table__cell.order-table__sum(colspan="2") Итого:
+          th.table__cell.order-table__count
+            span.ms2_total_count #{orderList}
+            |  шт.
+          th.table__cell.order-table__weight
+            span.ms2_total_weight 0.540
+            |  г
+          th.table__cell.order-table__cost
+            span.ms2_total_cost 3060
+            |  ₽
+    h4 Итого, с доставкой: 3060 ₽ + 0 ₽ = 
+      big 1020
+      |  ₽

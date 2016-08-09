@@ -1,0 +1,54 @@
+
+ooooo                              oooo                  
+`888'                              `888                  
+ 888          .oooo.   oooo    ooo  888  oooo   .oooo.   
+ 888         `P  )88b   `88.  .8'   888 .8P'   `P  )88b  
+ 888          .oP"888    `88..8'    888888.     .oP"888  
+ 888       o d8(  888     `888'     888 `88b.  d8(  888  
+o888ooooood8 `Y888""8o     `8'     o888o o888o `Y888""8o 
+
+
+ .oooooo..o           oooo                               .               
+d8P'    `Y8           `888                             .o8               
+Y88bo.       .ooooo.   888 .oo.    .oooo.    .oooo.o .o888oo oooo    ooo  .oooo.   
+ `"Y8888o.  d88' `"Y8  888P"Y88b  `P  )88b  d88(  "8   888    `88.  .8'  `P  )88b  
+     `"Y88b 888        888   888   .oP"888  `"Y88b.    888     `88..8'    .oP"888  
+oo     .d8P 888   .o8  888   888  d8(  888  o.  )88b   888 .    `888'    d8(  888  
+8""88888P'  `Y8bod8P' o888o o888o `Y888""8o 8""888P'   "888"     .8'     `Y888""8o 
+                                                             .o..P'      
+                                                             `Y8P'       
+
+---------------------------- Welcome to our humans.txt ----------------------------
+
+TEAM
+============================================
+
+Markup and coding: Roman aka Realetive Ganin
+Twitter: @Realetive
+Location: Saint Petersburg, Russia
+
+
+Design: Sergey Bortsov
+
+
+THANKS
+============================================
+
+Thanks for watching ;)
+
+
+TECHNOLOGIES
+============================================
+
+Standards: HTML5, CSS3
+
+Software: Sublime Text 3, NodeJS and npm, TARS
+
+
+SITE
+============================================
+
+Source code available via GitHub: https://github.com/schastye
+
+License: Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International
+Public License

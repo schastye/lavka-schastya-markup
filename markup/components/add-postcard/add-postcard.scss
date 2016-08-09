@@ -1,0 +1,24 @@
+.add-postcard {
+
+  &__button {
+    background-color: $color-green !important;
+    padding: 10px                  !important;
+    text-align: center             !important;
+    font-weight: 500               !important;
+    font-size: 10px                !important;
+    letter-spacing: 1px            !important;
+    color: $color-grey-dark        !important;
+    width: 100%;
+  }
+
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+
+  &__title {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,134 @@
+.input-box {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin: 2em 0 .3em;
+  width: 100%;
+  vertical-align: top;
+
+  &_light {
+    .input-box__field {
+      background-color: #fff !important;
+      color: $color-grey-dark;
+    }
+
+    .input-box__field:focus + .input-box__field,
+    .input-box_filled .input-box__field {
+      background-color: #fff !important;
+    }
+
+    .input-box__label-content:after {
+      color: #000;
+    }
+  }
+
+  &__field {
+    position: relative;
+    display: block;
+    float: right;
+    padding: 0.8em;
+    border-radius: 0;
+    color: $color-grey-light;
+    font-weight: 500;
+    appearance: none; /* for box shadows to show on iOS */
+    width: 100%;
+    background-color: $color-green;
+    border: 2px solid transparent;
+    transition: background-color 0.25s, border-color 0.25s;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__label {
+    display: inline-block;
+    float: right;
+    margin-bottom: .3em;
+    padding: 0 1em;
+    color: $color-grey-dark;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-touch-callout: none;
+    user-select: none;
+    width: 100%;
+    text-align: left;
+    position: absolute;
+    white-space: nowrap;
+    bottom: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    padding: 0 1.25em;
+    transform: translate3d(0, 3em, 0);
+    transition: transform 0.25s ;
+    transition-timing-function: ease-in-out;
+  }
+
+  &__label-content {
+    position: relative;
+    display: block;
+    width: 100%;
+    color: $color-green-dark;
+    padding: 0.15em 0;
+    transition: transform 0.25s;
+    transition-timing-function: ease-in-out;
+
+    &:after {
+      content: attr(data-content);
+      position: absolute;
+      font-weight: 500;
+      bottom: 100%;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      padding: 0.25em 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.85em;
+    }
+  }
+
+  &__addon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    &_right {
+      right: 0;
+      left: auto;
+    }
+  }
+
+  &__field:focus + &__label,
+  &_filled &__label {
+    transform: translate3d(0, 0, 0);
+    margin-bottom: 0;
+  }
+
+  &__field:focus + &__label &__label-content,
+  &_filled &__label-content {
+    transform: translate3d(0, 100%, 0);
+  }
+
+  &__field:focus + &__field,
+  &_filled &__field {
+    background-color: transparent;
+    border-color: $color-grey-dark;
+  }
+
+  &_error &__field {
+    border-color: red;
+  }
+
+  &_error &__label-content:after,
+  &_error &__label-content {
+    color: red;
+  }
+}

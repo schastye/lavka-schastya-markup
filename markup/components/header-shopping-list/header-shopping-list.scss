@@ -1,0 +1,20 @@
+.header-shopping-list {
+  @extend .header-menu;
+  padding: 0 0 5rem;
+  text-align: left;
+
+  &__item {
+    @extend .header-menu__item;
+
+    &:hover,
+    &:focus {
+      background-color: $color-green-dark;
+
+      &:after {
+        border-bottom-color: transparent;
+      }
+    }
+
+
+  }
+}

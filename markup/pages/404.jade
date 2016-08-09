@@ -1,0 +1,47 @@
+doctype html
+html(class="no-js", lang="ru")
+
+  include ../components/head/head
+  include ../components/page/page
+  include ../components/button/button
+  include ../components/header/header
+  include ../components/footer/footer
+
+  head
+    +head(head.defaults)
+  +page()
+    |%=symbols=%
+    +header( { menu: { active: false, url: 'index__menu.html' }, order: { active: false, url: 'index__order.html' } } )
+
+    style
+      | .content-page_fullheight:after {
+      |   background-image: url(http://babeholder.pixoil.com/img/1920/1200/);
+      | }
+    .content-page.content-page_fullheight
+      .part-content
+        h2.part-content__title Страница не найдена
+        .part-content__content
+          p.text_lead.text_align_center К сожалению, введенный Вами адрес недоступен.
+          p.text_lead Этому может быть несколько объяснений:
+          ul.text_align_left
+            li страница удалена (из-за утраты актуальности информации);
+            li страница перенесена в другое место;
+            li
+              | возможно, при вводе адреса была пропущена какая-то буква:
+              form.input-box.input-box_light(action="/" method="post")
+                input.input-box__field(type='text', name='q', value="macarons/box_8_macrons")
+                .input-box__addon.input-box__addon_right
+                  +button({ mods: {} })
+                    != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'submit-button'})
+          .text_align_center
+            +button( { mods: { type: 'link', style: 'primary', size: 'l' }, url: 'index.html' } )
+              | Перейти на главную страницу
+              != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'submit-button'})
+
+    +footer()
+
+    script(src='%=static=%js/separate-js/svg4everybody.min.js')
+    script svg4everybody();
+
+    //- Main scripts. You can replace it, but I recommend you to leave it here
+    script(src='%=static=%js/main%=hash=%%=min=%.js')

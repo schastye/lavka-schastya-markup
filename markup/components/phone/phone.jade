@@ -1,0 +1,5 @@
+mixin phone(data)
+  a.phone(href="tel:#{data.country}#{data.city}#{data.number}")
+    span.phone__country-code #{data.country}&nbsp;
+    span.phone__city-code (#{data.city})&nbsp;
+    span.phone__number #{data.number}

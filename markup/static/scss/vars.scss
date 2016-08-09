@@ -1,0 +1,44 @@
+// File for scss-vars.
+// For example: main colors, paddings and so on.
+
+$btn-border-radius: 0;
+
+$font-family-sans-serif:     "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-serif:          Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:      Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-base:           $font-family-sans-serif;
+
+$font-size-root: 14px;
+
+$headings-font-weight:        200;
+$lead-font-weight:            200;
+$dt-font-weight:              200;
+$nested-kbd-font-weight:      200;
+$btn-font-weight:             200;
+$label-font-weight:           200;
+$alert-link-font-weight:      200;
+$close-font-weight:           200;
+
+@import "../../../node_modules/bootstrap/scss/_variables.scss";
+
+$grid-gutter-width:    16px;
+
+$color-grey:           #eee;
+$color-grey-dark:      #666;
+$color-grey-light:     #9b9b9b;
+$color-green:          #e9f0e0;
+$color-green-dark:     #85b892;
+$color-green-light:    #f0faf3;
+$color-beige:          #fff9ea;
+$color-beige-light:    #fffef6;
+$color-pink:           #fdf7ff;
+$color-blue:           #f7fcff;
+
+
+$set-cell__item_color: $color-grey-dark;
+
+$space-1:              1rem;
+$space-2:              2rem;
+$space-3:              3rem;
+$space-4:              4rem;
+$space-5:              5rem;

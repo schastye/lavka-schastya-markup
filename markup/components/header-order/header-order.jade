@@ -1,0 +1,20 @@
+mixin header-order(data)
+  include ../header-shopping-item/header-shopping-item
+
+  ul.header-menu
+    li.header-menu__item
+      span.header-menu__link Корзина пуста
+
+  //- table.header-order
+    tbody.header-order__list
+      +header-shopping-item( headerShoppingItem.default )
+      +header-shopping-item( headerShoppingItem.default )
+      +header-shopping-item( headerShoppingItem.default )
+      +header-shopping-item( headerShoppingItem.default )
+      +header-shopping-item( headerShoppingItem.default )
+      +header-shopping-item( headerShoppingItem.default )
+    tfoot.header-order__footer
+      tr
+        td.header-shopping-footer( colspan="3" )
+          .header-shopping-footer__sum Итого: 4500 rub
+          a.header-shopping-footer__link( href="order.html" ) Перейти в корзину
