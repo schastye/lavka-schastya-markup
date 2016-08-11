@@ -103,6 +103,10 @@
     &_right {
       right: 0;
       left: auto;
+
+      * {
+        height: 100%;
+      }
     }
   }
 
