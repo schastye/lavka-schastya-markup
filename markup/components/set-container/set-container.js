@@ -23,13 +23,12 @@ function getElIndex(el) {
   Stack.prototype.get = function ( stack = {} ) {
     [].slice.call( this.root ).forEach( ( rootEl ) => {
       let children = rootEl.children;
-      for ( let item in children ) {
-        if ( {}.hasOwnProperty.call( children, item ) ) {
-          stack[ item ] = {
-            itemId: children[ item ].firstElementChild ? children[ item ].firstElementChild.firstElementChild.value : null,
-            image: children[ item ].firstElementChild ? children[ item ].firstElementChild.style.backgroundImage.match( /url\("(.*)"\)/i )[1] : null
-          };
-        }
+
+      for ( let item = 0; item < children.length; item++ ) {
+        stack[ item ] = {
+          itemId: children[ item ].firstElementChild ? children[ item ].firstElementChild.firstElementChild.value : null,
+          image: children[ item ].firstElementChild ? children[ item ].firstElementChild.style.backgroundImage.slice(4, -1) : null
+        };
       }
     });
     return stack;
@@ -68,12 +67,16 @@ function getElIndex(el) {
       [].slice.call( this.root ).forEach( root => {
         root.classList.add( 'drop-area_completed' );
       } );
-      document.querySelectorAll( '.button_add-to-card' )[0].disabled = false;
+      [].slice.call( document.querySelectorAll( '.button_add-to-card' ) ).forEach( ( button ) => {
+        button.disabled = false;
+      } );
     } else {
       [].slice.call( this.root ).forEach( root => {
         root.classList.remove( 'drop-area_completed' );
       } );
-      document.querySelectorAll( '.button_add-to-card' )[0].disabled = true;
+      [].slice.call( document.querySelectorAll( '.button_add-to-card' ) ).forEach( ( button ) => {
+        button.disabled = true;
+      } );
     }
     // console.log( count );
   };
@@ -81,19 +84,18 @@ function getElIndex(el) {
   Stack.prototype.update = function ( newStack = this.get() ) {
     let stack = newStack || {};
     let stackLength = Object.keys( stack ).length;
+    console.log( stackLength );
     [].slice.call( this.root ).forEach( ( rootEl ) => {
       let children = rootEl.children;
-      for ( let item in children ) {
-        if ( {}.hasOwnProperty.call( children, item ) ) {
-          if ( stack[ item ].itemId !== null ) {
-            children[ item ].innerHTML = `<div style="background-image: url(${ stack[ item ].image });" class="set-cell-content">
-                                            <input type="hidden" name="options[composition][${ item }]" class="set-cell-content__id" value="${ stack[ item ].itemId }" form="order">
-                                          </div>`;
-            children[ item ].firstChild.addEventListener( 'click', this.remove.bind( this, item, event ), false );
-            stackLength--;
-          } else {
-            children[ item ].innerHTML = '';
-          }
+      for ( let item = 0; item < children.length; item++ ) {
+        if ( stack[ item ].itemId !== null ) {
+          children[ item ].innerHTML = `<div style="background-image: url(${ stack[ item ].image });" class="set-cell-content">
+                                          <input type="hidden" name="options[composition][${ item }]" class="set-cell-content__id" value="${ stack[ item ].itemId }" form="order">
+                                        </div>`;
+          children[ item ].firstChild.addEventListener( 'click', this.remove.bind( this, item, event ), false );
+          stackLength--;
+        } else {
+          children[ item ].innerHTML = '';
         }
       }
       this.status( stackLength );
