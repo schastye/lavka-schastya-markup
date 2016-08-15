@@ -12,7 +12,7 @@
       el.addEventListener( 'click', event => {
         event.preventDefault();
         if ( window.zenscroll ) {
-          zenscroll.setup(500, 150);
+          zenscroll.setup(500, window.innerWidth >= 1024 ? 20 : 150);
           zenscroll.to( document.getElementById( 'good-information__box' ) );
         }
         let select = event.currentTarget.querySelectorAll( '.box-variant__select' )[ 0 ];
