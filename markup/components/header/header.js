@@ -30,6 +30,25 @@
     });
   }
 
+  let headerPhone = document.getElementById( 'header__phone-modal' );
+  if (headerPhone) {
+    headerPhone.addEventListener( 'click', event => {
+      event.preventDefault();
+      let t = document.querySelector('#modal');
+      // Во время выполнения заполняем src.
+      // t.content.querySelector('.popup__content').textContent = 'Hello';
+      document.body.appendChild( t.content.cloneNode( true ) );
+
+      [].slice.call( document.querySelectorAll( '.popup__close' ) ).forEach( popupClose => {
+        popupClose.addEventListener( 'click', function (e) {
+          let srcEl = e.target || e.srcElement;
+          srcEl.parentNode.parentNode.removeChild( srcEl.parentNode );
+          console.log('close!');
+        }, false );
+      });
+    });
+  }
+
   // let headerLogo = document.querySelectorAll( '.header-logo' );
   // if (headerLogo.length) {
   //   [].slice.call( headerLogo ).forEach( el => {
@@ -45,29 +64,26 @@
   let headerCity = document.querySelectorAll( '.header__city' );
   if (headerCity.length) {
     [].slice.call( headerCity ).forEach( headerCityItem => {
+      [].slice.call( headerCityItem.children ).forEach( headerCityFigure => {
+        headerCityFigure.style.display = 'block';
+      });
       let slider = new Peppermint( headerCityItem, {
         speed: 500,
         touchSpeed: 500,
         mouseDrag: true,
-        startSlide: window.localStorage.getItem( 'cityID' ) || 0
+        startSlide: parseInt( window.localStorage.getItem( 'cityID' ), 10 ) || 0,
+        onSlideChange: function ( selectedCity ) {
+          window.localStorage.setItem( 'cityID', selectedCity );
+        }
       } );
 
-      let headerCityPrev = headerCityItem.querySelectorAll( '.city-select__prev' );
-      [].slice.call( headerCityPrev ).forEach( headerCityPrevItem => {
-        headerCityPrevItem.addEventListener( 'click', event => {
-          event.preventDefault();
-          slider.prev();
-          window.localStorage.setItem( 'cityID', slider.getCurrentPos() );
-        } );
-      } );
-
-      let headerCityNext = headerCityItem.querySelectorAll( '.city-select__next' );
-      [].slice.call( headerCityNext ).forEach( headerCityNextItem => {
-        headerCityNextItem.addEventListener( 'click', event => {
-          event.preventDefault();
-          slider.next();
-          window.localStorage.setItem( 'cityID', slider.getCurrentPos() );
-        } );
+      let headerCityButton = headerCityItem.querySelectorAll( '.city-select__prev, .city-select__next' );
+      [].slice.call( headerCityButton ).forEach( headerCityButtonItem => {
+        if ( headerCityButtonItem.classList.contains('city-select__next') ) {
+          headerCityButtonItem.addEventListener( 'click', slider.next, false );
+        } else {
+          headerCityButtonItem.addEventListener( 'click', slider.prev, false );
+        }
       } );
     } );
   }
