@@ -27,7 +27,7 @@
   &_skew_top-right,
   &_skew_bottom-left,
   &_skew_bottom-right {
-    min-height: 210px;
+    min-height: 300px;
     position: relative;
 
     @media (min-width: 768px) {
@@ -53,14 +53,22 @@
 
   &_skew_top-left::before,
   &_skew_top-right::before {
-    border-bottom: 110px solid transparent;
+    border-bottom: 70px solid transparent;
     top: 0px;
+
+    @media (min-width: 768px) {
+      border-bottom: 110px solid transparent;
+    }
   }
 
   &_skew_bottom-left::after,
   &_skew_bottom-right::after {
-    border-top: 110px solid transparent;
+    border-top: 70px solid transparent;
     bottom: 0px;
+
+    @media (min-width: 768px) {
+      border-top: 110px solid transparent;
+    }
   }
 
   &_skew_top-left::before,
