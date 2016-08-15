@@ -44,7 +44,7 @@
     @media (min-width: 1024px) {
       lost-column: 1/2 0;
       margin-bottom: 0;
-      max-height: auto;
+      max-height: none;
     }
 
   }
@@ -53,11 +53,11 @@
     lost-column: 3/4 0;
     max-height: 380px;
     overflow: auto;
+    padding-left: 20px;
 
     @media (min-width: 1024px) {
       lost-column: 1/2 1;
-      padding-left: 20px;
-      max-height: auto;
+      max-height: none;
     }
   }
 
