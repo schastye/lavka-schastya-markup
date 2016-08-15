@@ -84,7 +84,7 @@ function getElIndex(el) {
   Stack.prototype.update = function ( newStack = this.get() ) {
     let stack = newStack || {};
     let stackLength = Object.keys( stack ).length;
-    console.log( stackLength );
+
     [].slice.call( this.root ).forEach( ( rootEl ) => {
       let children = rootEl.children;
       for ( let item = 0; item < children.length; item++ ) {
