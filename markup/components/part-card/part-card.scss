@@ -89,7 +89,6 @@
   }
 
   &__image {
-    opacity: .8;
     position: absolute;
     top: 0;
     left: 0;
@@ -100,6 +99,10 @@
     background-position: center;
     background-size: cover;
     transition: opacity .3s linear;
+
+    @media (min-width: 1024px) {
+      opacity: .8;
+    }
   }
 
   &__title {
