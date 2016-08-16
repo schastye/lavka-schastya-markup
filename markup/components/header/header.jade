@@ -21,7 +21,7 @@ mixin header(data)
           p Москва
           +phone( { country: '+7', city: 812, number: '983-11-18' } )
         footer.popup__footer
-    .header__phone-modal#header__phone-modal
+    .header__phone-modal#header__phone-modal(class = data.index ? 'header__phone-modal_fade_in' : '')
       +button( { mods: { style: 'glass' } } )(class="menu-button")
         != jadeHelpers.Icon.call(locals, {iconName: 'call', className: 'icon icon_phone'})
     .header__navigation#header__navigation
