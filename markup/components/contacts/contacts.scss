@@ -2,13 +2,20 @@
 @lost gutter 15px;
 
 .contacts {
-  lost-column: 10/18 1;
-  lost-offset: 3/18;
   lost-center: 100%;
   background-color: $color-beige;
   padding-top: 70px;
   padding-bottom: 100px;
 
+  @media (min-width: 768px) {
+    lost-column: 10/12 1;
+    lost-offset: 2/12;
+  }
+
+  @media (min-width: 768px) {
+    lost-column: 10/18 1;
+    lost-offset: 3/18;
+  }
 
   &__address {
     lost-column: 8/10 1;
