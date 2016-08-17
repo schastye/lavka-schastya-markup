@@ -9,102 +9,104 @@ function getElIndex(el) {
 }
 /* eslint-enable */
 
-(function () {
-
-  function Stack( stackRootDOM ) {
-    if ( typeof stackRootDOM === 'undefined' ) {
-      return false;
-    }
-
-    this.root = document.querySelectorAll( stackRootDOM );
-    this.stack = this.get();
+function Stack( stackRootDOM ) {
+  if ( typeof stackRootDOM === 'undefined' ) {
+    return false;
   }
 
-  Stack.prototype.get = function ( stack = {} ) {
-    [].slice.call( this.root ).forEach( ( rootEl ) => {
-      let children = rootEl.children;
+  this.root = document.querySelectorAll( stackRootDOM );
+  this.stack = this.get();
+}
 
-      for ( let item = 0; item < children.length; item++ ) {
-        stack[ item ] = {
-          itemId: children[ item ].firstElementChild ? children[ item ].firstElementChild.firstElementChild.value : null,
-          image: children[ item ].firstElementChild ? children[ item ].firstElementChild.style.backgroundImage.slice(4, -1) : null
-        };
+Stack.prototype.get = function ( stack = {} ) {
+  [].slice.call( this.root ).forEach( ( rootEl ) => {
+    let children = rootEl.children;
+
+    for ( let item = 0; item < children.length; item++ ) {
+      stack[ item ] = {
+        itemId: children[ item ].firstElementChild ? children[ item ].firstElementChild.firstElementChild.value : null,
+        image: children[ item ].firstElementChild ? children[ item ].firstElementChild.style.backgroundImage.slice(4, -1) : null
+      };
+    }
+  });
+  return stack;
+};
+
+Stack.prototype.add = function ( item, image, position, stack = this.stack ) {
+  if ( typeof item === 'undefined' || typeof image === 'undefined' ) {
+    return false;
+  }
+  if ( position ) {
+    stack[ position ].itemId = item;
+    stack[ position ].image = image;
+  } else {
+    for ( let index in stack ) {
+      if ( {}.hasOwnProperty.call( stack, index ) && stack[ index ].itemId === null ) {
+        stack[ index ].itemId = item;
+        stack[ index ].image = image;
+        break;
       }
-    });
+    }
+  }
+
+  return this.update( stack );
+};
+
+Stack.prototype.remove = function ( position, event ) {
+  let newStack = this.stack;
+  newStack[ position ].itemId = null;
+  newStack[ position ].image = null;
+
+  return this.update( newStack );
+};
+
+Stack.prototype.status = function ( count ) {
+  if ( count === 0 ) {
+    [].slice.call( this.root ).forEach( root => {
+      root.classList.add( 'drop-area_completed' );
+    } );
+    [].slice.call( document.querySelectorAll( '.button_add-to-card' ) ).forEach( ( button ) => {
+      button.disabled = false;
+    } );
+  } else {
+    [].slice.call( this.root ).forEach( root => {
+      root.classList.remove( 'drop-area_completed' );
+    } );
+    [].slice.call( document.querySelectorAll( '.button_add-to-card' ) ).forEach( ( button ) => {
+      button.disabled = true;
+    } );
+  }
+  // console.log( count );
+};
+
+Stack.prototype.update = function ( newStack = this.get() ) {
+  let stack = newStack || {};
+  let stackLength = Object.keys( stack ).length;
+
+  [].slice.call( this.root ).forEach( ( rootEl ) => {
+    let children = rootEl.children;
+    for ( let item = 0; item < children.length; item++ ) {
+      if ( stack[ item ].itemId !== null ) {
+        children[ item ].innerHTML = `<div style="background-image: url(${ stack[ item ].image });" class="set-cell-content">
+                                        <input type="hidden" name="options[composition][${ item }]" class="set-cell-content__id" value="${ stack[ item ].itemId }" form="order">
+                                      </div>`;
+        children[ item ].firstChild.addEventListener( 'click', this.remove.bind( this, item, event ), false );
+        stackLength--;
+      } else {
+        children[ item ].innerHTML = '';
+      }
+    }
+    this.status( stackLength );
     return stack;
-  };
+  });
+};
 
-  Stack.prototype.add = function ( item, image, position, stack = this.stack ) {
-    if ( typeof item === 'undefined' || typeof image === 'undefined' ) {
-      return false;
-    }
-    if ( position ) {
-      stack[ position ].itemId = item;
-      stack[ position ].image = image;
-    } else {
-      for ( let index in stack ) {
-        if ( {}.hasOwnProperty.call( stack, index ) && stack[ index ].itemId === null ) {
-          stack[ index ].itemId = item;
-          stack[ index ].image = image;
-          break;
-        }
-      }
-    }
+function clickEvent() {
+  Stack.add( this.dataset.good, this.dataset.drag );
+}
 
-    return this.update( stack );
-  };
-
-  Stack.prototype.remove = function ( position, event ) {
-    let newStack = this.stack;
-    newStack[ position ].itemId = null;
-    newStack[ position ].image = null;
-
-    return this.update( newStack );
-  };
-
-  Stack.prototype.status = function ( count ) {
-    if ( count === 0 ) {
-      [].slice.call( this.root ).forEach( root => {
-        root.classList.add( 'drop-area_completed' );
-      } );
-      [].slice.call( document.querySelectorAll( '.button_add-to-card' ) ).forEach( ( button ) => {
-        button.disabled = false;
-      } );
-    } else {
-      [].slice.call( this.root ).forEach( root => {
-        root.classList.remove( 'drop-area_completed' );
-      } );
-      [].slice.call( document.querySelectorAll( '.button_add-to-card' ) ).forEach( ( button ) => {
-        button.disabled = true;
-      } );
-    }
-    // console.log( count );
-  };
-
-  Stack.prototype.update = function ( newStack = this.get() ) {
-    let stack = newStack || {};
-    let stackLength = Object.keys( stack ).length;
-
-    [].slice.call( this.root ).forEach( ( rootEl ) => {
-      let children = rootEl.children;
-      for ( let item = 0; item < children.length; item++ ) {
-        if ( stack[ item ].itemId !== null ) {
-          children[ item ].innerHTML = `<div style="background-image: url(${ stack[ item ].image });" class="set-cell-content">
-                                          <input type="hidden" name="options[composition][${ item }]" class="set-cell-content__id" value="${ stack[ item ].itemId }" form="order">
-                                        </div>`;
-          children[ item ].firstChild.addEventListener( 'click', this.remove.bind( this, item, event ), false );
-          stackLength--;
-        } else {
-          children[ item ].innerHTML = '';
-        }
-      }
-      this.status( stackLength );
-      return stack;
-    });
-  };
-
+(function () {
   let setStack = new Stack( '#drop-area' );
-  window.Stack = setStack;
 
   let initElem = document.querySelectorAll( '.dragdrop' );
 
@@ -136,15 +138,12 @@ function getElIndex(el) {
     } );
 
     // initialize draggable(s)
-    [].slice.call(document.querySelectorAll( '.' + gridItem ) ).forEach( el => {
-      function clickEvent( event ) {
-        let _event = event || window.event;
-        let _element = _event.currentTarget ? _event.currentTarget : _event.srcElement;
-        setStack.add( _element.dataset.good, _element.dataset.drag );
-      }
-      el.addEventListener( 'click', clickEvent, false );
-      // el.addEventListener( 'touchstart', clickEvent, false );
-      if (document.documentElement.clientWidth >= 1024) {
+    let draggableElement = document.querySelectorAll( '.' + gridItem );
+    for (let i = 0; i < draggableElement.length; i++) {
+      let el = draggableElement[i];
+
+      el.addEventListener( 'click', clickEvent.bind( el ), false );
+      if (document.documentElement.clientWidth > 1024) {
         new Draggable( el, droppableArr, {
           scroll: true,
           scrollable: '#drop-area',
@@ -191,6 +190,9 @@ function getElIndex(el) {
           }
         } );
       }
-    } );
+    }
   }
+
+  window.Stack = setStack;
+
 })();

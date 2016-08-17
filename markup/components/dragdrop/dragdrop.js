@@ -304,9 +304,11 @@
     // clone the original item (same position)
     let clone = this.el.cloneNode( true );
 
-    clone.addEventListener( 'click', ( event ) => {
-      Stack.add( event.currentTarget.dataset.good, event.currentTarget.dataset.drag );
-    }, false );
+    function clickEvent() {
+      Stack.add( this.dataset.good, this.dataset.drag );
+    }
+
+    clone.addEventListener( 'click', clickEvent.bind( clone ), false );
     // because the original element started the dragging, we need to remove
     // the is-dragging class
     classie.remove( clone, this.options.draggingClass );
