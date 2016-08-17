@@ -24,7 +24,7 @@ function updateData( key ) {
   orderData[ key ] = this.value;
 }
 
-if ( document.getElementById('order') ) {
+if ( document.getElementById('order').classList.contains('order') ) {
   for ( let key in formData ) {
     if ( formData.hasOwnProperty( key ) ) {
       if ( key !== 'deliveries' ) {
