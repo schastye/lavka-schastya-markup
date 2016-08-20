@@ -1,0 +1,22 @@
+.order-table {
+  display: table-row;
+
+  &__image {
+    text-align: center;
+    width: 1%;
+    min-width: 80px;
+  }
+
+  &__title {
+    text-align: left;
+    width: 10%;
+  }
+
+  &__count,
+  &__weight,
+  &__cost,
+  &__sum {
+    text-align: right;
+    width: 1%;
+  }
+}

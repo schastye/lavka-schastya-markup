@@ -1,0 +1,42 @@
+mixin button(data, ...items)
+  - var types        = [ 'link', 'submit', 'reset' ]
+  - var views        = [ 'action', 'pseudo', 'plain' ]
+  - var styles       = [ 'primary', 'secondary', 'glass', 'success', 'info', 'warning', 'danger', 'link' ]
+  - var sizes        = [ 's', 'm', 'l', 'xl' ]
+  - var toggle       = [ 'check', 'radio' ]
+
+  - var modType      = types.some(  element => element == data.mods.type  ) ? data.mods.type : 'button'
+  - var modView      = views.some(  element => element == data.mods.view  ) ? data.mods.view : null
+  - var modStyle     = styles.some( element => element == data.mods.style ) ? ('button_style_' + data.mods.style) : 'button_style_glass'
+  - var modSize      = sizes.some(  element => element == data.mods.size  ) ? ('button_size_'  + data.mods.size)  : 'button_size_m'
+  - var modTogglable = toggle.some( element => element == data.mods.togglable ) ? data.mods.togglable : null
+  - var modOutline   = data.mods.outline ? '-outline' : ''
+  - var modElement   = modType == 'link' ? 'a' : 'button'
+  - var modDisabled  = data.mods.disabled ? true : false
+  - var modFocused   = data.mods.focused ? true : false
+  - var modPressed   = data.mods.pressed ? true : false
+  - var modHovered   = data.mods.hovered ? true : false
+  - var name         = modType == 'button' ? ( data.name ? data.name : null ) : null
+  - var val          = modType == 'button' ? ( data.val ? data.val : null ) : null
+  - var text         = modType == 'button' ? ( data.text ? data.text : null ) : null
+  - var url          = modType == 'link' ? ( data.url ? data.url : '#' ) : null
+  - var icon         = null
+  - var title        = data.title ? data.title : null
+  - var id           = data.id ? data.id : null
+  - var tabIndex     = data.tabIndex ? data.tabIndex : null
+  #{modElement}(
+    href=url
+    class="button"
+    class=(modStyle + modOutline)
+    class=modSize
+    class=(modDisabled ? 'button_state_disabled' : '')
+    class=(modFocused  ? 'button_state_focused'  : '')
+    class=(modPressed  ? 'button_state_pressed'  : '')
+    class=(modHovered  ? 'button_state_hovered'  : '')
+    id=id
+    role="button"
+    title=title
+    disabled=modDisabled
+    autofocus=modFocused)&attributes( attributes )
+    | #{text}
+    block

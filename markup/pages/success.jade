@@ -1,0 +1,46 @@
+doctype html
+html(class="no-js", lang="ru")
+
+  include ../components/head/head
+  include ../components/page/page
+  include ../components/header/header
+  include ../components/order-success/order-success
+  include ../components/footer/footer
+
+  head
+    +head(head.defaults)
+  +page()
+    |%=symbols=%
+    +header( { menu: { active: false, url: 'index__menu.html' }, order: { active: false, url: 'index__order.html' } } )
+
+    .order-page
+      .order-page__form
+        .order-form
+          .contacts-header
+            .contacts-header__aside
+              h2.order-form__title Оформление заказа
+              | ул. Рубинштейна, 15-17
+              br
+              p Часы работы:
+                br
+                b пн-чт
+                | , 
+                b вс
+                | : с 9 до 0
+                br
+                b пт
+                | , 
+                b сб
+                | : с 9 до 2
+            .contacts-header__aside
+              != jadeHelpers.Icon.call(locals, {iconName: 'angels_contacts', className: 'watermark'})
+
+          +order-success()
+
+    +footer()
+
+    script(src='%=static=%js/separate-js/svg4everybody.min.js')
+    script svg4everybody();
+
+    //- Main scripts. You can replace it, but I recommend you to leave it here
+    script(src='%=static=%js/main%=hash=%%=min=%.js')

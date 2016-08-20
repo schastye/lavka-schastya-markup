@@ -1,0 +1,29 @@
+.button-range {
+  @extend .button-group;
+
+  &__button {
+    color: $color-green-dark;
+    padding: 0.2rem 1rem;
+    line-height: 1;
+  }
+
+  &__value {
+    display: inline-block;
+    cursor: default;
+    padding: 0;
+    line-height: 1;
+    font-size: 20px;
+    font-weight: 200;
+    background-color: transparent;
+    border-width: 0;
+    text-align: center;
+    -moz-appearance: textfield; /* Fix Firefox spins */
+    width: 40px; /* Fix Firefox width (ugly) */
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+  }
+}

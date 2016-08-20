@@ -1,0 +1,21 @@
+.checkbox {
+  padding: .3em 0;
+  display: block;
+
+  &__field {
+    display: inline;
+  }
+
+  &__label {
+    display: inline;
+
+  }
+
+  &__field + &__label {
+    margin-left: 1em;
+  }
+
+  &__label + &__field {
+    margin-left: 1em;
+  }
+}

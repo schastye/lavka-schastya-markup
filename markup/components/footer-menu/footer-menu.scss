@@ -1,0 +1,32 @@
+.footer-menu {
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 32px;
+    white-space: nowrap;
+
+    &:before {
+      content: '·';
+      display: inline-block;
+      margin: 0 .5rem;
+    }
+
+    &:first-child:before {
+      display: none;
+    }
+  }
+
+  &__link {
+    color: $color-grey-dark;
+    font-size: 14px;
+    font-weight: 200;
+
+    &:hover,
+    &:focus {
+      color: darken($color-grey-dark, 10%);
+    }
+  }
+}

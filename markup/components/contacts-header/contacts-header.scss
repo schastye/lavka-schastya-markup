@@ -1,0 +1,13 @@
+.contacts-header {
+  lost-center: 100% 0px flex;
+  lost-column: 1/1 0 30px flex;
+  justify-content: space-around;
+
+  &__aside {
+    lost-column: 1/2 0 16px flex;
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}

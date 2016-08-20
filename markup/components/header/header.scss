@@ -1,0 +1,265 @@
+@lost flexbox flex;
+@lost cycle none;
+@lost gutter: 0;
+
+.header {
+  lost-center : 100%;
+  position    : fixed;
+  top         : 0;
+  left        : 0;
+  right       : 0;
+  max-height  : 100%;
+  padding     : $space-1;
+  z-index     : 100;
+  border      : 1px solid #ECE7DB;
+
+  @media (max-width: 1023px) {
+    height                    : 100%;
+    align-content             : space-between;
+    animation-name            : collapseMenu;
+    animation-iteration-count : 1;
+    animation-fill-mode       : forwards;
+    animation-timing-function : linear;
+    animation-duration        : 0.5s;
+    animation-delay           : 3s;
+  }
+
+  @media (min-width: 1024px) {
+    left    : 5rem;
+    right   : auto;
+    bottom  : auto;
+    width   : 295px;
+    padding : $space-2 $space-4;
+  }
+
+  &::before {
+    content          : '';
+    position         : absolute;
+    top              : 0;
+    bottom           : 0;
+    left             : 0;
+    right            : 0;
+    display          : block;
+    background-color : $color-beige;
+    z-index          : -1;
+  }
+
+  @media (min-width: 1024px) {
+    &:hover,
+    &:focus {
+      .header-logo {
+        animation-duration        : .4s;
+        animation-delay           : 0s;
+        animation-name            : collapseLogoReverse;
+      }
+    }
+  }
+
+  &_collapse {
+    @media (max-width: 1023px) {
+      max-height: 54px;
+      padding: .2rem;
+      animation: none;
+    }
+  }
+
+  &__order {
+    order: 2;
+    lost-column: 4/12;
+    lost-offset: 4/12;
+    lost-column-cycle: 0;
+    text-align: left;
+
+    @media (min-width: 1024px) {
+      order: 4;
+      lost-column: 6/12;
+      lost-offset: 0;
+      text-align: right;
+    }
+  }
+
+  &__phone-modal {
+    position: absolute;
+    top: 3px;
+    right: 44px;
+    bottom: 3px;
+    z-index: 10;
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+
+    &_fade_in {
+      opacity: 0;
+      animation-name: phoneFadeIn;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      animation-duration: 0.5s;
+      animation-delay: 3s;
+    }
+
+    @keyframes phoneFadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__navigation {
+    order: 4;
+    lost-column: 4/12;
+    lost-column-cycle: 1;
+    text-align: right;
+    position: relative;
+    z-index: 1;
+
+    @media (min-width: 1024px) {
+      order: 3;
+      lost-column: 6/12;
+      text-align: left;
+    }
+  }
+
+  &__logo {
+    order: 1;
+    lost-column: 1/1;
+    lost-column-cycle: 1;
+    align-self: center;
+
+    @media (min-width: 1024px) {
+      lost-column: 1/1;
+      lost-offset: 0;
+      order: 1;
+    }
+  }
+
+  &__city {
+    order: 5;
+    text-align: center;
+    lost-column: 1/1;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 1023px) {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      order: 2;
+    }
+  }
+
+  &__city-item {
+    display: none;
+
+    &:first-of-type {
+      display: block;
+    }
+  }
+
+  &__menu {
+    @extend .header__menu_hidden;
+    position: absolute;
+    left: $space-1;
+    right: $space-1;
+    background-color: $color-green;
+    padding: 0 $space-1 $space-1;
+    overflow: hidden;
+    z-index: -10;
+    transition: transform .5s ease 0s,
+                z-index .5s ease 0s;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      border: 1px solid $set-cell__item_color;
+      border-top-width: 0;
+    }
+
+    &_hidden {
+      top: auto;
+      bottom: -($space-2);
+      transform: translateY( 0 );
+      z-index: -10;
+    }
+
+    &_show {
+      transform: translateY( calc( 100% - 2rem ) );
+      z-index: -5 !important;
+    }
+
+    &_breadcrumbs {
+      @extend .header__menu_hidden;
+      animation-name: dropBreadcrumbs;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      animation-timing-function: linear;
+      animation-duration: 0.5s;
+      animation-delay: 3s;
+    }
+
+    & > * {
+      position: relative;
+      z-index: 10;
+    }
+  }
+
+  &__phone {
+    margin: 15px 0 0;
+  }
+
+  &__shopping-list {
+    @extend .header__menu;
+    min-height: 350px;
+    overflow-y: hidden;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      border: 1px solid $set-cell__item_color;
+      border-top-width: 0;
+    }
+
+    &_hidden {
+      top: auto;
+      bottom: -($space-2);
+    }
+
+    &_show {
+      top: 100%;
+      bottom: auto;
+    }
+  }
+
+}
+
+@keyframes dropBreadcrumbs {
+  0% {
+    transform: translateY( 0 );
+  }
+  100% {
+    transform: translateY(calc(2.5rem - 10%));
+  }
+}
+
+@keyframes collapseMenu {
+  0% {
+    max-height: 100%;
+  }
+  100% {
+    max-height: 54px;
+    padding: .2rem;
+  }
+}

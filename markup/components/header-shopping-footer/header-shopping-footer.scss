@@ -1,0 +1,28 @@
+.header-shopping-footer {
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  display: block;
+
+  &__sum {
+    display: block;
+    text-transform: uppercase;
+    border-bottom: 1px solid #979797;
+    border-top: 1px solid #979797;
+    padding: $space-1 0;
+  }
+
+  &__link {
+    font-size: 13px;
+    letter-spacing: 0.9px;
+    color: $color-grey-dark;
+    display: block;
+    padding: $space-1 0;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+      color: $color-green-dark;
+    }
+  }
+}

@@ -20,6 +20,23 @@ module.exports = {
             "pathToExternalSymbolsFile": "static/images/svg/"
         }
     },
+    "css": {
+        "workflow": "concat"
+    },
+    "js": {
+        "workflow": "concat",
+        "bundler": "webpack",
+        "lint": true,
+        "useBabel": true,
+        "removeConsoleLog": true,
+        "webpack": {
+            "useHMR": false
+        },
+        "jsPathsToConcatBeforeModulesJs": [],
+        "lintJsCodeBeforeModules": false,
+        "jsPathsToConcatAfterModulesJs": [],
+        "lintJsCodeAfterModules": false
+    },
     "sourcemaps": {
         "js": {
             "active": true,
@@ -37,38 +54,23 @@ module.exports = {
         "taskFinishedText": "Task finished at: "
     },
     "minifyHtml": false,
+    "generateStaticPath": true,
     "buildPath": "./builds/",
     "useBuildVersioning": true,
     "useArchiver": true,
     "ulimit": 4096,
-    "moduleTemplate": "_template",
     "templater": "jade",
     "cssPreprocessor": "scss",
     "useImagesForDisplayWithDpi": [
         96,
-        192
+        192,
+        288,
+        384
     ],
     "fs": {
         "staticFolderName": "static",
         "imagesFolderName": "img",
-        "componentsFolderName": "modules"
+        "componentsFolderName": "components"
     },
-    "js": {
-        "workflow": "concat",
-        "bundler": "webpack",
-        "lint": true,
-        "useBabel": true,
-        "removeConsoleLog": true,
-        "webpack": {
-            "useHMR": false
-        },
-        "jsPathsToConcatBeforeModulesJs": [],
-        "lintJsCodeBeforeModules": false,
-        "jsPathsToConcatAfterModulesJs": [],
-        "lintJsCodeAfterModules": false
-    },
-    "css": {
-        "workflow": "concat"
-    },
-    "generateStaticPath": true
+    "staticPrefix": "static/"
 };

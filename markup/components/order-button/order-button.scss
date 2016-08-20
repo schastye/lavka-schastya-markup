@@ -1,0 +1,14 @@
+.order-button {
+  position: relative;
+
+  &_update:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    right: 0;
+    background-color: $color-green-dark;
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,11 @@
+.part-header {
+  background-size: cover;
+  background-position: center;
+
+  &:before{
+    display: block;
+    content: " ";
+    width: 100%;
+    padding-top: (450 / 1900) * 100%;
+  }
+}

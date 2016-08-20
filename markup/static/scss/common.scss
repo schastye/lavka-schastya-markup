@@ -248,29 +248,6 @@ textarea {
 
 
 //
-// Tables
-//
-
-table {
-  // Reset for nesting within parents with `background-color`.
-  background-color: $table-bg;
-}
-
-caption {
-  padding-top: $table-cell-padding;
-  padding-bottom: $table-cell-padding;
-  color: $text-muted;
-  text-align: left;
-  caption-side: bottom;
-}
-
-th {
-  // Centered by default, but left-align-ed to match the `td`s below.
-  text-align: left;
-}
-
-
-//
 // Forms
 //
 

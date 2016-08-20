@@ -1,0 +1,136 @@
+.header-logo {
+  animation-name : none;
+  bottom         : 0;
+  color          : #000;
+  display        : block;
+  left           : 0;
+  right          : 0;
+  margin         : 0;
+  overflow       : hidden;
+  position       : absolute;
+  top            : 0;
+  width          : 100%;
+  text-align     : center;
+  line-height    : 68px;
+
+  @media (min-width: 1024px) {
+    position                  : relative;
+    animation-iteration-count : 1;
+    animation-fill-mode       : forwards;
+    animation-timing-function : linear;
+    animation-duration        : .8s;
+    animation-delay           : 3s;
+    animation-direction       : normal;
+    animation-name            : collapseLogo;
+
+    @keyframes collapseLogo {
+      0% {
+        margin : 0;
+        color  : #000;
+        top    : 0;
+        left   : 0;
+        right  : 0;
+        bottom : 0;
+      }
+      40% {
+        color : $color-beige;
+      }
+      100% {
+        color      : $color-beige;
+        margin     : -68px;
+        top        : 0;
+        left       : 70px;
+        right      : 70px;
+      }
+    }
+
+    @keyframes collapseLogoReverse {
+      0% {
+        color  : $color-beige;
+        margin : -68px;
+        top    : 0;
+        left   : 70px;
+        right  : 70px;
+      }
+      40% {
+        color : $color-beige;
+      }
+      100% {
+        margin : 0;
+        color  : #000;
+        top    : 0;
+        left   : 0;
+        right  : 0;
+        bottom : 0;
+      }
+    }
+  }
+
+  &:hover,
+  &:focus {
+    color: #000;
+  }
+
+  &_collapse {
+    animation-name : none;
+
+    @media (min-width: 1024px) {
+      margin : -68px 0;
+      color  : $color-beige;
+    }
+
+    .header-logo__image {
+      display : none;
+      @media (min-width: 1024px) {
+        display : block;
+      }
+
+      &_title {
+        // display         : block;
+        margin          : 0 auto;
+        opacity         : 0;
+        animation-name  : showLogo;
+        animation-delay : 0s;
+
+        @media (min-width: 1024px) {
+          display : none;
+        }
+      }
+    }
+  }
+
+  &__image {
+    display: none;
+    width  : 100%;
+    height : 100%;
+
+    @media (min-width: 1024px) {
+      display : block;
+    }
+
+    &_title {
+      animation-iteration-count : 1;
+      animation-fill-mode       : forwards;
+      animation-timing-function : linear;
+      animation-duration        : .8s;
+      animation-delay           : 3s;
+      animation-direction       : normal;
+      animation-name            : showLogo;
+      opacity: 0;
+
+      @keyframes showLogo {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        display : none;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,14 @@
+.header-order {
+  width: 100%;
+
+  &__list {
+    display: block;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-bottom: $space-2;
+  }
+
+  &__footer {
+    
+  }
+}
