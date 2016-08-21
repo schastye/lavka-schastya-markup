@@ -14,26 +14,26 @@
 
     @media (min-width: 768px) {
       font-size: 22px;
-    }
 
-    &:before,
-    &:after {
-      content: '';
-      display: inline-block;
-      width: 35px;
-      height: 9px;
-      margin: 0 15px;
-      background-size: cover;
-      background-position: center;
-    }
+      &:before,
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 35px;
+        height: 9px;
+        margin: 0 15px;
+        background-size: cover;
+        background-position: center;
+      }
 
-    &:before {
-      background-image: svg-load('./venzel_left.svg');
-    }
+      &:before {
+        background-image: svg-load('./venzel_left.svg');
+      }
 
-    &:after {
-      background-image: svg-load('./venzel_right.svg');
-    }    
+      &:after {
+        background-image: svg-load('./venzel_right.svg');
+      }
+    }
   }
 
   &__content {
