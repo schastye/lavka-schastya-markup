@@ -49,17 +49,17 @@
     });
   }
 
-  // let headerLogo = document.querySelectorAll( '.header-logo' );
-  // if (headerLogo.length) {
-  //   [].slice.call( headerLogo ).forEach( el => {
+  let headerLogo = document.querySelectorAll( '.header-logo' );
+  if (headerLogo.length) {
+    [].slice.call( headerLogo ).forEach( el => {
 
-  //     setTimeout( () => {
-  //       if ( !el.classList.contains( 'header-logo_collapse' ) ) {
-  //         el.classList.add( 'header-logo_collapse' );
-  //       }
-  //     }, 3000 );
-  //   } );
-  // }
+      setTimeout( () => {
+        if ( !el.classList.contains( 'header-logo_collapse' ) ) {
+          el.classList.add( 'header-logo_collapse' );
+        }
+      }, 3000 );
+    } );
+  }
 
   let headerCity = document.querySelectorAll( '.header__city' );
   if (headerCity.length) {
