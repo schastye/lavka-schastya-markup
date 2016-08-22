@@ -2,30 +2,33 @@
   display: block;
   text-decoration: none;
   padding: $space-1 $space-1 0;
+  box-sizing: content-box;
   width: auto;
   min-width: 120px;
   max-width: 430px;
   overflow: hidden;
-  transition: all .5s ease-in-out .8s;
+  transition: all .5s linear 0s;
 
   @media (min-width: 1024px) {
     &:hover,
     &:focus {
-      padding: 40px 60px;
-      min-width: 430px;
+      padding: 40px 60px 0;
       text-decoration: none;
-      transition: all .5s ease-in-out .3s;
+
+      transition: all .5s linear 0s;
 
       .part-card-title__description {
-        max-width: 430px;
-        max-height: 300px;
-        opacity: 1;
-        font-size: 13px;
         text-decoration: none;
-        transition: max-width .5s linear .3s,
-                    max-height .5s linear .3s,
-                    opacity .5s linear 1.3s,
-                    font-size .5s linear .8s;
+
+        width: 430px;
+        max-width: 430px;
+        height: 74px;
+        max-height: 74px;
+        opacity: 1;
+
+        transition: max-width  .5s linear 0s,
+                    max-height .5s linear 0s,
+                    opacity    .1s linear .4s;
       }
     }
   }
@@ -50,20 +53,25 @@
   }
 
   &__description {
-    transition: max-width .5s linear .8s,
-                max-height .5s linear .8s,
-                opacity .5s linear .3s,
-                font-size .5s linear .8s;
+    transition: max-width  .5s linear 0s,
+                width      .5s linear 0s,
+                max-height .5s linear 0s,
+                height     .5s linear 0s,
+                opacity    .1s linear 0s;
     margin: 0 auto;
     opacity: 0;
+    max-height: 0;
+    height: 0;
+    max-width: 120px;
+    width: 120px;
+    position: relative;
+    top: 0;
+    left: 0;
     text-overflow: clip;
     overflow: hidden;
-    max-height: 0;
-    max-width: 0;
     padding-top: 1rem;
     text-align: left;
     hyphens: auto;
-    font-size: 0px;
     line-height: 1.2;
     letter-spacing: 1px;
     color: $color-grey-dark;
