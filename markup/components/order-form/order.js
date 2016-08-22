@@ -1,3 +1,4 @@
+/* global msDom, ymaps */
 'use strict';
 
 let orderData = {};
@@ -5,44 +6,85 @@ let formData = {
   receiver: 'receiver',
   phone: 'phone',
   email: 'email',
-  coupon_code: 'coupon_code', // eslint-disable-line camelcase
-  payment: 'payment',
+  index: 'index', // eslint-disable-line camelcase
   sms: 'sms',
   subscribe: 'subscribe',
   comment: 'comment',
+  payment: 'payment',
   delivery: 'delivery',
   deliveries: {
-    1: { address: 'pickup__address', date: 'pickup__date' },
-    4: { address: 'courier__address', date: 'courier__date', time: 'courier__time' },
-    // 5 : { address : 'express__address', date : 'express__date', time : 'express__time' }
+    1: { street: 'pickup__address', region: 'pickup__date' },
+    4: { street: 'courier__address', room: 'courier__room', region: 'courier__date', metro: 'courier__time' },
+    5: { street: 'express__address', room: 'express__room', region: 'express__date', metro: 'express__time' }
   }
 };
 
-function updateData( key ) {
-  orderData.payment = document.querySelectorAll( '[name="' + formData.payment + '"]:checked' )[0].value;
-  orderData.delivery = document.querySelectorAll( '[name="' + formData.delivery + '"]:checked' )[0].value;
-  orderData[ key ] = this.value;
+function updateData( key, value ) {
+  orderData.payment = document.querySelector( '[name="' + formData.payment + '"]:checked' ).value;
+  orderData.delivery = document.querySelector( '[name="' + formData.delivery + '"]:checked' ).value;
+  orderData[ key ] = value || this.value;
+  console.log( orderData );
+  for ( let field in orderData ) {
+    if ( orderData.hasOwnProperty( field ) ) {
+      document.querySelector( '[name="' + field + '"]' ).value = orderData[ field ];
+    }
+  }
+  if ( typeof msDom !== 'undefined' ) {
+    msDom.Initialize(); // eslint-disable-line new-cap
+  }
 }
 
-if ( document.querySelector('.order-page') ) {
+function setData() {
   for ( let key in formData ) {
     if ( formData.hasOwnProperty( key ) ) {
       if ( key !== 'deliveries' ) {
-        let formInput = document.getElementsByName( formData[ key ] )[0];
-        formInput.addEventListener( 'change', updateData.bind( formInput, key ), false );
+        let formInput = document.querySelector( '[name="' + formData[ key ] + '"]' );
+        updateData.bind( formInput, key, null );
+        formInput.addEventListener( 'change', updateData.bind( formInput, key, null ), false );
       } else {
         let deliveries = formData.deliveries;
-        for ( let delivery in deliveries ) {
-          if ( deliveries.hasOwnProperty( delivery ) ) {
-            for ( let deliveryItem in deliveries[ delivery ] ) {
-              if ( deliveries[ delivery ].hasOwnProperty( deliveryItem ) ) {
-                let deliveryInput = document.getElementsByName( deliveries[ delivery ][ deliveryItem ] )[0];
-                deliveryInput.addEventListener( 'change', updateData.bind( deliveryInput, deliveryItem ), false );
-              }
-            }
+        let deliveryChecked = document.querySelector( '[name="' + formData.delivery + '"]:checked' ).value;
+        for ( let deliveryItem in deliveries[ deliveryChecked ] ) {
+          if ( deliveries[ deliveryChecked ].hasOwnProperty( deliveryItem ) ) {
+            let deliveryInput = document.querySelector( '[name="' + deliveries[ deliveryChecked ][ deliveryItem ] + '"]' );
+            updateData.bind( deliveryInput, deliveryItem, null );
+            deliveryInput.addEventListener( 'change', updateData.bind( deliveryInput, deliveryItem, null ), false );
           }
         }
       }
     }
   }
+}
+
+if ( document.querySelector('.order-page') ) {
+  setData();
+  [].slice.call( document.getElementsByName( formData.delivery ) ).forEach( deliveryRadio => {
+    deliveryRadio.addEventListener( 'click', setData, false );
+  } );
+}
+
+function onLoad( ymaps ) {
+  let userPosition = [];
+  let input = document.querySelectorAll( '[name="courier__address"], [name="express__address"]' );
+  ymaps.geolocation.get( { provider: 'yandex' } ).then( function ( res ) {
+    userPosition = res.geoObjects.get(0).geometry.getCoordinates();
+    let userArea = res.geoObjects.get(0).properties.get('boundedBy');
+    let userMap = new ymaps.Map( 'map', {
+      center: userPosition,
+      zoom: 10,
+      controls: [ 'zoomControl', 'fullscreenControl', 'geolocationControl' ]
+    });
+
+    [].slice.call( input ).forEach( suggestInput => {
+      let deliveryInput = new ymaps.SuggestView( suggestInput, {
+        boundedBy: userArea
+      } );
+      deliveryInput.events.add( 'select', function ( event ) {
+        updateData( 'street', event.get( 'item' ).value );
+      } );
+    } );
+
+  }, function ( err ) {
+    console.log( err );
+  });
 }

@@ -11,46 +11,54 @@ html(class="no-js", lang="ru")
 
       #map(style='height: 250px;')
       .input-box.input-box_freeze
-        input.input-box__field(type='text', name='address', id='address', placeholder='Адрес')
+        input.input-box__field(type='text', name='courier__address', id='courier__address', placeholder='Курьер' style="z-index: 5;")
+
       .input-box.input-box_freeze
-        input.input-box__field(type='text', name='house', id='house', placeholder='Дом')
+        input.input-box__field(type='text', name='express__address', id='express__address', placeholder='Экспресс' style="z-index: 5;")
 
       script(src="//api-maps.yandex.ru/2.1/?lang=ru_RU&load=package.full&onload=onLoad")
 
       script.
         function onLoad(ymaps) {
           var userPosition = [];
-          var input = document.getElementById( 'address' );
+          var input = document.querySelectorAll( '[name="courier__address"], [name="express__address"]' );
+          /*
           var shipArea = new ymaps.Polygon([
-            [
-              [ 60.005308434254125, 30.330988203546884 ],
-              [ 59.9868830002899  , 30.339512957214648 ],
-              [ 59.987349958269036, 30.362055628612616 ],
-              [ 59.97565075685213 , 30.43998989374935  ],
-              [ 59.932603312954086, 30.43792995722586  ],
-              [ 59.91398945881347 , 30.34282955439372  ],
-              [ 59.90709277974325 , 30.323260157421135 ],
-              [ 59.90761008053195 , 30.259745447948646 ],
-              [ 59.92536583681698 , 30.236056177928962 ],
-              [ 59.9832213020565  , 30.20962032587816  ],
-              [ 60.00103461843391 , 30.276801523609624 ],
-              [ 60.005308434254125, 30.330988203546884 ]
-            ], [] ]);
+          [
+            [ 60.005308434254125, 30.330988203546884 ],
+            [ 59.9868830002899  , 30.339512957214648 ],
+            [ 59.987349958269036, 30.362055628612616 ],
+            [ 59.97565075685213 , 30.43998989374935  ],
+            [ 59.932603312954086, 30.43792995722586  ],
+            [ 59.91398945881347 , 30.34282955439372  ],
+            [ 59.90709277974325 , 30.323260157421135 ],
+            [ 59.90761008053195 , 30.259745447948646 ],
+            [ 59.92536583681698 , 30.236056177928962 ],
+            [ 59.9832213020565  , 30.20962032587816  ],
+            [ 60.00103461843391 , 30.276801523609624 ],
+            [ 60.005308434254125, 30.330988203546884 ]
+          ], [] ]);
+          */
 
           ymaps.geolocation.get( { provider: 'yandex' } ).then( function ( res ) {
             userPosition = res.geoObjects.get(0).geometry.getCoordinates();
             var userArea = res.geoObjects.get(0).properties.get('boundedBy');
-            var userMap = new ymaps.Map( 'map', {
-              center: userPosition,
-              zoom: 10,
-              controls: [ 'zoomControl','fullscreenControl', 'geolocationControl' ]
-            });
+            //- var userMap = new ymaps.Map( 'map', {
+            //-   center: userPosition,
+            //-   zoom: 10,
+            //-   controls: [ 'zoomControl','fullscreenControl', 'geolocationControl' ]
+            //- });
 
-            userMap.geoObjects.add( shipArea );
+            //- userMap.geoObjects.add( shipArea );
 
-            var expressStreet = new ymaps.SuggestView( 'address', {
-              boundedBy: userArea
+            [].slice.call( input ).forEach( suggestInput => {
+              console.log( suggestInput );
+              new ymaps.SuggestView( suggestInput, {
+                boundedBy: userArea
+              } );
             } );
+
+            /*
             expressStreet.events.add( 'select', function ( event ) {
               var value = event.get( 'item' ).value;
               var geocode = ymaps.geocode( value, {
@@ -84,14 +92,15 @@ html(class="no-js", lang="ru")
                 console.log( err );
               } );
             });
+            */
           }, function ( err ) {
             console.log( err );
           });
 
         }
 
-      script(src='%=static=%js/separate-js/svg4everybody.min.js')
-      script svg4everybody();
+      //- script(src='%=static=%js/separate-js/svg4everybody.min.js')
+      //- script svg4everybody();
 
       //- Main scripts. You can replace it, but I recommend you to leave it here
-      script(src='%=static=%js/main%=hash=%%=min=%.js')
+      //- script(src='%=static=%js/main%=hash=%%=min=%.js')
