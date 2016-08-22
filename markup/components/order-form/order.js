@@ -14,8 +14,8 @@ let formData = {
   delivery: 'delivery',
   deliveries: {
     1: { street: 'pickup__address', region: 'pickup__date' },
-    4: { street: 'courier__address', room: 'courier__room', region: 'courier__date', metro: 'courier__time' },
-    5: { street: 'express__address', room: 'express__room', region: 'express__date', metro: 'express__time' }
+    4: { street: 'courier__address', room: 'courier__room', region: 'courier__date', metro: 'courier__time' }
+    // 5: { street: 'express__address', room: 'express__room', region: 'express__date', metro: 'express__time' }
   }
 };
 
@@ -66,6 +66,7 @@ if ( document.querySelector('.order-page') ) {
 function onLoad( ymaps ) {
   let userPosition = [];
   let input = document.querySelectorAll( '[name="courier__address"], [name="express__address"]' );
+  console.log( ymaps );
   ymaps.geolocation.get( { provider: 'yandex' } ).then( function ( res ) {
     userPosition = res.geoObjects.get(0).geometry.getCoordinates();
     let userArea = res.geoObjects.get(0).properties.get('boundedBy');
