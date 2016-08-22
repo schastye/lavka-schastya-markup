@@ -7,7 +7,7 @@
   min-width: 120px;
   max-width: 430px;
   overflow: hidden;
-  transition: all .5s linear 0s;
+  transition: all .8s linear 0s;
 
   @media (min-width: 1024px) {
     &:hover,
@@ -15,7 +15,7 @@
       padding: 40px 60px 0;
       text-decoration: none;
 
-      transition: all .5s linear 0s;
+      transition: all .8s linear 0s;
 
       .part-card-title__description {
         text-decoration: none;
@@ -26,8 +26,8 @@
         max-height: 74px;
         opacity: 1;
 
-        transition: max-width  .5s linear 0s,
-                    max-height .5s linear 0s,
+        transition: max-width  .8s linear 0s,
+                    max-height .8s linear 0s,
                     opacity    .1s linear .4s;
       }
     }
@@ -53,10 +53,10 @@
   }
 
   &__description {
-    transition: max-width  .5s linear 0s,
-                width      .5s linear 0s,
-                max-height .5s linear 0s,
-                height     .5s linear 0s,
+    transition: max-width  .8s linear 0s,
+                width      .8s linear 0s,
+                max-height .8s linear 0s,
+                height     .8s linear 0s,
                 opacity    .1s linear 0s;
     margin: 0 auto;
     opacity: 0;
