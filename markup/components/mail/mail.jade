@@ -1,0 +1,119 @@
+mixin mail(data)
+
+  - console.log( mail );
+  - var prod = false;
+  - var style  = {};
+  - style.logo = 'display:block; margin: auto;';
+  - style.a    = 'color:#348eda;';
+  - style.p    = 'font-family: Arial; color: #666666; font-size: 12px;';
+  - style.h    = 'font-family: Arial; color: #111111; font-weight: 200; line-height: 1.2em; margin: 40px 20px;';
+  - style.h1   = 'font-size: 36px;';
+  - style.h2   = 'font-size: 28px;';
+  - style.h3   = 'font-size: 22px;';
+  - style.th   = 'font-family: Arial; text-align: left; color: #111111;';
+  - style.td   = 'font-family: Arial; text-align: left; color: #111111;';
+
+  if prod
+    | {var $site_url = ('site_url' | option) | preg_replace : '#/$#' : ''}
+    | {var $assets_url = 'assets_url' | option}
+  div(style="margin:0;padding:0;background:#f6f6f6;")
+    div(style="height:100%;padding-top:20px;background:#f6f6f6;")
+      block logo
+        a(href="#{prod?'{$site_url}':'/'}")
+          img(style="#{prod?'{$style.logo}':style.logo}"
+            src="{$site_url}static/img/general/favicons/android-chrome-96x96.png"
+            alt="{$site_url}"
+            width="96" height="96")
+//-
+//-
+      table(style="padding:0 20px 20px 20px;width: 100%;background:#f6f6f6;margin-top:10px;")
+        tr
+          td
+          td(style="border:1px solid #f0f0f0;background:#ffffff;width:800px;margin:auto;")
+            content
+              table(style="width:100%;")
+                tr
+                  td
+                    h3(style="{$style.h}{$style.h3}")
+                      block title
+                        {'site_name' | option}
+                    block products
+                      table(style="width:90%;margin:auto;")
+                        thead
+                          tr
+                            th &nbsp;
+                            th(style="{$style.th}") {'ms2_cart_title' | lexicon}
+                            th(style="{$style.th}") {'ms2_cart_count' | lexicon}
+                            th(style="{$style.th}") {'ms2_cart_weight' | lexicon}
+                            th(style="{$style.th}") {'ms2_cart_cost' | lexicon}
+                        tbody
+                          //-
+                            {foreach $products as $product}
+                              tr
+                                td(style="{$style.th}")
+                                  {if $product.thumb?}
+                                    <img src="{$site_url}{$product.thumb}"
+                                       alt="{$product.pagetitle}"
+                                       title="{$product.pagetitle}"
+                                       width="120" height="90"/>
+                                  {else}
+                                    <img src="{$site_url}{$assets_url}components/minishop2/img/web/ms2_small@2x.png"
+                                       alt="{$product.pagetitle}"
+                                       title="{$product.pagetitle}"
+                                       width="120" height="90"/>
+                                  {/if}
+                                td(style="{$style.th}")
+                                  {if $product.id?}
+                                    <a href="{$product.id | url : ['scheme' => 'full']}"
+                                       style="{$style.a}">
+                                      {$product.name}
+                                    </a>
+                                  {else}
+                                    {$product.name}
+                                  {/if}
+                                  {if $product.options?}
+                                    <div class="small">
+                                      {$product.options | join : '; '}
+                                    </div>
+                                  {/if}
+                                </td>
+                                <td style="{$style.th}">{$product.count} {'ms2_frontend_count_unit' | lexicon}</td>
+                                <td style="{$style.th}">{$product.weight} {'ms2_frontend_weight_unit' | lexicon}</td>
+                                <td style="{$style.th}">{$product.price} {'ms2_frontend_currency' | lexicon}</td>
+                              </tr>
+                            {/foreach}
+                        tfoot
+                          tr
+                            th(colspan="2")
+                            th(style="{$style.th}") {$total.cart_count} {'ms2_frontend_count_unit' | lexicon}
+                            th(style="{$style.th}") {$total.cart_weight} {'ms2_frontend_weight_unit' | lexicon}
+                            th(style="{$style.th}") {$total.cart_cost} {'ms2_frontend_currency' | lexicon}
+                      h3(style="{$style.h}{$style.h3}")
+                        {'ms2_frontend_order_cost' | lexicon}:
+                        {if $total.delivery_cost}
+                          {$total.cart_cost} {'ms2_frontend_currency' | lexicon} + {$total.delivery_cost}
+                          {'ms2_frontend_currency' | lexicon} =
+                        {/if}
+                        strong {$total.cost}</strong> {'ms2_frontend_currency' | lexicon}
+                    {/block}
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!-- /content -->
+          </td>
+          td
+        </tr>
+      </table>
+
+      table(style="clear:both !important;width: 100%;")
+        tr
+          td
+          td
+            div
+              table(style="width:100%;text-align: center;")
+                tr
+                  td(align="center")
+                    p(style="{$style.p}")
+                      block footer
+                        a(href="{$site_url}" style="color: #999999;") {'site_name' | option}
