@@ -6,7 +6,7 @@ let formData = {
   receiver: 'receiver',
   phone: 'phone',
   email: 'email',
-  index: 'index', // eslint-disable-line camelcase
+  index: 'index',
   sms: 'sms',
   subscribe: 'subscribe',
   comment: 'comment',
@@ -14,8 +14,8 @@ let formData = {
   delivery: 'delivery',
   deliveries: {
     1: { street: 'pickup__address', region: 'pickup__date' },
-    4: { street: 'courier__address', room: 'courier__room', region: 'courier__date', metro: 'courier__time' }
-    // 5: { street: 'express__address', room: 'express__room', region: 'express__date', metro: 'express__time' }
+    4: { street: 'courier__address', room: 'courier__room', region: 'courier__date', metro: 'courier__time' },
+    5: { street: 'express__address', room: 'express__room', region: 'express__date', metro: 'express__time' }
   }
 };
 
@@ -26,7 +26,7 @@ function updateData( key, value ) {
   console.log( orderData );
   for ( let field in orderData ) {
     if ( orderData.hasOwnProperty( field ) ) {
-      document.querySelector( '[name="' + field + '"]' ).value = orderData[ field ];
+      document.querySelector( '[name="' + field + '"]' ).value = orderData[ field ] || '';
     }
   }
   if ( typeof msDom !== 'undefined' ) {
@@ -35,11 +35,12 @@ function updateData( key, value ) {
 }
 
 function setData() {
+  // debugger;
   for ( let key in formData ) {
     if ( formData.hasOwnProperty( key ) ) {
       if ( key !== 'deliveries' ) {
         let formInput = document.querySelector( '[name="' + formData[ key ] + '"]' );
-        updateData.bind( formInput, key, null );
+        updateData( key, formInput.value );
         formInput.addEventListener( 'change', updateData.bind( formInput, key, null ), false );
       } else {
         let deliveries = formData.deliveries;
@@ -47,20 +48,13 @@ function setData() {
         for ( let deliveryItem in deliveries[ deliveryChecked ] ) {
           if ( deliveries[ deliveryChecked ].hasOwnProperty( deliveryItem ) ) {
             let deliveryInput = document.querySelector( '[name="' + deliveries[ deliveryChecked ][ deliveryItem ] + '"]' );
-            updateData.bind( deliveryInput, deliveryItem, null );
+            updateData( deliveryItem, deliveryInput.value );
             deliveryInput.addEventListener( 'change', updateData.bind( deliveryInput, deliveryItem, null ), false );
           }
         }
       }
     }
   }
-}
-
-if ( document.querySelector('.order-page') ) {
-  setData();
-  [].slice.call( document.getElementsByName( formData.delivery ) ).forEach( deliveryRadio => {
-    deliveryRadio.addEventListener( 'click', setData, false );
-  } );
 }
 
 function onLoad( ymaps ) {
@@ -89,3 +83,12 @@ function onLoad( ymaps ) {
     console.log( err );
   });
 }
+
+(function () {
+  if ( document.querySelector('.order-page') ) {
+    setData();
+    [].slice.call( document.getElementsByName( formData.delivery ) ).forEach( deliveryRadio => {
+      deliveryRadio.addEventListener( 'click', setData, false );
+    } );
+  }
+})();
