@@ -31,7 +31,8 @@ function updateMiniCart( fromForm ) {
     formOrder.addEventListener( 'submit', function ( event ) {
       let addToCart = document.querySelector( '.button_add-to-card' );
       if ( addToCart.classList.contains( 'button_add-to-card_added' ) ) {
-        console.log( 'move' );
+        event.preventDefault();
+        window.location.href = 'https://lavkaschastya.com/order';
       } else {
         event.preventDefault();
         updateMiniCart( this );
