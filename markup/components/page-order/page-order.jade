@@ -25,7 +25,7 @@ mixin page-order(data)
             != jadeHelpers.Icon.call(locals, {iconName: 'angels_contacts', className: 'watermark'})
         .order-form__data
           form
-            .input-box 
+            .input-box
               input.input-box__field(type='text', name='receiver', id='receiver', required, autofocus)
               label.input-box__label(for='receiver')
                 span.input-box__label-content(data-content='Имя') Имя
@@ -186,4 +186,4 @@ mixin page-order(data)
               | Оформить заказ
               != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'add-to-card'})
               span.order-final__price 2000 rub
-  script(src="//api-maps.yandex.ru/2.1/?lang=ru_RU&load=SuggestView&onload=onLoad")
+  script(src="//api-maps.yandex.ru/2.1/?lang=ru_RU&amp;load=package.full&amp;onload=onLoad")
