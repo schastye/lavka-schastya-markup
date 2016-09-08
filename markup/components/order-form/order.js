@@ -23,19 +23,21 @@ function updateData( key, value ) {
   orderData.payment = document.querySelector( '[name="' + formData.payment + '"]:checked' ).value;
   orderData.delivery = document.querySelector( '[name="' + formData.delivery + '"]:checked' ).value;
   orderData[ key ] = value || this.value;
-  console.log( orderData );
   for ( let field in orderData ) {
     if ( orderData.hasOwnProperty( field ) ) {
-      document.querySelector( '[name="' + field + '"]' ).value = orderData[ field ] || '';
+      if ( field === formData.deliveries[ orderData.delivery ][ field ] ) {
+        document.querySelector( '[name="' + field + '"]' ).value = formData.deliveries[ orderData.delivery ][ field ] || '';
+      } else {
+        document.querySelector( '[name="' + field + '"]' ).value = orderData[ field ] || '';
+      }
     }
   }
-  if ( typeof msDom !== 'undefined' ) {
+  if ( typeof msDom !== 'undefined' && key === 'street' ) {
     msDom.Initialize(); // eslint-disable-line new-cap
   }
 }
 
 function setData() {
-  // debugger;
   for ( let key in formData ) {
     if ( formData.hasOwnProperty( key ) ) {
       if ( key !== 'deliveries' ) {
@@ -60,7 +62,6 @@ function setData() {
 function onLoad( ymaps ) {
   let userPosition = [];
   let input = document.querySelectorAll( '[name="courier__address"], [name="express__address"]' );
-  console.log( ymaps );
   ymaps.geolocation.get( { provider: 'yandex' } ).then( function ( res ) {
     userPosition = res.geoObjects.get(0).geometry.getCoordinates();
     let userArea = res.geoObjects.get(0).properties.get('boundedBy');
@@ -84,11 +85,47 @@ function onLoad( ymaps ) {
   });
 }
 
+function getSale( input ) {
+  let data = new FormData();
+  data.append( 'code', input.value );
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://lavkaschastya.com/api/getCard');
+  xhr.send( data );
+
+  xhr.onload = function () {
+    if (xhr.readyState === xhr.DONE) {
+      if (xhr.status === 200 ) {
+        let sale = JSON.parse( xhr.response ).value;
+        document.querySelector( '.cardcode-result' ).textContent = sale + '%';
+        updateData( 'index', sale );
+      }
+    }
+  };
+}
+
 (function () {
   if ( document.querySelector('.order-page') ) {
     setData();
     [].slice.call( document.getElementsByName( formData.delivery ) ).forEach( deliveryRadio => {
       deliveryRadio.addEventListener( 'click', setData, false );
     } );
+
+    $('input').garlic( {
+      onRetrieve: function ( elem, retrievedValue ) {
+        elem.context.focus();
+        setData();
+      }
+    } );
   }
+
+  if ( document.querySelector( '[name="cardcode"]' ) ) {
+    [].slice.call( document.querySelectorAll( '[name="cardcode"]' ) ).forEach( cardcodeInput => {
+      cardcodeInput.addEventListener( 'change', getSale, false );
+    } );
+
+    [].slice.call( document.querySelectorAll( '.cardcode-result' ) ).forEach( cardcodeInput => {
+      cardcodeInput.addEventListener( 'click', getSale.bind( null, document.querySelector('[name="cardcode"]') ), false );
+    } );
+  }
+
 })();
