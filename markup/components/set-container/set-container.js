@@ -52,7 +52,7 @@ Stack.prototype.add = function ( item, image, position, stack = this.stack ) {
   return this.update( stack );
 };
 
-Stack.prototype.remove = function ( position, event ) {
+Stack.prototype.remove = function ( position ) {
   let newStack = this.stack;
   newStack[ position ].itemId = null;
   newStack[ position ].image = null;
@@ -83,6 +83,7 @@ Stack.prototype.update = function ( newStack = this.get() ) {
   let stack = newStack || {};
   let stackLength = Object.keys( stack ).length;
 
+
   [].slice.call( this.root ).forEach( ( rootEl ) => {
     let children = rootEl.children;
     for ( let item = 0; item < children.length; item++ ) {
@@ -90,7 +91,7 @@ Stack.prototype.update = function ( newStack = this.get() ) {
         children[ item ].innerHTML = `<div style="background-image: url(${ stack[ item ].image });" class="set-cell-content">
                                         <input type="hidden" name="options[composition][${ item }]" class="set-cell-content__id" value="${ stack[ item ].itemId }" form="order">
                                       </div>`;
-        children[ item ].firstChild.addEventListener( 'click', this.remove.bind( this, item, event ), false );
+        children[ item ].firstChild.addEventListener( 'click', this.remove.bind( this, item ), false );
         stackLength--;
       } else {
         children[ item ].innerHTML = '';
