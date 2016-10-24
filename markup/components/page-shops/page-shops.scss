@@ -2,10 +2,13 @@
   position: relative;
 
   &__list {
-    position: absolute;
-    width: 303px;
-    right: 92px;
-    bottom: 0;
-    z-index: 1;
+
+    @media (min-width: 768px) {
+      position: absolute;
+      width: 303px;
+      right: 92px;
+      bottom: 0;
+      z-index: 1;
+    }
   }
 }
