@@ -55,7 +55,7 @@ mixin header(data)
           .city-select__caption Нью-Йорк
           +button( { mods: { style: 'glass' } } )(class="city-select__next") &gt;
     .header__order#header__order
-      +button( { mods: { style: 'glass' } } )(class="menu-button")
+      +button( { mods: { style: 'glass' } } )(class="menu-button order-button order-button_update")
         if data.order.active
           != jadeHelpers.Icon.call(locals, { iconName: 'arrow_up_green', className: 'basket-icon' } )
         else

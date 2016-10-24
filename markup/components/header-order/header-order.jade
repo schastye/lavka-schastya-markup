@@ -1,11 +1,11 @@
 mixin header-order(data)
   include ../header-shopping-item/header-shopping-item
 
-  ul.header-menu
+  //- ul.header-menu
     li.header-menu__item
       span.header-menu__link Корзина пуста
 
-  //- table.header-order
+  table.header-order
     tbody.header-order__list
       +header-shopping-item( headerShoppingItem.default )
       +header-shopping-item( headerShoppingItem.default )

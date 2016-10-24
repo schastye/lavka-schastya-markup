@@ -51,6 +51,8 @@ function updateMiniCart( fromForm, action ) {
         console.log( 'ready to update' );
         updateMiniCart( this, 'add' );
         addToCart.classList.add( 'button_add-to-card_added' );
+        document.querySelector('.order-button').classList.add('order-button_update');
+        window.localStorage.setItem( 'order_updated', true );
         addToCart.querySelector( '.button__caption' ).textContent = 'Перейти к заказу';
       }
     }, false);
