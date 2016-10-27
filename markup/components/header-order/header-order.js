@@ -1,7 +1,6 @@
 'use strict';
 
 function updateMiniCart( fromForm, action ) {
-  console.log( 'update…' );
   let xhr = new XMLHttpRequest();
   let dataFromForm = new FormData( fromForm );
   switch ( action ) {
@@ -17,12 +16,9 @@ function updateMiniCart( fromForm, action ) {
   }
   xhr.open('POST', '//lavkaschastya.com/api/getMiniCart');
   xhr.send( dataFromForm );
-  console.log( 'send' );
   xhr.onload = function () {
     if (xhr.readyState === xhr.DONE) {
       if (xhr.status === 200) {
-        console.log( 'respond' );
-        console.log( 'xhr.response' );
         let miniCart = document.getElementById('header-order');
         miniCart.innerHTML = xhr.response;
         [].slice.call( miniCart.querySelectorAll( '.header-shopping-item form' ) ).forEach( function ( removeButton ) {
@@ -37,10 +33,8 @@ function updateMiniCart( fromForm, action ) {
 }
 
 (function () {
-  console.log( 'enter' );
   let formOrder = document.querySelector('form#order');
   if ( formOrder ) {
-    console.log( 'if formOrder' );
     formOrder.addEventListener( 'submit', function ( event ) {
       console.log( 'event' );
       event.preventDefault();
