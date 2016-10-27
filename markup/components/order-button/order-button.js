@@ -4,12 +4,11 @@
 
 (function () {
   let initElem = document.querySelectorAll( '.order-button' );
-  for ( let orderButton of initElem ) {
+  for (let i = 0; i < initElem.length; i++) {
     if ( initElem.length && window.localStorage.getItem( 'order_updated' ) === 'true' ) {
-      orderButton.classList.add( 'order-button_update' );
+      initElem[i].classList.add( 'order-button_update' );
     } else {
-      orderButton.classList.remove( 'order-button_update' );
+      initElem[i].classList.remove( 'order-button_update' );
     }
   }
-
 } )();
