@@ -10,7 +10,7 @@
             "baseDir": "./dev"
         },
         "port": 3004,
-        "open": true,
+        "open": false,
         "notify": false,
 
         // Choose browser to open

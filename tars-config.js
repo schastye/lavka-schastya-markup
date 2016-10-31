@@ -57,7 +57,7 @@ module.exports = {
     "generateStaticPath": true,
     "buildPath": "./builds/",
     "useBuildVersioning": true,
-    "useArchiver": true,
+    "useArchiver": false,
     "ulimit": 4096,
     "templater": "jade",
     "cssPreprocessor": "scss",
