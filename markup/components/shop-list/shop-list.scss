@@ -7,11 +7,16 @@
     display: block;
     border-top: 1px dotted #dfdfdf;
     padding: 10px 20px;
+    cursor: pointer;
 
     &:after {
       display: block;
       content: svg-load('./arrow_long_right.svg');
       width: 22px;
+    }
+
+    &:hover {
+      background-color: #e9f0e0;
     }
   }
 }
