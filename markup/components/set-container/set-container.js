@@ -88,7 +88,7 @@ Stack.prototype.update = function ( newStack = this.get() ) {
     let children = rootEl.children;
     for ( let item = 0; item < children.length; item++ ) {
       if ( stack[ item ].itemId !== null ) {
-        children[ item ].innerHTML = `<div style="background-image: url(${ stack[ item ].image });" class="set-cell-content">
+        children[ item ].innerHTML = `<div style="background-image: url(${ stack[ item ].image.replace(/"/g, '') });" class="set-cell-content">
                                         <input type="hidden" name="options[composition][${ item }]" class="set-cell-content__id" value="${ stack[ item ].itemId }" form="order">
                                       </div>`;
         children[ item ].firstChild.addEventListener( 'click', this.remove.bind( this, item ), false );
