@@ -12,7 +12,17 @@
   @media (min-width: 1024px) {
     &:hover,
     &:focus {
-      padding: 40px 60px 0;
+      padding-top: 40px;
+      padding-left: 60px;
+      padding-right: 60px;
+
+      .part-card-title_position_bottom {
+        padding-bottom: 10px;
+      }
+      .part-card-title_position_top {
+        padding-bottom: 20px;
+      }
+
       text-decoration: none;
 
       transition: all .3s linear 0s;
@@ -26,7 +36,7 @@
 
         width: 430px;
         max-width: 430px;
-        height: 74px;
+        height: 6em;
         max-height: 74px;
         opacity: 1;
 
