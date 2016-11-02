@@ -7,7 +7,7 @@
   min-width: 120px;
   max-width: 430px;
   overflow: hidden;
-  transition: all .3s linear 0s;
+  transition: all .8s cubic-bezier(0, 0, 0.2, 1) 0s;
 
   @media (min-width: 1024px) {
     &:hover,
@@ -25,7 +25,7 @@
 
       text-decoration: none;
 
-      transition: all .3s linear 0s;
+      transition: all .8s cubic-bezier(0, 0, 0.2, 1) 0s;
 
       .part-card-title__header {
         color: #85b892;
@@ -40,9 +40,9 @@
         max-height: 74px;
         opacity: 1;
 
-        transition: max-width  .3s linear 0s,
-                    max-height .3s linear 0s,
-                    opacity    .2s linear .3s;
+        transition: max-width  .8s cubic-bezier(0, 0, 0.2, 1) 0s,
+                    max-height .8s cubic-bezier(0, 0, 0.2, 1) 0s,
+                    opacity    .3s cubic-bezier(0, 0, 0.2, 1) .7s;
       }
     }
   }
@@ -67,11 +67,11 @@
   }
 
   &__description {
-    transition: max-width  .3s linear 0s,
-                width      .3s linear 0s,
-                max-height .3s linear 0s,
-                height     .3s linear 0s,
-                opacity    .1s linear 0s;
+    transition: max-width  .8s cubic-bezier(0, 0, 0.2, 1) 0s,
+                width      .8s cubic-bezier(0, 0, 0.2, 1) 0s,
+                max-height .8s cubic-bezier(0, 0, 0.2, 1) 0s,
+                height     .8s cubic-bezier(0, 0, 0.2, 1) 0s,
+                opacity    .5s cubic-bezier(0, 0, 0.2, 1) 0s;
     margin: 0 auto;
     opacity: 0;
     max-height: 0;
