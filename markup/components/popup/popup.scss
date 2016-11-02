@@ -25,25 +25,6 @@
     font-weight: 500;
     text-transform: uppercase;
     margin-bottom: 20px;
-
-    &:before,
-    &:after {
-      content: '';
-      display: inline-block;
-      width: 57px;
-      height: 15px;
-      margin: 0 15px;
-      background-size: cover;
-      background-position: center;
-    }
-
-    &:before {
-      background-image: svg-load('./venzel_left.svg');
-    }
-
-    &:after {
-      background-image: svg-load('./venzel_right.svg');
-    }
   }
 
   &__content {
