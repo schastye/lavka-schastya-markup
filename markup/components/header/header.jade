@@ -8,7 +8,7 @@ mixin header(data)
 
   header.header(class = data.index ? '' : 'header_collapse')
     template#modal
-      .popup
+      .popup.popup_show
         +button( { mods: { style: 'glass' } } )(class='popup__close')
           | &times;
         header.popup__header

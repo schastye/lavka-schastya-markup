@@ -42,7 +42,9 @@ function setData() {
     if ( formData.hasOwnProperty( key ) ) {
       if ( key !== 'deliveries' ) {
         let formInput = document.querySelector( '[name="' + formData[ key ] + '"]' );
-        updateData( key, formInput.value );
+        if ( formInput.hasOwnProperty( 'value' ) ) {
+          updateData( key, formInput.value );
+        }
         formInput.addEventListener( 'change', updateData.bind( formInput, key, null ), false );
       } else {
         let deliveries = formData.deliveries;

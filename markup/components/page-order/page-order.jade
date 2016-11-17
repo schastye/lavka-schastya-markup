@@ -149,7 +149,7 @@ mixin page-order(data)
                               != jadeHelpers.Icon.call(locals, {iconName: 'arrow_down_small', className: 'icon-chevron-down'})
                       .order-card__additional
                         .box-select
-                          +button( { mods: {} } )(class='box-select__button')
+                          .box-select__button
                             img.box-select__icon(src='%=static=%img/assets/box-variant/box.jpg')
                             .box-select__title Подарочная
                             .box-select__dropdown
@@ -157,11 +157,11 @@ mixin page-order(data)
                           .box-select__popup
                             .dropdown-list
                               .dropdown-list__item
-                                +button( { mods: { type: 'link' }, url: 'good.html' } )(class='box-select__button')
+                                a.box-select__button(href="good.html")
                                   img.box-select__icon(src='%=static=%img/assets/box-variant/box.jpg')
                                   .box-select__title От Счастья
                               .dropdown-list__item
-                                +button( { mods: { type: 'link' }, url: 'good.html' } )(class='box-select__button')
+                                a.box-select__button(href="good.html")
                                   img.box-select__icon(src='%=static=%img/assets/box-variant/box.jpg')
                                   .box-select__title Подарочная
                         .add-postcard

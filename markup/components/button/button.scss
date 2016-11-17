@@ -60,7 +60,29 @@
       @include button-variant(#000, $color-beige, $color-beige);
     }
 
+    &_link {
+      @include button-variant($color-green-dark, transparent, transparent);
+    }
+  }
 
+  &_size {
+    &_l {
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-weight: 200;
+      font-size: 14px;
+    }
+  }
+
+  &_block {
+    display: block;
+    width: 100%;
+
+    & + & {
+      margin-top: 1em;
+    }
   }
 
   &_add-to-card {

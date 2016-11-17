@@ -1,6 +1,6 @@
 .box-select {
   position: relative;
-  background-color: $color-beige !important;
+  background-color: $color-beige /* !important */;
 
   &:active,
   &:hover {
@@ -10,13 +10,15 @@
   }
 
   &__button {
-    padding: 10px !important;
-    text-align: center !important;
-    font-weight: 500 !important;
-    font-size: 10px !important;
-    letter-spacing: 1px !important;
-    color: $color-grey-dark !important;
-    display: flex !important;
+    padding: 10px /* !important */;
+    // text-align: center /* !important */;
+    font-weight: 500 /* !important */;
+    font-size: 10px /* !important */;
+    letter-spacing: 1px /* !important */;
+    color: $color-grey-dark /* !important */;
+    display: flex /* !important */;
+    flex-direction: row;
+    flex-wrap: nowrap;
     width: 100%;
     justify-content: space-between;
     align-items: center;
@@ -25,25 +27,26 @@
   }
 
   &__icon {
-    display: inline-block;
-    vertical-align: middle;
+    // display: inline-block;
+    // vertical-align: middle;
     border-radius: 50%;
     margin-right: 5px;
     width: 30px;
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
   }
 
   &__title {
-    flex-grow: 2;
+    flex: 1;
     text-align: left;
-    display: flex;
-    align-items: center;
+    // display: flex;
+    // align-items: center;
   }
 
   &__dropdown {
-    display: flex;
-    align-items: center;
+    width: 23px;
+    // display: flex;
+    // align-items: center;
   }
 
   &__popup {

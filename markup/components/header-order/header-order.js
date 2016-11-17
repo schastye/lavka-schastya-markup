@@ -1,3 +1,5 @@
+/* global showOrderModal */
+
 'use strict';
 
 function updateMiniCart( fromForm, action ) {
@@ -39,7 +41,11 @@ function updateMiniCart( fromForm, action ) {
       console.log( 'event' );
       event.preventDefault();
       let addToCart = document.querySelector( '.button_add-to-card' );
-      if ( addToCart.classList.contains( 'button_add-to-card_added' ) ) {
+      if ( addToCart.classList.contains( 'button_add-to-card_added' )
+        && addToCart.classList.contains( 'noauthorized' ) ) {
+        showOrderModal('#order-modal');
+      } else if ( addToCart.classList.contains( 'button_add-to-card_added' )
+        && addToCart.classList.contains( 'authorized' ) ) {
         window.location.href = '//lavkaschastya.com/order';
       } else {
         console.log( 'ready to update' );

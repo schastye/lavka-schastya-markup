@@ -6,6 +6,7 @@
   &__good  {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__remove {
@@ -41,7 +42,7 @@
   }
 
   &__value {
-
+    flex: 0;
   }
 
   &__additional {

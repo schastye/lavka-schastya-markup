@@ -93,7 +93,7 @@ mixin good-part(data)
             span.price__value#price__value(data-price='2000') 2000
             span.price__currency &nbsp;rub
           | Стоимость
-        button.button.button_add-to-card(type='submit' form='order')
+        button.button.button_add-to-card.noauthorized(type='submit' form='order')
           .button__caption Добавить в корзину
           != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'add-to-card'})
 
@@ -137,3 +137,16 @@ mixin good-part(data)
         .good-card__caption
           h3.good-card__title Название товара
           .good-card__price 500 rub
+
+  // Popup
+  .popup.popup_size_s#order-modal
+    +button({ mods: {} })(class='popup__close')
+      | &times;
+    h3.popup__header Авторизация
+    .popup__content
+      +button({ mods: { type: 'link', size: 'l' }, url: '//lavkaschastya.com/order' })(class="button_style_grey-outline button_block")
+        | Экспресс-заказ
+      +button({ mods: { type: 'link', size: 'l' }, url: '//lavkaschastya.com/profile?action=reg' })(class="button_style_grey-outline button_block")
+        | Регистрация
+      +button({ mods: { type: 'link', size: 'l' }, url: '//lavkaschastya.com/profile?action=auth' })(class="button_style_grey-outline button_block")
+        | Авторизация

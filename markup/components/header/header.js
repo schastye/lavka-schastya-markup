@@ -35,15 +35,12 @@
     headerPhone.addEventListener( 'click', event => {
       event.preventDefault();
       let t = document.querySelector('#modal');
-      // Во время выполнения заполняем src.
-      // t.content.querySelector('.popup__content').textContent = 'Hello';
       document.body.appendChild( t.content.cloneNode( true ) );
 
       [].slice.call( document.querySelectorAll( '.popup__close' ) ).forEach( popupClose => {
         popupClose.addEventListener( 'click', function (e) {
           let srcEl = e.target || e.srcElement;
           srcEl.parentNode.parentNode.removeChild( srcEl.parentNode );
-          console.log('close!');
         }, false );
       });
     });
