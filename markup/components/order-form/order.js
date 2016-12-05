@@ -112,22 +112,17 @@ function getSale( input ) {
       deliveryRadio.addEventListener( 'click', setData, false );
     } );
 
-    $('input').garlic( {
-      onRetrieve: function ( elem, retrievedValue ) {
-        elem.context.focus();
-        setData();
-      }
-    } );
+    // $('input').garlic( {
+    //   onRetrieve: function ( elem, retrievedValue ) {
+    //     elem.context.focus();
+    //     setData();
+    //   }
+    // } );
   }
 
-  if ( document.querySelector( '[name="cardcode"]' ) ) {
-    [].slice.call( document.querySelectorAll( '[name="cardcode"]' ) ).forEach( cardcodeInput => {
-      cardcodeInput.addEventListener( 'change', getSale, false );
-    } );
-
-    [].slice.call( document.querySelectorAll( '.cardcode-result' ) ).forEach( cardcodeInput => {
-      cardcodeInput.addEventListener( 'click', getSale.bind( null, document.querySelector('[name="cardcode"]') ), false );
-    } );
+  if ( document.querySelector( '[name="building"]' ) ) {
+    document.querySelector( '[name="building"]' ).addEventListener( 'change', getSale.bind( null, this ), false );
+    document.querySelector( '.cardcode-result' ).addEventListener( 'click', getSale.bind( null, document.querySelector('[name="building"]') ), false );
   }
 
 })();
