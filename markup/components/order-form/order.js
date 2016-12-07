@@ -112,12 +112,12 @@ function getSale( input ) {
       deliveryRadio.addEventListener( 'click', setData, false );
     } );
 
-    // $('input').garlic( {
-    //   onRetrieve: function ( elem, retrievedValue ) {
-    //     elem.context.focus();
-    //     setData();
-    //   }
-    // } );
+    $('#receiver, #email, #phone, #sms, #subscribe, #building, [name="payment"]').garlic( {
+      onRetrieve: function ( elem, retrievedValue ) {
+        elem.context.focus();
+        setData();
+      }
+    } );
   }
 
   if ( document.querySelector( '[name="building"]' ) ) {
