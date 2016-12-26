@@ -1,0 +1,30 @@
+mixin custom-cake(data)
+
+  include ../button/button
+
+  .custom-cake
+    .custom-cake__aside(style="background-image: url(%=static=%img/assets/custom-cake/bg.jpg)")
+    .custom-cake__form
+      h2.contacts__title Заказать любой торт
+      p Вы можете заказть торт у нас любого вида и любой сложности. вам нужно просто отправить сообщение и мы свяжемся с вами.
+      form.form-feedback(action="", enctype="multipart/form-data")
+        .input-box
+          input.input-box__field(type='text', name='name', id='name', required)
+          label.input-box__label(for='name')
+            span.input-box__label-content(data-content='Имя') Имя
+        .input-box
+          input.input-box__field(type='text', name='email', id='email', required)
+          label.input-box__label(for='email')
+            span.input-box__label-content(data-content='Email или телефон') Email или телефон
+        .input-box.input-box_filled.input-box_freeze
+          input.input-box__field(type='date', name='date', id='date', required)
+          label.input-box__label(for='date')
+            span.input-box__label-content(data-content='Дата исполнения') Дата исполнения
+        .input-box.input-box_filled.input-box_freeze
+          input.input-box__field.input-box__field_file(type='file', name='file', id='file', accept="image/*,image/jpeg", multiple, required)
+          label.input-box__label(for='file')
+            span.input-box__label-content(data-content='Фотографии образца') Фотографии образца
+        textarea.textarea(name='', rows='5', placeholder='Сообщение')
+        button.button.contacts__submit(type='submit')
+          | Отправить
+          != jadeHelpers.Icon.call(locals, {iconName: 'arrow_long_right', className: 'submit-button'})
