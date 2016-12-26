@@ -17,6 +17,14 @@ html(class="no-js", lang="ru")
 
     +footer()
 
+    .popup.popup_size_m.popup_show.popup_ny
+      +button( { mods: { type: 'button' } } )(class='popup__close')
+        | &times;
+      .popup__content
+        video.video(src="/ny_schastye_2017.mp4" autoplay)
+
+    //- script.
+      document.querySelector('.popup_ny').classList.toggle('popup_show');
     script(src='%=static=%js/separate-js/svg4everybody.min.js')
     script svg4everybody();
 

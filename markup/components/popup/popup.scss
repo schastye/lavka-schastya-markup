@@ -1,9 +1,9 @@
 .popup {
   position: fixed;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   left: 0;
   right: 0;
-  bottom: 0;
   background-color: #dff1fa;
   z-index: 1000;
   lost-center: 100%;
@@ -44,6 +44,7 @@
     top: 20px;
     font-size: 30px !important;
     line-height: 1 !important;
+    z-index: 100;
   }
 
   &__header {
